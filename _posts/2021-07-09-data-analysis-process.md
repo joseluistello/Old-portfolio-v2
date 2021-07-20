@@ -2,7 +2,7 @@
 layout: post
 title: "Data Analysis Process"
 subtitle: "A General View To My Approach"
-background: '/img/data analysis/background3.png'
+background: '/img/data analysis/tukeyy.png'
 output: html_document
 date: 2021-07-12 19:50:00 -0400
 category: r
