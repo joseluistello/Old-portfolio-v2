@@ -1,23 +1,21 @@
 ---
 layout: post
 title: "An Introduction to Forecasting Modeling"
-description: "Time Series Linear Model and Averages Method"
+subtitle: "Time Series Linear Model and Averages Method"
+background: '/img/forecasting/future.png'
 output: html_document
 date: 2021-05-22 19:50:00 -0400
 category: r
 tags: [data analysis, forecasting, r]
 comments: true
 ---
+ 
 
-
-**Forecasting is the process of making predictions based on past and present data. It's commonly used in disciplines such as finance, economics and business.** 
-
->  **.-Rob J. Hyndman**
-> Forecasting it's required in many situations: deciding whether to build another power generation plant in the next ten years requires forecasts of future demand; scheduling staff in a call centre next week requires forecasts of call volumes; stocking an inventory requires forecasts of stock requirements.
+> Rob J. Hyndman: "Forecasting it's required in many situations: deciding whether to build another power generation plant in the next ten years requires forecasts of future demand; scheduling staff in a call centre next week requires forecasts of call volumes; stocking an inventory requires forecasts of stock requirements."
 
 #### Forecasting is divided into two categories
 
-![](/img/forecasting/HD.png)<!-- 
+![](/img/forecasting/HD.png) 
 
 
 
@@ -151,7 +149,7 @@ fit %>%
 ![](/img/forecasting/forecastmexico.png)<!-- -->
 
 
-###Nice, right?**
+### Nice, right?
 
 ---
 
