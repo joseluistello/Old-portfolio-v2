@@ -1,0 +1,305 @@
+I"+0<p>We know that Semiconductors industry it’s a complex industry. Without this industry, We could not be reading this article. We could not imagine all this progress. But understand this monster it’s hard.</p>
+
+<hr />
+<p>That’s why I created this project. <strong>I’m going to divide the project in 2 parts.</strong></p>
+
+<blockquote>
+  <p>The first part is divided into 4 main points:</p>
+</blockquote>
+
+<ul>
+  <li>A short introduction about the business model that exist in the industry</li>
+  <li>A comparation about some index’s with specially focus on FOX Index</li>
+  <li>Select the companies that we will be analyzing throughout the project</li>
+  <li>Create models around the data and plot some nice visualizations</li>
+</ul>
+
+<blockquote>
+  <p>The second part is divided into X points:</p>
+</blockquote>
+
+<ul>
+  <li>I’m going to talk about one companie in particular</li>
+  <li>Select some financial ratios</li>
+  <li>Download and plot the data</li>
+  <li>Explain patterns</li>
+  <li>Regression analysis and forecasting modeling</li>
+</ul>
+
+<hr />
+<blockquote>
+  <p><strong>For me</strong>, the goal of this project consists on show you my knowledge on quant financial analysis, statistical learning and writing.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>For you</strong>, the project consists on understanding how the industry works, his performance over the years and why not, pick the opportunity to invest in the semiconductor industry.</p>
+</blockquote>
+
+<hr />
+<p>Let’s begin with the first main point… <strong>the business models.</strong> In order to understand the complexity around the industry, we need an overview of the process for creating an IC’S</p>
+
+<p><img src="/img/semiconductores/process.png" alt="Index" /></p>
+
+<blockquote>
+  <p><em>As wee see, there are many steps. But we can categorize the whole process in three major business models.</em></p>
+</blockquote>
+
+<p><img src="/img/semiconductores/HD.png" alt="Index" /></p>
+
+<h3 id="1--foundry">1.- Foundry</h3>
+
+<p><strong>Foundry companies are concerned only with IC manufacturing.</strong></p>
+
+<blockquote>
+  <p>The foundry model is a microelectronics engineering and manufacturing business model consisting of a semiconductor fabrication plant, or foundry, and an integrated circuit design operation, each belonging to separate companies or subsidiaries.</p>
+</blockquote>
+
+<p><strong>Foundry Model it’s dominated by TSMC.</strong></p>
+
+<h3 id="2--idm">2.- IDM</h3>
+
+<p><strong>IDMs design and manufacture integrated circuits (ICs).</strong></p>
+
+<blockquote>
+  <p>An integrated device manufacturer (IDM) is a semiconductor company which designs, manufactures, and sells integrated circuit (IC) products. As a classification, IDM is often used to differentiate between a company which handles semiconductor manufacturing in-house, and a fabless semiconductor company, which outsources production to a third-party. Due to the dynamic nature of the semiconductor industry, the term IDM has become less accurate than when it was coined.</p>
+</blockquote>
+
+<p><strong>Intel and Texas instruments are examples of this model.</strong></p>
+
+<h3 id="3--fabless">3.- Fabless</h3>
+
+<p>Fabless companies focus only on IC design.</p>
+
+<blockquote>
+  <p>Fabless manufacturing is the design and sale of hardware devices and semiconductor chips while outsourcing their fabrication (or fab) to a specialized manufacturer called a semiconductor foundry. Foundries are typically, but not exclusively, located in the United States, People’s Republic of China, and Taiwan. Fabless companies can benefit from lower capital costs while concentrating their research and development resources on the end market. Some fabless companies and pure play foundries (like TSMC) may offer integrated-circuit design services to third parties.</p>
+</blockquote>
+
+<p><strong>Broadcom, Qualcomm and AMD are examples of this model.</strong></p>
+
+<h3 id="lets-begin-with-an-index-performance-comparation">Let’s begin with an index performance comparation</h3>
+
+<p>I’m going to use the <strong>PHLX Semiconductor Sector</strong> Index</p>
+
+<blockquote>
+  <p>PHLX Semiconductor Sector is a Philadelphia Stock Exchange capitalization-weighted index composed of the 30 largest companies primarily involved in the design, distribution, manufacture, and sale of semiconductors. It was created in 1993 by the Philadelphia Stock Exchange</p>
+</blockquote>
+
+<p><img src="/img/semiconductores/performancecomparation.png" alt="Index" /></p>
+
+<ul>
+  <li><strong>Blue_SOX.-</strong> PHLX Semiconductor</li>
+  <li><strong>BlueSky_DJI.-</strong> Dow Jones Industrial</li>
+  <li><strong>Pink_IXIC.-</strong> NASDAQ COMPOSITE</li>
+  <li><strong>Purple_GSPC.-</strong> S&amp;P 500</li>
+  <li><strong>Orange_DAX.-</strong> German Index</li>
+  <li><strong>Yellow_TSXV.-</strong> S&amp;P/TSX CANADA COMPOSITE INDEX</li>
+</ul>
+
+<p><strong>If we look closely, the PHLX Index outperforms the NASDAQ COMPOSITE which contains companies like Apple, Amazon, Facebook and Alphabet… not bad, right?</strong> So, for this project i’m going to choose 2 or 3 per model:</p>
+
+<ul>
+  <li><strong>Foundry:</strong> TSMC and UMC.</li>
+  <li><strong>IDM’s:</strong> Intel, Texas instruments and NPX</li>
+  <li><strong>Fabless:</strong> Broadcomm, Qualcomm and Nvidia.</li>
+</ul>
+
+<p>These are the packages I will use throughout the project:</p>
+
+<ul>
+  <li><strong>Tidyquant</strong> for finance</li>
+  <li><strong>Tidyverse</strong> for dplyr and ggplot2</li>
+  <li><strong>Fpp3</strong> for forecasting models</li>
+  <li><strong>Ggthemes</strong> for beautiful plots</li>
+</ul>
+
+<hr />
+
+<h3 id="code">CODE</h3>
+
+<h4 id="first-i-need-to-download-the-data">First, I need to download the data:</h4>
+
+<pre><code class="language-{r}">sc_companies &lt;- c("TSM", "UMC", "INTC", "TXN", "NXP", "NVDA", "AVGO", "QCOM") %&gt;%
+  tq_get(get  = "stock.prices",
+         from = "2015-01-01",
+         to   = "2021-06-27")
+</code></pre>
+
+<pre><code class="language-{r}">foundry &lt;- c("TSM", "UMC") %&gt;%
+  tq_get(get  = "stock.prices",
+         from = "2015-01-01",
+         to   = "2021-06-27")
+</code></pre>
+
+<pre><code class="language-{r}">idm &lt;- c("INTC", "TXN", "NXP") %&gt;%
+  tq_get(get  = "stock.prices",
+         from = "2015-01-01",
+         to   = "2021-06-27")
+</code></pre>
+
+<pre><code class="language-{r}">fabless &lt;- c("NVDA", "AVGO", "QCOM") %&gt;%
+  tq_get(get  = "stock.prices",
+         from = "2015-01-01",
+         to   = "2021-06-27")
+</code></pre>
+
+<h4 id="then-i-need-to-plot-the-data">Then, I need to plot the data</h4>
+
+<p><strong>Let’s see an overview</strong></p>
+
+<pre><code class="language-{r}">  ggplot(sc_companies, 
+         aes(x = date, y = close, color = symbol)) + 
+    geom_line(size=1) +
+    labs(title = "Semiconductor Stock Price",
+         subtitle = 'A comparation between companies',
+         x = 'Date',
+         y =  "Close Price") +
+    theme_minimal() +
+    scale_color_brewer(palette = "Dark2") 
+</code></pre>
+
+<p><img src="/img/semiconductores/semiconductorstockprice.png" alt="Index" /></p>
+
+<p><strong>Let’s wrap for a better view.</strong></p>
+
+<pre><code class="language-{r}">  ggplot(sc_companies, 
+         aes(x = date, y = close, color = symbol)) + 
+    geom_line(size=1) +
+    labs(title = "Semiconductor Stock Price Growth",
+         subtitle = '',
+         x = 'Date',
+         y =  "Close Price") +
+    theme_minimal() +
+    scale_color_brewer(palette = "Dark2") +
+    facet_wrap(~ symbol, ncol = 2, scale = "free_y")
+</code></pre>
+
+<p><img src="/img/semiconductores/semiconductorwrap.png" alt="Index" /></p>
+
+<h3 id="its-time-to-see-between-business-models">It’s time to see between business models.</h3>
+
+<pre><code class="language-{r}">  ggplot(foundry, 
+         aes(x = date, y = close, color = symbol)) + 
+    geom_line(size=1) +
+    labs(title = "Semiconductor Stock Price",
+         subtitle = 'Foundry business model',
+         x = 'Date',
+         y =  "Close Price") +
+    theme_minimal() +
+    scale_color_brewer(palette = "Dark2") 
+</code></pre>
+
+<p><img src="/img/semiconductores/foundrystock.png" alt="Index" /></p>
+
+<pre><code class="language-{r}">  ggplot(fabless, 
+         aes(x = date, y = close, color = symbol)) + 
+    geom_line(size=1) +
+    labs(title = "Semiconductor Stock Price",
+         subtitle = 'Fabless business model',
+         x = 'Date',
+         y =  "Close Price") +
+    theme_minimal() +
+    scale_color_brewer(palette = "Dark2") 
+</code></pre>
+
+<p><img src="/img/semiconductores/fablessstock.png" alt="Index" /></p>
+
+<pre><code class="language-{r}">  ggplot(idm, 
+         aes(x = date, y = close, color = symbol)) + 
+    geom_line(size=1) +
+    labs(title = "Semiconductor Stock Price",
+         subtitle = 'IDM business model',
+         x = 'Date',
+         y =  "Close Price") +
+    theme_minimal() +
+    scale_color_brewer(palette = "Dark2") 
+</code></pre>
+
+<p><img src="/img/semiconductores/idmstock.png" alt="Index" /></p>
+
+<h3 id="the-trend-its-kinda-obvious-but-remember-i-have-my-personal-goals-for-this-project">The trend it’s kinda obvious but remember… I have my personal goals for this project</h3>
+
+<pre><code class="language-{r}">  sc_companies %&gt;% 
+    filter(symbol == "QCOM") %&gt;% 
+   ggplot(aes(x = date, y = close, color = symbol))  +
+  geom_line(color = "indianred3", 
+            size=1 ) +
+  geom_smooth() +
+  labs(title = "Semiconductor Stock ",
+         subtitle = 'Qualcomm Trend',
+         x = 'Date',
+         y =  "Close Price") +
+  theme_minimal() +
+  scale_color_brewer(palette = "Dark2") +
+    facet_wrap(~ symbol, ncol = 2, scale = "free_y")
+</code></pre>
+
+<p><img src="/img/semiconductores/qualcomtrend.png" alt="Index" /></p>
+
+<h3 id="lets-see-the-anual-returns-for-each-companie-categorize-by-model">Let’s see the anual returns for each companie categorize by model</h3>
+
+<pre><code class="language-{r}">semicompanies_return_yearly_idm &lt;-  idm %&gt;%
+    group_by(symbol) %&gt;%
+    tq_transmute(select     = adjusted, 
+                 mutate_fun = periodReturn, 
+                 period     = "yearly", 
+                 col_rename = "yearly.returns") 
+</code></pre>
+
+<pre><code class="language-{r}">semicompanies_return_yearly_idm %&gt;%
+    ggplot(aes(x = year(date), y = yearly.returns, fill = symbol)) +
+    geom_bar(position = "dodge", stat = "identity") +
+    labs(title = "Anual Returns", 
+         subtitle = "IDM Business Model",
+         y = "Returns", x = "", color = "") +
+    scale_y_continuous(labels = scales::percent) +
+    coord_flip() +
+    theme_tq() +
+    scale_fill_tq()
+</code></pre>
+
+<p><img src="/img/semiconductores/idmreturns.png" alt="Index" /></p>
+
+<pre><code class="language-{r}">semicompanies_return_yearly_fabless &lt;- fabless %&gt;%
+    group_by(symbol) %&gt;%
+    tq_transmute(select     = adjusted, 
+                 mutate_fun = periodReturn, 
+                 period     = "yearly", 
+                 col_rename = "yearly.returns")
+</code></pre>
+
+<pre><code class="language-{r}">semicompanies_return_yearly_fabless %&gt;%
+    ggplot(aes(x = year(date), y = yearly.returns, fill = symbol)) +
+    geom_bar(position = "dodge", stat = "identity") +
+    labs(title = "Anual Returns", 
+         subtitle = "Fabless Business Model",
+         y = "Returns", x = "", color = "") +
+    scale_y_continuous(labels = scales::percent) +
+    coord_flip() +
+    theme_tq() +
+    scale_fill_tq()
+</code></pre>
+
+<p><img src="/img/semiconductores/fablessreturn.png" alt="Index" /></p>
+
+<pre><code class="language-{r}">semicompanies_return_yearly_foundry &lt;- foundry %&gt;%
+    group_by(symbol) %&gt;%
+    tq_transmute(select     = adjusted, 
+                 mutate_fun = periodReturn, 
+                 period     = "yearly", 
+                 col_rename = "yearly.returns")
+</code></pre>
+
+<pre><code class="language-{r}">semicompanies_return_yearly_foundry %&gt;%
+    ggplot(aes(x = year(date), y = yearly.returns, fill = symbol)) +
+    geom_bar(position = "dodge", stat = "identity") +
+    labs(title = "Anual Returns", 
+         subtitle = "Foundry Business Model",
+         y = "Returns", x = "", color = "") +
+    scale_y_continuous(labels = scales::percent) +
+    coord_flip() +
+    theme_tq() +
+    scale_fill_tq()
+</code></pre>
+
+<p><img src="/img/semiconductores/foundryreturn.png" alt="Index" /></p>
+:ET

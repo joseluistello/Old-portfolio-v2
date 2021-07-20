@@ -1,0 +1,145 @@
+I"�/<p><strong>Forecasting is the process of making predictions based on past and present data. It’s commonly used in disciplines such as finance, economics and business.</strong></p>
+
+<blockquote>
+  <p><strong>.-Rob J. Hyndman</strong>
+Forecasting it’s required in many situations: deciding whether to build another power generation plant in the next ten years requires forecasts of future demand; scheduling staff in a call centre next week requires forecasts of call volumes; stocking an inventory requires forecasts of stock requirements.</p>
+</blockquote>
+
+<h4 id="forecasting-is-divided-into-two-categories">Forecasting is divided into two categories</h4>
+
+<p><img src="/img/forecasting/HD.png" alt="" />&lt;!–</p>
+
+<p><strong>For example, this is a Financial Model that I have been doing</strong></p>
+
+<p><img src="/img/forecasting/financeexample.png" alt="" /><!-- --></p>
+
+<blockquote>
+  <p>This model include a forecasting method based on averages. This method is commonly used in this type of financial models for the purpose of determining the Value of a Business. Remember: <em>Forecasting is the process of making predictions based on past and present data</em>.</p>
+</blockquote>
+
+<h4 id="lets-continue">Let’s continue.</h4>
+
+<p>For this project, I’m going to  <strong>forecasting Mexico GDPPC for the next 3 years</strong> with a <em>time series linear model</em></p>
+
+<blockquote>
+  <p>Gross Domestic Product Per Person (GDPPC) is a metric that breaks down a country’s economic output per person and is calculated by dividing the GDP of a country by the population.</p>
+</blockquote>
+
+<h5 id="ill-use-fpp3-package-created-by-rob-j-hyndman-and-george-athanasopoulos">I’ll use <strong>fpp3</strong> package. Created by <strong>Rob J Hyndman and George Athanasopoulos.</strong></h5>
+
+<p>You can install and load the package with this code:</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">install.packages</span><span class="p">(</span><span class="err">‘</span><span class="n">fpp3</span><span class="err">’</span><span class="p">,</span><span class="w"> </span><span class="n">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">fpp3</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="manipulating-data">Manipulating data</h3>
+
+<p>By default, we have a data set named global_economy. This data set contains 9 variables:</p>
+
+<blockquote>
+  <p>Country, Code, Year, GDP, Growth, CPI, Imports, Exports, Population.</p>
+</blockquote>
+
+<p><strong>We only need Country, GDP and Population.</strong></p>
+
+<p>I’m going to start creating a new column. This code divide GPD and Population and creates GPDPC.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">percapita</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">global_economy</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">GDP_per_capita</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GDP</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Population</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Then, we filter and plot.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">percapita</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">filter</span><span class="p">(</span><span class="n">Country</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"Mexico"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Year</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GDP_per_capita</span><span class="p">))</span><span class="w">  </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_line</span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"indianred3"</span><span class="p">,</span><span class="w"> 
+            </span><span class="n">size</span><span class="o">=</span><span class="m">2</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_smooth</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"$US"</span><span class="p">,</span><span class="w">
+       </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Year"</span><span class="p">,</span><span class="w">
+       </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"GPD Per Capita for Mexico"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">theme_minimal</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">scale_color_brewer</span><span class="p">(</span><span class="n">palette</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Dark2"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/img/forecasting/chunknuevo.png" alt="" /><!-- --></p>
+
+<p><strong>Now we can define and <em>train</em> time series linear model</strong></p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">TSLM</span><span class="p">(</span><span class="n">GDP_per_capita</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">trend</span><span class="p">())</span><span class="w">
+</span></code></pre></div></div>
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">percapita</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">model</span><span class="p">(</span><span class="n">trend_model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TSLM</span><span class="p">(</span><span class="n">GDP_per_capita</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">trend</span><span class="p">()))</span><span class="w">
+</span></code></pre></div></div>
+
+<p><strong>We can see the model by writing fit.</strong></p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fit</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## # A mable: 263 x 2
+## # Key:     Country [263]
+##    Country             trend_model
+##    &lt;fct&gt;                   &lt;model&gt;
+##  1 Afghanistan              &lt;TSLM&gt;
+##  2 Albania                  &lt;TSLM&gt;
+##  3 Algeria                  &lt;TSLM&gt;
+##  4 American Samoa           &lt;TSLM&gt;
+##  5 Andorra                  &lt;TSLM&gt;
+##  6 Angola                   &lt;TSLM&gt;
+##  7 Antigua and Barbuda      &lt;TSLM&gt;
+##  8 Arab World               &lt;TSLM&gt;
+##  9 Argentina                &lt;TSLM&gt;
+## 10 Armenia                  &lt;TSLM&gt;
+## # ... with 253 more rows
+</code></pre></div></div>
+
+<p><strong>Producing forecasting</strong></p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fit</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">forecast</span><span class="p">(</span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"3 years"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>## # A fable: 789 x 5 [1Y]
+## # Key:     Country, .model [263]
+##    Country        .model       Year   GDP_per_capita  .mean
+##    &lt;fct&gt;          &lt;chr&gt;       &lt;dbl&gt;           &lt;dist&gt;  &lt;dbl&gt;
+##  1 Afghanistan    trend_model  2018     N(526, 9653)   526.
+##  2 Afghanistan    trend_model  2019     N(534, 9689)   534.
+##  3 Afghanistan    trend_model  2020     N(542, 9727)   542.
+##  4 Albania        trend_model  2018  N(4716, 476419)  4716.
+##  5 Albania        trend_model  2019  N(4867, 481086)  4867.
+##  6 Albania        trend_model  2020  N(5018, 486012)  5018.
+##  7 Algeria        trend_model  2018  N(4410, 643094)  4410.
+##  8 Algeria        trend_model  2019  N(4489, 645311)  4489.
+##  9 Algeria        trend_model  2020  N(4568, 647602)  4568.
+## 10 American Samoa trend_model  2018 N(12491, 652926) 12491.
+## # ... with 779 more rows
+</code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fit</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">forecast</span><span class="p">(</span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"3 years"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">filter</span><span class="p">(</span><span class="n">Country</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"Mexico"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">autoplot</span><span class="p">(</span><span class="n">percapita</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"$USD"</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"GPD Per Capita for Mexico"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/img/forecasting/forecastmexico.png" alt="" /><!-- --></p>
+
+<p>###Nice, right?**</p>
+
+<hr />
+
+<h4 id="connect-with-me">Connect with me:</h4>
+
+<h3 id="-substack-"><a href="https://joseluistello.substack.com/">🔥 Substack </a></h3>
+<h3 id="️-twitter"><a href="https://twitter.com/jotaele_tello">✔️ Twitter</a></h3>
+<h3 id="-linkedin"><a href="https://www.linkedin.com/in/joseluistello/">😊 Linkedin</a></h3>
+<h3 id="-resume"><a href="https://www.notion.so/joseluistello/resume-908176d50910492f82bb0c2c50150406">📈 Resume</a></h3>
+<h3 id="️-database"><a href="https://www.notion.so/joseluistello/resources-3b96a11183d342b889c95e9bcb1e0c7f">❤️ DataBase</a></h3>
+<hr />
+
+:ET
