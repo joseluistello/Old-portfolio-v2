@@ -13,27 +13,28 @@ comments: true
 
 ### Welcome 👋
 
-There's a [famous letter](https://www.espn.com/pdf/2016/0406/nba_hinkie_redact.pdf) writted by Samuel Hinkie. In that letter, Samuel talks about his journey serving the Sixers. Magnificent references were written but there is one that I love on Seth Klarman and his approach at Baupost Group: 
+There is a [famous letter](https://www.espn.com/pdf/2016/0406/nba_hinkie_redact.pdf) by Samuel Hinkie where he talks about his journey serving the Sixers. He wrote magnificent references, but there is one that I love on Seth Klarman and his approach at Baupost Group:
 
-> **It isn’t the only way of thinking, but it’s how we approach it.**  
+> **"It isn’t the only way of thinking, but it’s how we approach it."**  
 
-Those words describe a lot this post. The way I see structures, data analysis and problem solving are not unique but it's how I approach it. 
+Those words describe this post. The way I see structures, data analysis, and problem-solving are not unique, but it's how I approach it. 
 
- *I hope you enjoy it* 
+ ###### *I hope you enjoy it* 
  
 
 #### Thinking about thinking
 
-There are different methods to attack a problem usually called mental models. This models are abstractions of how we see something. Usually start as an assumption until knowledge and experience transform them into a tool of thinking that humans have made to approach solutions. 
+There are different methods to attack a problem, usually called mental models. These models are abstractions of how we see something. Usually, start as an assumption until knowledge and experience transform them into a tool of thinking that humans have made to approach solutions. 
+
+An example could be Elon Musk and the *first-principles*. This mental model consists of breaking a whole problem into small parts. The first principles [helped Elon](https://www.youtube.com/watch?v=NV3sBlRgzTI) back then in the early years when he creates a cheaper and more accessible rocket. 
+
+First-principles it's classified as a method of a reductionist nature.
+
+> Reductionism is any of several related philosophical ideas regarding the associations between phenomena, which can be described in terms of other simpler or more fundamental phenomena. It is also described as an intellectual and philosophical position that interprets a complex system as the sum of its parts.
 
 
-#### Reductionism 💡
 
-An example could be Elon Musk and the *first principles*. 
 
-> First Principles consist in break a whole problem into small parts. This approach helps Elon back then in the early years when he creates a cheaper and more accessible rocket compared to the Russians. First principles can be classified as a reductionist method. 
-
-Reductionist 
 
 I'm a big fan of reductionist thinking. We can adopt it when we are study statistical models. It is helpful to see each part of a linear regression and how [it's composed](https://www.youtube.com/watch?v=nk2CQITm_eo). 
 
@@ -44,10 +45,10 @@ I'm a big fan of reductionist thinking. We can adopt it when we are study statis
 [The Standard Model Of Particle Physics](https://cosmicescapes.com/the-standard-model-of-particle-physics/)
 
 
-![alt text](/img/data%20analysis/structure-of-std-mdl.png)
 
 
-#### What is the opposite way of thinking 
+
+---
 
 
 ##### 💡 Remember 💡 
@@ -60,142 +61,18 @@ The Analysis Data Process depends on the context in which you find yourself.
   
 If you are in the stage of Analyze, you can back to the Problem Stage. In the real world it's normal to go back to the problem stage and understand that the quality of our data is not optimal. Specially when you are helping to grow a company! 
 
+--- 
+
+
 
 ##### A holistic way to see the process
 
 ![Index](/img/data%20analysis/HD.png)
 
 
-#### Step 1.- Understand the problem and ask the right questions
 
 
-. 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#### Step 2.-  Understand Data
-
-
-
-
-
-#### Step 2.- Preprocess And Analyze Data
-
-
-
-
-
-#### Step 3.- Model Data
-
-#### Step 4.- Analyze Data 
-
-
-
-
-
-
-#### Step 6.- Report And Communicate
-
-
-
-
-
-
-
-
-
-
----
-
-```{r}
-library(tidyverse)
-library(ggthemes)
-```
-```{r}
-train <- read.csv("data/train.csv", header = TRUE)
-test <- read.csv("data/test.csv", header = TRUE)
-```
-
-```{r}
-str(train)
-```
-
-```{r}
-str(test)
-```
-##### Drop NA values from test set
-```{r}
-test <- data.frame(test[1], Survived = rep("NA", nrow(test)), test[ , 2:ncol(test)])
-```
-
-##### Merge train and test for visualization and analysis
-
-```{r}
-data <- rbind(train, test)
-```
-
-##### Create file from rbind product
-```{r}
-write.csv(data, "./data/data.cvs", row.names = FALSE )
-```
-
-```{r}
-length(data$PassengerId)
-```
-
-```{r}
-length(unique(data$PassengerId))
-```
-
-```{r}
-data$Survived <- as.factor(data$Survived)
-table(data$Survived, dnn = "Number of Survived in Data Frame")
-```
-
-```{r}
-prop.table(table(as.factor(train$Survived), dnn = "Survive and death ratio in Train Data"))
-```
-
-##### Time to change type of data
-
-```{r}
-data$Pclass <- as.factor(data$Pclass)
-```
-
-
-```{r}
-table(data$Pclass, dnn = "Pclass values in Data")
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----
 
 ### Hi! this project it's under construction.
 
