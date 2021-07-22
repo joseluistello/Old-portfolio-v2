@@ -19,7 +19,7 @@ There is a [famous letter](https://www.espn.com/pdf/2016/0406/nba_hinkie_redact.
 
 Those words describe this post. The way I see structures, data analysis, and problem-solving are not unique, but it's how I approach it. 
 
- ###### *I hope you enjoy it* 
+ *I hope you enjoy it* 
  
 
 #### Thinking about thinking
