@@ -20,33 +20,40 @@ There is a [famous letter](https://www.espn.com/pdf/2016/0406/nba_hinkie_redact.
 Those words describe this post. The way I see structures, data analysis, and problem-solving are not unique, but it's how I approach it. 
 
  *I hope you enjoy it* 
- 
 
-#### Thinking about thinking
+#### Thinking about small things
 
 There are different methods to attack a problem, usually called mental models. These models are abstractions of how we see something. Usually, start as an assumption until knowledge and experience transform them into a tool of thinking that humans have made to approach solutions. 
 
-An example could be Elon Musk and the *first-principles*. This mental model consists of breaking a whole problem into small parts. The first principles [helped Elon](https://www.youtube.com/watch?v=NV3sBlRgzTI) back then in the early years when he creates a cheaper and more accessible rocket. 
+An example could be Elon Musk and the *first-principles*. This mental model consists of breaking a whole problem into small parts. The first principles (and his reductionist nature) [helped Elon](https://www.youtube.com/watch?v=NV3sBlRgzTI) back then in the early years when he creates a cheaper and more accessible rocket. 
 
-First-principles it's classified as a method of a reductionist nature.
+> [Reductionism](https://en.wikipedia.org/wiki/Reductionism) is any of several related philosophical ideas regarding the associations between phenomena, which can be described in terms of other simpler or more fundamental phenomena. It is also described as an intellectual and philosophical position that interprets a complex system as the sum of its parts.
 
-> Reductionism is any of several related philosophical ideas regarding the associations between phenomena, which can be described in terms of other simpler or more fundamental phenomena. It is also described as an intellectual and philosophical position that interprets a complex system as the sum of its parts.
+In simple words, reductionism maintain that whole (phenomenon) can be understood from the essence of his parts and the relations among them, even if those parts are different from each other.
 
-
-
-
-
-I'm a big fan of reductionist thinking. We can adopt it when we are study statistical models. It is helpful to see each part of a linear regression and how [it's composed](https://www.youtube.com/watch?v=nk2CQITm_eo). 
+I'm a big fan of reductionism. This way of thinking can be adopted when we are studying statistical models. It is helpful to see each part of a model and how [it's composed](https://www.youtube.com/watch?v=nk2CQITm_eo). 
 
 ![alt text](/img/data%20analysis/linear%20regression.png)
 
-*Or even for the purpose to describe three of the four fundamental forces in the universe, as well as classifying elementary particles we know today.*
+Or even for the purpose to describe three of the four fundamental forces in the universe. [The Standard Model Of Particle Physics.](https://cosmicescapes.com/the-standard-model-of-particle-physics/)
 
-[The Standard Model Of Particle Physics](https://cosmicescapes.com/the-standard-model-of-particle-physics/)
+#### Thinking about big things
 
+It's time to see the whole picture. We know that reductionism breaks phenomenons into small things and understands the whole by seen the interaction among them. 
 
+What about Holism?
 
+>[Holism](https://link.springer.com/chapter/10.1007/978-3-030-11636-1_5) maintain the contrary view, that the parts of a whole are internally related, so that the essence of each is partially constituted by the properties of all the others and of the whole. Hence, the whole cannot be understood from its parts and their relations to each other alone; and conversely, the parts cannot be fully understood apart from the whole. 
 
+Business understand this way of thinking. Specially disciplines like growth and product who needs to understand the whole picture.
+
+This is a great example created by [Reforge](https://www.reforge.com/blog/growth-loops)
+
+![Loops](/img/data%20analysis/Loops.png)
+
+I don't believe that Reductionism and Holism are not mutually exclusive. I think they are great frameworks of thinking, and without fanaticism, we can use them powerfully.
+
+#### Thinking about small and big things
 
 ---
 
