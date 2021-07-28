@@ -51,9 +51,19 @@ This is a great example created by [Reforge](https://www.reforge.com/blog/growth
 
 ![Loops](/img/data%20analysis/Loops.png)
 
+
+
+#### The union between small and big things
+
 I don't believe that Reductionism and Holism are not mutually exclusive. I think they are great frameworks of thinking, and without fanaticism, we can use them powerfully.
 
-#### Thinking about small and big things
+But, how?
+
+There's a way named systematic thinking. This way of thinking creates a balance between Reductionism and Holism. 
+
+> [By thinking about the overall system](https://www.intelligentspeculation.com/blog/systems-thinking) at once and how everything fits together, you are more likely to account for nuanced interactions between components that could lead to negative, unintended consequences if left unaccounted for.  
+
+We can say that systemic thinking allows us to unite the two ways of looking at a phenomenon. With systems thinking, we can deconstruct a complex system while understanding the context of the system. We can stop seeing a problem as monolithic. Instead, we can treat a problem as a series of actions and consequences that are interrelated. With this thinking, we can visualize patterns to attack a problem.
 
 ---
 
