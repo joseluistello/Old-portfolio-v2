@@ -78,7 +78,7 @@ Let me show you what I mean with a real example using the [classical titanic dat
 
 ![Index](/img/data%20analysis/HD.png)
 
-As we see, the first step is understand what you is your problem and what do you want to accomplish. This is really hard, REALLY hard. This is the most important and most difficult part of the analysis (in my opinion).
+As we see, the first step is to understand what problem you have and what do you want to accomplish. This is the most important and difficult part of the analysis (in my opinion). 
 
 * What exactly is the question? 
 * What motivates our efforts? 
@@ -87,7 +87,7 @@ As we see, the first step is understand what you is your problem and what do you
 
 In most cases, your first question will lead to many other questions.
 
-For example, In my last project (4-3 months ago) I work with a construction holding. The Project consist in create storage tanks with a capacity of 200 thousand liters. Process include steel plates of 3 tons and inches of various thicknesses, anti-corrosive paint and sand-blast. 
+For example, In my last project (4-3 months ago), I work with a construction holding. The Project consists on creates storage tanks with a capacity of 200 thousand liters. The process includes steel plates of 3 tons and inches of various thicknesses, anti-corrosive paint, and sand-blast. 
 
 The final product is something like this:
 
@@ -95,30 +95,29 @@ The final product is something like this:
 
 Construction projects are budgeted. If you agreed on a price range for a product, you can't go outside that range. 
 
-The problems comes with the paint process. We reached a point in the project where we were at 60% of the final goal (8 tanks) but our warehouse did not have enough paint left in stock to finish the project. Alarm bells began to ring. We had a problem that we didn't know how to define.
+The problems come with the painting process. We reached a point in the project where we were at 60% of the final goal (8 tanks), but our warehouse did not have enough paint left in stock to finish the project. Alarm bells began to ring. We had a problem that we didn't know how to define.
 
 As a quality inspector, my job was to find the real problem and propose solutions.
 
 ![Me](/img/data%20analysis/m3.png)
 
-I worked hard that week... I stayed in the office until 2:30. I was trying to think what was going on in my way to home.
+I worked hard that week... I stayed in the office until 2:30. I was trying to think about what was going on on my way home.
 
-So, I design a lot of experiment based in metrics, observation and repetition. 
+So, I design a lot of experiment-based in metrics, observation, and repetition. 
 
 ![Metrics](/img/data%20analysis/me.png)
 
 We work with quantitative metrics as temperature, dew point, relative humidity, pressure, etc.
 
-**The main goal of my experiment was to find my problem.** I wanted to correlate like crazy. Weeks ago (and thanks to our client's request for documentation) I designed a database where I captured everything. It was nothing sophisticated but it was enough to give me data. 
+**The main goal of my experiment was to find my problem.** I wanted to correlate like crazy. Weeks ago (and thanks to our client's request for documentation), I designed a database to capture everything. It was nothing sophisticated, but it was enough to give me data. 
 
-I subjected to all kinds of analysis my metric of paint expenditure per day... multivariate regression analysis was my closely friend.  
+I subjected to all kinds of analysis my metric of paint expenditure per day... multivariate regression analysis was my close friend.  
 
 I could not see anything. Yes, there was the correlation that there should be, but nothing out of the ordinary. The compressor pressure was constant, the temperature didn't affect the flow rate and neither did the anchoring.
 
 All this work to put me in the context that I need... understand MY PROBLEM.
 
-Do you want to know what the problem was? One of the suppliers made a mistake when quoting. It never occurred to us to start from there, especially me. 
-
+Do you want to know what the problem was? One of the suppliers made a mistake when he made the financial quotation. It never occurred to us to start from there, especially me. Sounds obvious but believe me, when we face timelines and pressure on our shoulders the obviousness goes unnoticed. 
 
 > “The combination of some data and an aching desire for an answer does not ensure that a reasonable answer can be extracted from a given body of data.” **John Tukey**
 ---
