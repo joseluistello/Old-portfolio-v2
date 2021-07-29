@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Data Analysis Process"
+title: "Data Analysis Process Part 1"
 subtitle: "A General View To My Approach"
 background: '/img/data analysis/tukeyy.png'
 output: html_document
@@ -10,16 +10,13 @@ tags: [data analysis, machine learning, r, data wrangling]
 comments: true
 ---
 
-
-### Welcome 👋
+**Essay in honor of [John W. Tukey.](https://en.wikipedia.org/wiki/John_Tukey) Without his contributions, I could not be writing this post.** *Hope you enjoy it* 
 
 There is a [famous letter](https://www.espn.com/pdf/2016/0406/nba_hinkie_redact.pdf) by Samuel Hinkie where he talks about his journey serving the Sixers. He wrote magnificent references, but there is one that I love on Seth Klarman and his approach at Baupost Group:
 
 > **"It isn’t the only way of thinking, but it’s how we approach it."**  
 
-Those words describe this post. The way I see structures, data analysis, and problem-solving are not unique, but it's how I approach it. 
-
- *I hope you enjoy it* 
+Those words te way I see structures, data analysis, and problem-solving. This is not unique, but it's how I approach it. In the end, the knowledge I have is the result of all the interactions throughout my life.  
 
 #### Thinking about small things
 
@@ -51,38 +48,37 @@ This is a great example created by [Reforge](https://www.reforge.com/blog/growth
 
 ![Loops](/img/data%20analysis/Loops.png)
 
-
-
 #### The union between small and big things
 
 I don't believe that Reductionism and Holism are not mutually exclusive. I think they are great frameworks of thinking, and without fanaticism, we can use them powerfully.
 
-But, how?
-
-There's a way named systematic thinking. This way of thinking creates a balance between Reductionism and Holism. 
+There's a way named systematic thinking. This thinking creates a balance between Reductionism and Holism. 
 
 > [By thinking about the overall system](https://www.intelligentspeculation.com/blog/systems-thinking) at once and how everything fits together, you are more likely to account for nuanced interactions between components that could lead to negative, unintended consequences if left unaccounted for.  
 
-We can say that systemic thinking allows us to unite the two ways of looking at a phenomenon. With systems thinking, we can deconstruct a complex system while understanding the context of the system. We can stop seeing a problem as monolithic. Instead, we can treat a problem as a series of actions and consequences that are interrelated. With this thinking, we can visualize patterns to attack a problem.
+We can say that systemic thinking allows us to unite the two ways of looking at a phenomenon. With systems thinking, we can deconstruct a complex Phenomenon while understanding his context. 
+
+- Can the product team invest in new improvements, or is it better to concentrate on closing deals? 
+- Can the engineering team scale up at the same time as user acquisition and retention?
+
+
+We can stop seeing a problem as monolithic. Instead, we can treat a problem as a series of actions and consequences that are interrelated. With this thinking, we can visualize patterns to attack a problem.
 
 ---
 
+#### Data Analysis Process
 
-##### 💡 Remember 💡 
+At this point you may be wondering how all this is related to data analysis? 
 
+One of the steps for any thinking is always analysis (vice versa), and this analysis always contains data. 
 
+It doesn't matter if it is critical thinking, design thinking, problem-solving, logical thinking, etc. Everything leads to analysis, reductionism, holism, and systems thinking.
 
+Let me show you my process based on all this information.
 
-The Analysis Data Process depends on the context in which you find yourself. 
-- 👉🏼 Use this process as a framework 👈🏼 
-  
-If you are in the stage of Analyze, you can back to the Problem Stage. In the real world it's normal to go back to the problem stage and understand that the quality of our data is not optimal. Specially when you are helping to grow a company! 
 
 --- 
 
-
-
-##### A holistic way to see the process
 
 ![Index](/img/data%20analysis/HD.png)
 
@@ -91,12 +87,19 @@ If you are in the stage of Analyze, you can back to the Problem Stage. In the re
 
 
 
-### Hi! this project it's under construction.
 
 
-### If you want to see more of my work, check this out:
 
-### 📕 Latest Blog Posts and Projects
+---
+
+
+##### 💡 Remember 💡 
+
+👉🏼 *Use this process as a framework* 👈🏼 
+
+#### If you want to see more of my work, check this out:
+
+#### 📕 Latest Blog Posts and Projects
 
 <!-- BLOG-POST-LIST:START -->
 - [Definiendo el valor y la estructura de precios](https://joseluistello.substack.com/p/valor-y-estructura-de-precios)
@@ -107,13 +110,12 @@ If you are in the stage of Analyze, you can back to the Problem Stage. In the re
 
 <!-- BLOG-POST-LIST:END -->
 
-## Connect with me:
+#### Connect with me:
 
-### [🔥 Substack ](https://joseluistello.substack.com/)
-### [✔️ Twitter](https://twitter.com/jotaele_tello)
-### [😊 Linkedin](https://www.linkedin.com/in/joseluistello/)
-### [📈 Resume](https://www.notion.so/joseluistello/resume-908176d50910492f82bb0c2c50150406)
-### [❤️ DataBase](https://www.notion.so/joseluistello/resources-3b96a11183d342b889c95e9bcb1e0c7f)
----
+#### [🔥 Substack ](https://joseluistello.substack.com/)
+#### [✔️ Twitter](https://twitter.com/jotaele_tello)
+#### [😊 Linkedin](https://www.linkedin.com/in/joseluistello/)
+#### [📈 Resume](https://www.notion.so/joseluistello/resume-908176d50910492f82bb0c2c50150406)
+#### [❤️ DataBase](https://www.notion.so/joseluistello/resources-3b96a11183d342b889c95e9bcb1e0c7f)
 
 ---
