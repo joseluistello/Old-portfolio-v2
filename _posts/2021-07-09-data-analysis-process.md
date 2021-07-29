@@ -78,6 +78,8 @@ Let me show you what I mean with a real example using the [classical titanic dat
 
 ![Index](/img/data%20analysis/HD.png)
 
+#### Understand problem
+
 As we see, the first step is to understand what problem you have and what do you want to accomplish. This is the most important and difficult part of the analysis (in my opinion). 
 
 * What exactly is the question? 
@@ -119,7 +121,11 @@ All this work to put me in the context that I need... understand MY PROBLEM.
 
 Do you want to know what the problem was? One of the suppliers made a mistake when he made the financial quotation. It never occurred to us to start from there, especially me. Sounds obvious but believe me, when we face timelines and pressure on our shoulders the obviousness goes unnoticed. 
 
+
+---
+
 > “The combination of some data and an aching desire for an answer does not ensure that a reasonable answer can be extracted from a given body of data.” **John Tukey**
+> 
 ---
 
 
