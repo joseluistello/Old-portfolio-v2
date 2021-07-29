@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Data Analysis Process Part 1"
+title: "Data Analysis Process"
 subtitle: "A General View To My Approach"
 background: '/img/data analysis/tukeyy.png'
 output: html_document
@@ -10,7 +10,9 @@ tags: [data analysis, machine learning, r, data wrangling]
 comments: true
 ---
 
-**Essay in honor of [John W. Tukey.](https://en.wikipedia.org/wiki/John_Tukey) Without his contributions, I could not be writing this post.** *Hope you enjoy it* 
+**Essay in honor of [John W. Tukey.](https://en.wikipedia.org/wiki/John_Tukey)** 
+
+> *Without his contributions, I could not be writing this post... Hope you enjoy it.* 
 
 There is a [famous letter](https://www.espn.com/pdf/2016/0406/nba_hinkie_redact.pdf) by Samuel Hinkie where he talks about his journey serving the Sixers. He wrote magnificent references, but there is one that I love on Seth Klarman and his approach at Baupost Group:
 
@@ -66,30 +68,32 @@ We can stop seeing a problem as monolithic. Instead, we can treat a problem as a
 
 ---
 
-#### Data Analysis Process
-
 At this point you may be wondering how all this is related to data analysis? 
 
-One of the steps for any thinking is always analysis (vice versa), and this analysis always contains data. 
+One step for any thinking framework is always analysis (vice versa), and this analysis always contains data. It doesn't matter if it is critical thinking, design thinking, problem-solving, logical thinking, etc. Everything leads to analysis, reductionism, holism, and systems thinking.
 
-It doesn't matter if it is critical thinking, design thinking, problem-solving, logical thinking, etc. Everything leads to analysis, reductionism, holism, and systems thinking.
+Let me show you what I mean with a real example using the [classical titanic dataset.](https://www.kaggle.com/c/titanic) 
 
-Let me show you my process based on all this information.
-
-
---- 
-
+---
 
 ![Index](/img/data%20analysis/HD.png)
 
+As we see, the first step is understand what you is your problem and what do you want to accomplish. This is really hard. REALLY hard. This is the most important and most difficult part of the analysis (in my opinion).
+
+* What exactly is the question? 
+* What motivates our efforts? 
+* What are the risks?
+* What are our goal?
+
+In most cases, your first question will lead to many other questions.
+
+For example, In my last project (4-3 months ago) I work with a construction holding. Project consist in create storage tanks with a capacity of 200 thousand liters. Process include steel plates of 3 tons and inches of various thicknesses, anti-corrosive paint and sand-blast. 
 
 
 
 
 
-
-
-
+> “The combination of some data and an aching desire for an answer does not ensure that a reasonable answer can be extracted from a given body of data.” **John Tukey**
 ---
 
 
