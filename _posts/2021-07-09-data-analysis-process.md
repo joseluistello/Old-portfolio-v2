@@ -85,7 +85,7 @@ As we see, the first step is to understand what problem you have and what do you
 * What are the risks?
 * What is our goal?
 
-In most cases, your first question will lead to many other questions.
+For this example, the problem and the goal is simply. We are going to work with something clean and nicely done. But in most cases, your first question will lead to many other questions.
 
 For example, In my last project (4-3 months ago), I work with a construction holding. The project consists on creates storage tanks with a capacity of 200 thousand liters. The process includes steel plates of 3 tons and inches of various thicknesses, anti-corrosive paint, and sand-blast. 
 
@@ -101,27 +101,33 @@ As a quality inspector, my job was to find the real problem and propose solution
 
 So, I design a lot of experiment-based in metrics, observation, and repetition. We work with quantitative metrics like temperature, dew point, relative humidity, pressure, etc.
 
-![Metrics](/img/data%20analysis/me2.png)
-
-**The main goal of my experiment was to find my problem.** I wanted to correlate like crazy. Weeks ago (and thanks to our client's request for documentation), I designed a database to capture everything. It was nothing sophisticated, but it was enough to give me data. 
-
-I subjected to all kinds of analysis my metric of paint expenditure per day... multivariate regression analysis was my close friend.  
+**The main goal of my experiment was to find my problem.** I wanted to correlate like crazy. Weeks ago (and thanks to our client's request for documentation), I designed a database to capture everything. It was nothing sophisticated, but it was enough to give me data. I subjected to all kinds of analysis my metric of paint expenditure per day... *multivariate regression analysis* was my close friend.  
 
 I could not see anything. Yes, there was the correlation that there should be, but nothing out of the ordinary. The compressor pressure was constant, the temperature didn't affect the flow rate and neither did the anchoring.
 
-All this work to put me in the context that I need... understand MY PROBLEM.
+All this work just to put me in the context that I need for understand MY PROBLEM.
 
 Do you want to know what the problem was? One of the suppliers made a mistake when he made the financial quotation. It never occurred to us to start from there, especially me. Sounds obvious but believe me, when we face timelines and pressure on our shoulders **the obviousness goes unnoticed.** 
 
-#### Understand problem
+#### Understand Data
 
 > “The combination of some data and an aching desire for an answer does not ensure that a reasonable answer can be extracted from a given body of data.” **John Tukey**
 
 
+| Variable | Definition | Key |
+|-----------|----------|-----------|
+|Survival|Survival |0 = No, 1 = Yes|
+|Pclass|Ticket class |	1 = 1st, 2 = 2nd, 3 = 3rd
+|Sex|	Sex| 	
+|Age|	Age in years| 	
+|sibsp|	# of siblings / spouses aboard the Titanic| 	
+|parch |# of parents / children aboard the Titanic |
+|ticket|	Ticket number 	|
+|fare|	Passenger fare 	|
+|cabin|	Cabin number |
+|embarked|	Port of Embarkation|C = Cherbourg, Q = Queenstown, S = Southampton|
 
-
-
-
+![Notes](/img/data%20analysis/notes.png)
 
 
 
