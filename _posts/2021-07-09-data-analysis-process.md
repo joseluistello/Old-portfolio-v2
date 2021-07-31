@@ -74,8 +74,6 @@ One step for any thinking framework is always analysis (vice versa), and this an
 
 Let me show you what I mean with a real example using the [classical titanic dataset.](https://www.kaggle.com/c/titanic) 
 
----
-
 ![Index](/img/data%20analysis/HD.png)
 
 #### Understand problem
@@ -115,9 +113,18 @@ All this work to put me in the context that I need... understand MY PROBLEM.
 
 Do you want to know what the problem was? One of the suppliers made a mistake when he made the financial quotation. It never occurred to us to start from there, especially me. Sounds obvious but believe me, when we face timelines and pressure on our shoulders **the obviousness goes unnoticed.** 
 
----
+#### Understand problem
+
 > “The combination of some data and an aching desire for an answer does not ensure that a reasonable answer can be extracted from a given body of data.” **John Tukey**
----
+
+
+
+
+
+
+
+
+
 
 
 ##### 💡 Remember 💡 
