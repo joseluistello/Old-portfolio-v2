@@ -109,37 +109,81 @@ All this work just to put me in the context that I need for understand MY PROBLE
 
 Do you want to know what the problem was? One of the suppliers made a mistake when he made the financial quotation. It never occurred to us to start from there, especially me. Sounds obvious but believe me, when we face timelines and pressure on our shoulders **the obviousness goes unnoticed.** 
 
+--- 
+
+EDITAR de aqui para abajo 
+
+---
+
 #### Understand Data
 
-> “The combination of some data and an aching desire for an answer does not ensure that a reasonable answer can be extracted from a given body of data.” **John Tukey**
+We can classify data into 2 groups: 
 
+* Qualitative data responds questions like **what** and is classify in two groups:
+  * Nominal data - Don't have and orden
+  * Ordinal data - Have an orden
+>
+* Quantitative data responds questions like **how many**, **how much**, or **how often** and is classify in two grupus:
+  * Discrete data - Don't have decimals
+    * Ordinal 
+    * Nominal
+    * Binary 
+  * Continuos data - Have decimals
+    * Ratio
+    * Interval
 
-| Variable | Definition | Key |
-|-----------|----------|-----------|
-|Survival|Survival |0 = No, 1 = Yes|
-|Pclass|Ticket class |	1 = 1st, 2 = 2nd, 3 = 3rd |
-|Sex    |	Sex| 	
-|Age    |	Age in years| 	
-|Sibsp  |	# of siblings / spouses aboard the Titanic| 	
-|Parch  |# of parents / children aboard the Titanic |
-|Ticket |	Ticket number 	|
-|Fare   |	Passenger fare 	|
-|Cabin  |	Cabin number |
-|Embarked   |	Port of Embarkation |   C = Cherbourg, Q = Queenstown, S = Southampton  |
+ Lets check our data dictionary and variable notes to explain data type based on statistics.
+
+![Notes](/img/data%20analysis/variablesdata.png)
 
 ![Notes](/img/data%20analysis/notes.png)
 
+Time to classify this data:
+
+**Qualitative data**:
+* Ordinal
+  * Survival
+  * Sex 
+  * Embarked
+* Nominal 
+  * Cabin
+  * Name
+
+**Quantitative data**:
+* Discrete
+  * Nominal
+    * Passanger ID
+    * Age
+  * Ordinal
+    * Survived
+    * Pclass
+    * Parch
+    * Sibsp
+* Continuos
+  * Fare
 
 
 
 
-##### 💡 Remember 💡 
+
+
+
+
+
+
+
+
+
+
+
+
+💡 Remember 💡 
 
 👉🏼 *Use this process as a framework* 👈🏼 
 
-#### If you want to see more of my work, check this out:
+If you want to see more of my work, check this out:
 
-#### 📕 Latest Blog Posts and Projects
+📕 Latest Blog Posts and Projects
 
 <!-- BLOG-POST-LIST:START -->
 - [Definiendo el valor y la estructura de precios](https://joseluistello.substack.com/p/valor-y-estructura-de-precios)
@@ -150,12 +194,12 @@ Do you want to know what the problem was? One of the suppliers made a mistake wh
 
 <!-- BLOG-POST-LIST:END -->
 
-#### Connect with me:
+Connect with me:
 
-#### [🔥 Substack ](https://joseluistello.substack.com/)
-#### [✔️ Twitter](https://twitter.com/jotaele_tello)
-#### [😊 Linkedin](https://www.linkedin.com/in/joseluistello/)
-#### [📈 Resume](https://www.notion.so/joseluistello/resume-908176d50910492f82bb0c2c50150406)
-#### [❤️ DataBase](https://www.notion.so/joseluistello/resources-3b96a11183d342b889c95e9bcb1e0c7f)
+[🔥 Substack ](https://joseluistello.substack.com/)
+[✔️ Twitter](https://twitter.com/jotaele_tello)
+[😊 Linkedin](https://www.linkedin.com/in/joseluistello/)
+[📈 Resume](https://www.notion.so/joseluistello/resume-908176d50910492f82bb0c2c50150406)
+[❤️ DataBase](https://www.notion.so/joseluistello/resources-3b96a11183d342b889c95e9bcb1e0c7f)
 
 ---
