@@ -179,15 +179,3 @@ WE NEED Exploration and Preparation! Data isn't perfect, our data needs to be pr
 
 We are going to use tidyverse and ggthemes for a good loking visualizations.
 
-```{r}
-library(tidyverse)
-library(ggthemes)
-```
-
-Time to upload our data! 
-
-```{r}
-train <- read.csv("data/raw/train.csv", header = TRUE)
-test <- read.csv("data/raw/test.csv", header = TRUE)
-```
-
