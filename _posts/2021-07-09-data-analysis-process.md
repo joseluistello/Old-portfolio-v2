@@ -76,7 +76,7 @@ Let me show you what I mean with a real example using the [classical titanic dat
 
 ![Index](/img/data%20analysis/HD.png)
 
-#### Understand problem
+#### 1️⃣ Understand problem
 
 As we see, the first step is to understand what problem you have and what do you want to accomplish. This is the most important and difficult part of data analysis (in my opinion).
 
@@ -115,7 +115,7 @@ EDITAR de aqui para abajo
 
 ---
 
-#### Understand Data
+#### 2️⃣ Understand Data
 
 We can classify data into 2 groups: 
 
@@ -160,46 +160,30 @@ Time to classify this data:
     * Parch
     * Sibsp
 * Continuos
-  * Fare
+    * Fare
 
 
+#### 3️⃣ Preprocess data
 
+FINALLYYYYYYYYYYYYYY, LET'S CODE! 
 
+Why preprocess? Becuase we can't analysis data in a bad "shape". Data isn't perfect, our data needs to be prepared and crafted. 
 
+1. There are inappropriate data types
+2. The are missing values
+3. The are values that need to be transform, grouped, etc.
 
+We are going to use tidyverse and ggthemes for good loking visualizations.
 
+```{r}
+library(tidyverse)
+library(ggthemes)
+```
 
+Time to upload our data! 
 
+```{r}
+train <- read.csv("data/raw/train.csv", header = TRUE)
+test <- read.csv("data/raw/test.csv", header = TRUE)
+```
 
-
-
-
-
-
-
-💡 Remember 💡 
-
-👉🏼 *Use this process as a framework* 👈🏼 
-
-If you want to see more of my work, check this out:
-
-📕 Latest Blog Posts and Projects
-
-<!-- BLOG-POST-LIST:START -->
-- [Definiendo el valor y la estructura de precios](https://joseluistello.substack.com/p/valor-y-estructura-de-precios)
-- [Estructura de costos](https://joseluistello.substack.com/p/estructura-de-costos)
-- [Fijación de precios](https://joseluistello.substack.com/p/fijacin-de-precios)
-- [An Introduction to Forecasting Modeling](https://joseluistello.github.io/r/forecasting_mexico_GDPPC/)
-- [Semiconductor Market Analysis](https://joseluistello.github.io/r/semiconductors-part1/)
-
-<!-- BLOG-POST-LIST:END -->
-
-Connect with me:
-
-[🔥 Substack ](https://joseluistello.substack.com/)
-[✔️ Twitter](https://twitter.com/jotaele_tello)
-[😊 Linkedin](https://www.linkedin.com/in/joseluistello/)
-[📈 Resume](https://www.notion.so/joseluistello/resume-908176d50910492f82bb0c2c50150406)
-[❤️ DataBase](https://www.notion.so/joseluistello/resources-3b96a11183d342b889c95e9bcb1e0c7f)
-
----
