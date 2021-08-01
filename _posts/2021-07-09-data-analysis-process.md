@@ -117,15 +117,15 @@ Do you want to know what the problem was? One of the suppliers made a mistake wh
 | Variable | Definition | Key |
 |-----------|----------|-----------|
 |Survival|Survival |0 = No, 1 = Yes|
-|Pclass|Ticket class |	1 = 1st, 2 = 2nd, 3 = 3rd
-|Sex|	Sex| 	
-|Age|	Age in years| 	
-|sibsp|	# of siblings / spouses aboard the Titanic| 	
-|parch |# of parents / children aboard the Titanic |
-|ticket|	Ticket number 	|
-|fare|	Passenger fare 	|
-|cabin|	Cabin number |
-|embarked|	Port of Embarkation|C = Cherbourg, Q = Queenstown, S = Southampton|
+|Pclass|Ticket class |	1 = 1st, 2 = 2nd, 3 = 3rd |
+|Sex    |	Sex| 	
+|Age    |	Age in years| 	
+|Sibsp  |	# of siblings / spouses aboard the Titanic| 	
+|Parch  |# of parents / children aboard the Titanic |
+|Ticket |	Ticket number 	|
+|Fare   |	Passenger fare 	|
+|Cabin  |	Cabin number |
+|Embarked   |	Port of Embarkation |   C = Cherbourg, Q = Queenstown, S = Southampton  |
 
 ![Notes](/img/data%20analysis/notes.png)
 
