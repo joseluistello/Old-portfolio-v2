@@ -163,17 +163,21 @@ Time to classify this data:
     * Fare
 
 
-#### 3️⃣ Preprocess data
+#### 3️⃣ Preprocess Data & 4️⃣ Analyze Data
 
 FINALLYYYYYYYYYYYYYY, LET'S CODE! 
 
-Why preprocess? Becuase we can't analysis data in a bad "shape". Data isn't perfect, our data needs to be prepared and crafted. 
+But, first... why preprocess and analyze are together? 
+
+As you see in the holistic view of my process, this section is a "loop". We can't analysis data in a bad "shape" and we can't understand data if we don't analyzed it. 
+
+WE NEED Exploration and Preparation! Data isn't perfect, our data needs to be prepared, analyzed and crafted. 
 
 1. There are inappropriate data types
 2. The are missing values
 3. The are values that need to be transform, grouped, etc.
 
-We are going to use tidyverse and ggthemes for good loking visualizations.
+We are going to use tidyverse and ggthemes for a good loking visualizations.
 
 ```{r}
 library(tidyverse)
