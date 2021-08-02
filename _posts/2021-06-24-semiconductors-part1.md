@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Semiconductor Market Analysis"
+title: "Semiconductor Industry Analysis"
 subtitle: "Visualizing the Stock Market With Tidyverse and TidyQuant"
 background: '/img/semiconductores/3.png'
 output: html_document
