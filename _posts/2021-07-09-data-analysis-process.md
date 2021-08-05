@@ -10,6 +10,8 @@ tags: [data analysis, machine learning, r, data wrangling]
 comments: true
 ---
 
+## 🚭 UNDER CONSTRUCTION 🚭
+
 **Essay in honor of [John W. Tukey.](https://en.wikipedia.org/wiki/John_Tukey)** 
 
 > *Without his contributions, I could not be writing this post... Hope you enjoy it.* 
@@ -164,6 +166,55 @@ Time to classify this data:
 
 
 #### 3️⃣ Preprocess Data & 4️⃣ Analyze Data
+
+At this point, we know what type of data we have. It's time to fix the data in R.
+
+
+
+
+
+
+
+we have and we can make a path between the dependices of variables. 
+
+For example, we can count our Sex variable for the porpuse of see the proportion of gender.
+
+```{r}
+ggplot(data, 
+       aes(x = Sex,
+           y = ..count.. / sum(..count..))) + 
+  geom_bar(fill = "cornflowerblue", 
+           color="black") +
+  labs(x = "Gender", 
+       y = "Percent", 
+       title = "Proportion of gender",
+       subtitle = "") +
+  scale_y_continuous(labels = scales::percent) +
+  theme_base()
+```
+
+![Countsex](img/../../img/data%20analysis/count.png)
+
+
+We can see the proportion of socio-economic class among sex 
+
+```{r}
+ggplot(data, aes(x = Sex, fill = Pclass)) +
+  geom_bar(color = "black", 
+           position = position_dodge
+           (preserve = "single")) +
+  labs(x = "Gender",
+       y = "Count",
+       title = "Passenger socio-economic class",
+       subtitle = "Distribution per gender") +
+  theme_base()
+```
+
+![Countsex](img/dataanalysis/../../../img/data%20analysis/countpclass.png)
+
+
+
+![Dependencies](img/../../img/data%20analysis/dependencies.png)
 
 FINALLYYYYYYYYYYYYYY, LET'S CODE! 
 
