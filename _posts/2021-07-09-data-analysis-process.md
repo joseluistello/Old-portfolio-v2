@@ -317,7 +317,7 @@ str(data)
 
 A tip for analyze data it's so see the path between dependices of variables. 
 
-![Dependencies](img/../../img/data%20analysis/dependencies.png)
+![Dependencies](/img/data%20analysis/dependencies.png)
 
 For example, we can count our Sex variable for the porpuse of see the proportion of gender.
 
