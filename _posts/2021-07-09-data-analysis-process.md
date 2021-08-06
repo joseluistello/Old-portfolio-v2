@@ -165,32 +165,159 @@ Time to classify this data:
     * Fare
 
 
-#### 3️⃣ Preprocess Data & 4️⃣ Analyze Data
+#### 3️⃣ Preprocess Data 
 
-At this point, we know what type of data we have. It's time to upload and fix the data in R.
+FINALLYYYYYYYYYYYYYY, LET'S CODE! 
 
-Data classify in R it's a different from the statistics standard. 
+But, first... why preprocess and analyze are together? 
 
-In R we have data types and data structures. 
+As you see in the holistic view of my process, this section is a "loop". We can't analysis data in a bad "shape" and we can't understand data if we don't analyzed it. 
 
-R data types are: 
+WE NEED Exploration and Preparation! Data isn't perfect, our data needs to be prepared, analyzed and crafted for modeling.
+
+1. There are inappropriate data types
+2. The are missing values
+3. The are values that need to be transform, grouped, etc.
+
+At this point, we know what type of data we have. It's time to upload and fix the data. In R, data is different from the statistics standard. 
+
+We have data types are: 
   * character
   * numeric 
   * integer 
   * complex 
   * logical
 
-R basic data structures include 
+And data structures:
   * vector 
   * list
   * matrix 
   * data frame 
   * factors
 
-Let's check the structure of our data!
+Sometimes, we need to transform our dat but first we need to check data structure!
+
+```r
+str(train)
+'data.frame':	891 obs. of  12 variables:
+ $ PassengerId: int  1 2 3 4 5 6 7 8 9 10 ...
+ $ Survived   : int  0 1 1 1 0 0 0 0 1 1 ...
+ $ Pclass     : int  3 1 3 1 3 3 1 3 3 2 ...
+ $ Name       : chr  "Braund, Mr. Owen Harris" "Cumings, Mrs. John Bradley (Florence Briggs Thayer)" "Heikkinen, Miss. Laina" "Futrelle, Mrs. Jacques Heath (Lily May Peel)" ...
+ $ Sex        : chr  "male" "female" "female" "female" ...
+ $ Age        : num  22 38 26 35 35 NA 54 2 27 14 ...
+ $ SibSp      : int  1 1 0 1 0 0 0 3 0 1 ...
+ $ Parch      : int  0 0 0 0 0 0 0 1 2 0 ...
+ $ Ticket     : chr  "A/5 21171" "PC 17599" "STON/O2. 3101282" "113803" ...
+ $ Fare       : num  7.25 71.28 7.92 53.1 8.05 ...
+ $ Cabin      : chr  "" "C85" "" "C123" ...
+ $ Embarked   : chr  "S" "C" "S" "S" ...
+```
+
+```r
+str(test)
+'data.frame':	418 obs. of  11 variables:
+ $ PassengerId: int  892 893 894 895 896 897 898 899 900 901 ...
+ $ Pclass     : int  3 3 2 3 3 3 3 2 3 3 ...
+ $ Name       : chr  "Kelly, Mr. James" "Wilkes, Mrs. James (Ellen Needs)" "Myles, Mr. Thomas Francis" "Wirz, Mr. Albert" ...
+ $ Sex        : chr  "male" "female" "male" "male" ...
+ $ Age        : num  34.5 47 62 27 22 14 30 26 18 21 ...
+ $ SibSp      : int  0 1 0 0 1 0 0 1 0 2 ...
+ $ Parch      : int  0 0 0 0 1 0 0 1 0 0 ...
+ $ Ticket     : chr  "330911" "363272" "240276" "315154" ...
+ $ Fare       : num  7.83 7 9.69 8.66 12.29 ...
+ $ Cabin      : chr  "" "" "" "" ...
+ $ Embarked   : chr  "Q" "S" "Q" "S" ...
+```
+As we see, we need to make some changes. Specially in Survived, Sex, Pclass and Embarked variables. Let's transform these into factors.
+
+```r
+train$Survived <- as.factor(train$Survived)
+train$Embarked <- as.factor(train$Embarked)
+train$Sex <- as.factor(train$Sex)
+train$Pclass <- as.factor(train$Pclass)
 
 
-we have and we can make a path between the dependices of variables. 
+test$Embarked <- as.factor(test$Embarked)
+test$Sex <- as.factor(test$Sex)
+test$Pclass <- as.factor(test$Pclass)
+```
+
+```r
+str(test)
+'data.frame':	418 obs. of  11 variables:
+ $ PassengerId: int  892 893 894 895 896 897 898 899 900 901 ...
+ $ Pclass     : Factor w/ 3 levels "1","2","3": 3 3 2 3 3 3 3 2 3 3 ...
+ $ Name       : chr  "Kelly, Mr. James" "Wilkes, Mrs. James (Ellen Needs)" "Myles, Mr. Thomas Francis" "Wirz, Mr. Albert" ...
+ $ Sex        : Factor w/ 2 levels "female","male": 2 1 2 2 1 2 1 2 1 2 ...
+ $ Age        : num  34.5 47 62 27 22 14 30 26 18 21 ...
+ $ SibSp      : int  0 1 0 0 1 0 0 1 0 2 ...
+ $ Parch      : int  0 0 0 0 1 0 0 1 0 0 ...
+ $ Ticket     : chr  "330911" "363272" "240276" "315154" ...
+ $ Fare       : num  7.83 7 9.69 8.66 12.29 ...
+ $ Cabin      : chr  "" "" "" "" ...
+ $ Embarked   : Factor w/ 3 levels "C","Q","S": 2 3 2 3 3 3 2 3 1 3 ...
+ ```
+
+ ```r
+str(train)
+'data.frame':	891 obs. of  12 variables:
+ $ PassengerId: int  1 2 3 4 5 6 7 8 9 10 ...
+ $ Survived   : Factor w/ 2 levels "0","1": 1 2 2 2 1 1 1 1 2 2 ...
+ $ Pclass     : Factor w/ 3 levels "1","2","3": 3 1 3 1 3 3 1 3 3 2 ...
+ $ Name       : chr  "Braund, Mr. Owen Harris" "Cumings, Mrs. John Bradley (Florence Briggs Thayer)" "Heikkinen, Miss. Laina" "Futrelle, Mrs. Jacques Heath (Lily May Peel)" ...
+ $ Sex        : Factor w/ 2 levels "female","male": 2 1 1 1 2 2 2 2 1 1 ...
+ $ Age        : num  22 38 26 35 35 NA 54 2 27 14 ...
+ $ SibSp      : int  1 1 0 1 0 0 0 3 0 1 ...
+ $ Parch      : int  0 0 0 0 0 0 0 1 2 0 ...
+ $ Ticket     : chr  "A/5 21171" "PC 17599" "STON/O2. 3101282" "113803" ...
+ $ Fare       : num  7.25 71.28 7.92 53.1 8.05 ...
+ $ Cabin      : chr  "" "C85" "" "C123" ...
+ $ Embarked   : Factor w/ 4 levels "","C","Q","S": 4 2 4 4 4 3 4 4 4 2 
+ ```
+
+### Done! 
+ 
+#### Now is time to drop NA values for the purpose of bind our two data sets. 
+
+``` r
+test <- data.frame(test[1], Survived = rep("NA", nrow(test)), test[ , 2:ncol(test)])
+```
+
+### Then, we merge train and test sets. 
+
+```r
+data <- rbind(train, test)
+```
+
+### We create a file for the product of the rbind
+
+```r
+write.csv(data, "./data/interim/data.cvs", row.names = FALSE )
+```
+
+### Structure looks great! 
+
+```r
+str(data)
+'data.frame':	1309 obs. of  12 variables:
+ $ PassengerId: int  1 2 3 4 5 6 7 8 9 10 ...
+ $ Survived   : Factor w/ 3 levels "0","1","NA": 1 2 2 2 1 1 1 1 2 2 ...
+ $ Pclass     : Factor w/ 3 levels "1","2","3": 3 1 3 1 3 3 1 3 3 2 ...
+ $ Name       : chr  "Braund, Mr. Owen Harris" "Cumings, Mrs. John Bradley (Florence Briggs Thayer)" "Heikkinen, Miss. Laina" "Futrelle, Mrs. Jacques Heath (Lily May Peel)" ...
+ $ Sex        : Factor w/ 2 levels "female","male": 2 1 1 1 2 2 2 2 1 1 ...
+ $ Age        : num  22 38 26 35 35 NA 54 2 27 14 ...
+ $ SibSp      : int  1 1 0 1 0 0 0 3 0 1 ...
+ $ Parch      : int  0 0 0 0 0 0 0 1 2 0 ...
+ $ Ticket     : chr  "A/5 21171" "PC 17599" "STON/O2. 3101282" "113803" ...
+ $ Fare       : num  7.25 71.28 7.92 53.1 8.05 ...
+ $ Cabin      : chr  "" "C85" "" "C123" ...
+ $ Embarked   : Factor w/ 4 levels "","C","Q","S": 4 2 4 4 4 3 4 4 4 2
+```
+
+#### 4️⃣ Analyze Data
+
+A tip for analyze data it's so see the path between dependices of variables. 
 
 ![Dependencies](img/../../img/data%20analysis/dependencies.png)
 
@@ -231,19 +358,4 @@ ggplot(data, aes(x = Sex, fill = Pclass)) +
 
 
 
-![Dependencies](img/../../img/data%20analysis/dependencies.png)
-
-FINALLYYYYYYYYYYYYYY, LET'S CODE! 
-
-But, first... why preprocess and analyze are together? 
-
-As you see in the holistic view of my process, this section is a "loop". We can't analysis data in a bad "shape" and we can't understand data if we don't analyzed it. 
-
-WE NEED Exploration and Preparation! Data isn't perfect, our data needs to be prepared, analyzed and crafted. 
-
-1. There are inappropriate data types
-2. The are missing values
-3. The are values that need to be transform, grouped, etc.
-
-We are going to use tidyverse and ggthemes for a good loking visualizations.
 
