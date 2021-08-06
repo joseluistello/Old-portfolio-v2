@@ -229,7 +229,9 @@ str(test)
  $ Cabin      : chr  "" "" "" "" ...
  $ Embarked   : chr  "Q" "S" "Q" "S" ...
 ```
-As we see, we need to make some changes. Specially in Survived, Sex, Pclass and Embarked variables. Let's transform these into factors.
+
+**As we see, we need to make some changes. 
+Specially in Survived, Sex, Pclass and Embarked variables.** 
 
 ```r
 train$Survived <- as.factor(train$Survived)
@@ -276,27 +278,23 @@ str(train)
  $ Embarked   : Factor w/ 4 levels "","C","Q","S": 4 2 4 4 4 3 4 4 4 2 
  ```
 
-### Done! 
- 
-#### Now is time to drop NA values for the purpose of bind our two data sets. 
+##### Done
+
+Now is time to drop NA values, bind our data and create the file.
 
 ``` r
 test <- data.frame(test[1], Survived = rep("NA", nrow(test)), test[ , 2:ncol(test)])
 ```
 
-### Then, we merge train and test sets. 
-
 ```r
 data <- rbind(train, test)
 ```
-
-### We create a file for the product of the rbind
 
 ```r
 write.csv(data, "./data/interim/data.cvs", row.names = FALSE )
 ```
 
-### Structure looks great! 
+##### Structure looks great! 
 
 ```r
 str(data)
