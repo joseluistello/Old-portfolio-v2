@@ -167,15 +167,34 @@ Time to classify this data:
 
 #### 3️⃣ Preprocess Data & 4️⃣ Analyze Data
 
-At this point, we know what type of data we have. It's time to fix the data in R.
+At this point, we know what type of data we have. It's time to upload and fix the data in R.
 
+Data classify in R it's a different from the statistics standard. 
 
+In R we have data types and data structures. 
 
+R data types are: 
+  * character
+  * numeric 
+  * integer 
+  * complex 
+  * logical
+
+R basic data structures include 
+  * vector 
+  * list
+  * matrix 
+  * data frame 
+  * factors
+
+Let's check the structure of our data!
 
 
 
 
 we have and we can make a path between the dependices of variables. 
+
+![Dependencies](img/../../img/data%20analysis/dependencies.png)
 
 For example, we can count our Sex variable for the porpuse of see the proportion of gender.
 
