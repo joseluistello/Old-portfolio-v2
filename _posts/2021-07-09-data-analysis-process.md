@@ -337,7 +337,7 @@ ggplot(data,
   theme_base()
 ```
 
-![Countsex](img/../../img/data%20analysis/count.png)
+![Countsex](/img/data%20analysis/count.png)
 
 
 We can see the proportion of socio-economic class among sex 
@@ -354,7 +354,7 @@ ggplot(data, aes(x = Sex, fill = Pclass)) +
   theme_base()
 ```
 
-![Countsex](img/dataanalysis/../../../img/data%20analysis/countpclass.png)
+![Countsex](/img/data%20analysis/countpclass.png)
 
 
 
