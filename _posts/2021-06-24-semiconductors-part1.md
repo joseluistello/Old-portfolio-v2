@@ -106,28 +106,28 @@ These are the packages I will use throughout the project:
 
 #### First, I need to download the data:
 
-```{r}
+```r
 sc_companies <- c("TSM", "UMC", "INTC", "TXN", "NXP", "NVDA", "AVGO", "QCOM") %>%
   tq_get(get  = "stock.prices",
          from = "2015-01-01",
          to   = "2021-06-27")
 ```
 
-```{r}
+```r
 foundry <- c("TSM", "UMC") %>%
   tq_get(get  = "stock.prices",
          from = "2015-01-01",
          to   = "2021-06-27")
 ```
 
-```{r}
+```r
 idm <- c("INTC", "TXN", "NXP") %>%
   tq_get(get  = "stock.prices",
          from = "2015-01-01",
          to   = "2021-06-27")
 ```
 
-```{r}
+```r
 fabless <- c("NVDA", "AVGO", "QCOM") %>%
   tq_get(get  = "stock.prices",
          from = "2015-01-01",
@@ -138,7 +138,7 @@ fabless <- c("NVDA", "AVGO", "QCOM") %>%
 
 **Let's see an overview**
 
-```{r}
+```r
   ggplot(sc_companies, 
          aes(x = date, y = close, color = symbol)) + 
     geom_line(size=1) +
@@ -156,7 +156,7 @@ fabless <- c("NVDA", "AVGO", "QCOM") %>%
 
 **Let's wrap for a better view.**
 
-```{r}
+```r
   ggplot(sc_companies, 
          aes(x = date, y = close, color = symbol)) + 
     geom_line(size=1) +
@@ -176,7 +176,7 @@ fabless <- c("NVDA", "AVGO", "QCOM") %>%
 ### It's time to see between business models.
 
 
-```{r}
+```r
   ggplot(foundry, 
          aes(x = date, y = close, color = symbol)) + 
     geom_line(size=1) +
@@ -190,7 +190,7 @@ fabless <- c("NVDA", "AVGO", "QCOM") %>%
 
 ![Index](/img/semiconductores/foundrystock.png)
 
-```{r}
+```r
   ggplot(fabless, 
          aes(x = date, y = close, color = symbol)) + 
     geom_line(size=1) +
@@ -204,7 +204,7 @@ fabless <- c("NVDA", "AVGO", "QCOM") %>%
 
 ![Index](/img/semiconductores/fablessstock.png)
 
-```{r}
+```r
   ggplot(idm, 
          aes(x = date, y = close, color = symbol)) + 
     geom_line(size=1) +
@@ -220,7 +220,7 @@ fabless <- c("NVDA", "AVGO", "QCOM") %>%
 
 ### The trend it's kinda obvious but remember... I have my personal goals for this project
 
-```{r}
+```r
   sc_companies %>% 
     filter(symbol == "QCOM") %>% 
    ggplot(aes(x = date, y = close, color = symbol))  +
@@ -240,7 +240,7 @@ fabless <- c("NVDA", "AVGO", "QCOM") %>%
 
 ### Let's see the anual returns for each companie categorize by model
 
-```{r}
+```r
 semicompanies_return_yearly_idm <-  idm %>%
     group_by(symbol) %>%
     tq_transmute(select     = adjusted, 
@@ -249,7 +249,7 @@ semicompanies_return_yearly_idm <-  idm %>%
                  col_rename = "yearly.returns") 
 ```
 
-```{r}
+```r
 semicompanies_return_yearly_idm %>%
     ggplot(aes(x = year(date), y = yearly.returns, fill = symbol)) +
     geom_bar(position = "dodge", stat = "identity") +
@@ -264,7 +264,7 @@ semicompanies_return_yearly_idm %>%
 
 ![Index](/img/semiconductores/idmreturns.png)
 
-```{r}
+```r
 semicompanies_return_yearly_fabless <- fabless %>%
     group_by(symbol) %>%
     tq_transmute(select     = adjusted, 
@@ -274,7 +274,7 @@ semicompanies_return_yearly_fabless <- fabless %>%
 ```
 
 
-```{r}
+```r
 semicompanies_return_yearly_fabless %>%
     ggplot(aes(x = year(date), y = yearly.returns, fill = symbol)) +
     geom_bar(position = "dodge", stat = "identity") +
@@ -289,7 +289,7 @@ semicompanies_return_yearly_fabless %>%
 
 ![Index](/img/semiconductores/fablessreturn.png)
 
-```{r}
+```r
 semicompanies_return_yearly_foundry <- foundry %>%
     group_by(symbol) %>%
     tq_transmute(select     = adjusted, 
@@ -298,7 +298,7 @@ semicompanies_return_yearly_foundry <- foundry %>%
                  col_rename = "yearly.returns")
 ```
 
-```{r}
+```r
 semicompanies_return_yearly_foundry %>%
     ggplot(aes(x = year(date), y = yearly.returns, fill = symbol)) +
     geom_bar(position = "dodge", stat = "identity") +

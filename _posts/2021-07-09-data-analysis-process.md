@@ -190,15 +190,13 @@ R basic data structures include
 Let's check the structure of our data!
 
 
-
-
 we have and we can make a path between the dependices of variables. 
 
 ![Dependencies](img/../../img/data%20analysis/dependencies.png)
 
 For example, we can count our Sex variable for the porpuse of see the proportion of gender.
 
-```{r}
+```r
 ggplot(data, 
        aes(x = Sex,
            y = ..count.. / sum(..count..))) + 
@@ -217,7 +215,7 @@ ggplot(data,
 
 We can see the proportion of socio-economic class among sex 
 
-```{r}
+```r
 ggplot(data, aes(x = Sex, fill = Pclass)) +
   geom_bar(color = "black", 
            position = position_dodge
