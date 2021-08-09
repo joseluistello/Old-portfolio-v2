@@ -2,9 +2,9 @@
 layout: post
 title: "Data Visualization Olympic Medals 2021"
 subtitle: "Visualizing Tokyo with R, Ggplot and Dplyr"
-background: '/img/tokyo/tokyo.png'
+background: '/img/tokyo2021/tokyo3.png'
 output: html_document
-date: 2021-08-09 19:50:00 -0400
+date: 2021-08-09 19 -0400
 category: r
 tags: [data visualization, r]
 comments: 
@@ -97,7 +97,7 @@ theme_classic() +
 theme(legend.position = "none")
 ```
 
-![Silver](img/tokyo2021/silver.png)
+![Silver](/img/tokyo2021/silver.png)
 
 ```r
 tokyo %>% 
@@ -118,7 +118,7 @@ theme_classic() +
 theme(legend.position = "none")
 ```
 
-![Bronze](img/tokyo2021/bronze.png)
+![Bronze](/img/tokyo2021/bronze.png)
 
 ```r
 tokyo %>% 
@@ -138,7 +138,7 @@ theme_classic() +
 theme(legend.position = "none")
 ```
 
-![Total_Medals](img/tokyo2021/totalrank.png)
+![Total_Medals](/img/tokyo2021/totalrank.png)
 
 
 ```r
