@@ -2,12 +2,12 @@
 layout: post
 title: "Data Visualization Olympic Medals 2021"
 subtitle: "Visualizing Tokyo with R, Ggplot and Dplyr"
-background: '/img/forecasting/future.png'
+background: '/img/tokyo/tokyo.png'
 output: html_document
 date: 2021-08-09 19:50:00 -0400
 category: r
 tags: [data visualization, r]
-comments: true
+comments: 
 ---
 
 ```r
