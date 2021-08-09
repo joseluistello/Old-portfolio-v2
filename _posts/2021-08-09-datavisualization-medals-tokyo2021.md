@@ -40,6 +40,7 @@ str(medals)
 
 <!-- -->
 
+```r
 tokyo2021 <- rename(medals, 
     country = Team.NOC,
     gold = Gold.Medal,
@@ -48,8 +49,11 @@ tokyo2021 <- rename(medals,
     rankbytotal = Rank.by.Total,
     ccode = NOCCode
             )
+```
 
+```r
 tokyo <- as_tibble(tokyo2021)
+```
 
 ## Data Viz!
 
@@ -72,7 +76,7 @@ theme_classic() +
 theme(legend.position = "none")
 ```
 
-![Gold](img/tokyo/../../../img/tokyo2021/gold.png)
+![Gold](/img/tokyo2021/gold.png)
 
 ```r
 tokyo %>% 
@@ -93,7 +97,7 @@ theme_classic() +
 theme(legend.position = "none")
 ```
 
-![Silver](img/../../img/tokyo2021/silver.png)
+![Silver](img/tokyo2021/silver.png)
 
 ```r
 tokyo %>% 
@@ -114,7 +118,7 @@ theme_classic() +
 theme(legend.position = "none")
 ```
 
-![Bronze](img/../../img/tokyo2021/bronze.png)
+![Bronze](img/tokyo2021/bronze.png)
 
 ```r
 tokyo %>% 
@@ -134,7 +138,7 @@ theme_classic() +
 theme(legend.position = "none")
 ```
 
-![Total_Medals](img/../../img/tokyo2021/totalrank.png)
+![Total_Medals](img/tokyo2021/totalrank.png)
 
 
 ```r
@@ -151,4 +155,4 @@ labs(x = "Medals",
 theme_classic() 
 ```
 
-![Distribution](img/../../img/tokyo2021/histograms.png)
+![Distribution](/img/tokyo2021/histograms.png)
