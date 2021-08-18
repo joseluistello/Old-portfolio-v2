@@ -2,7 +2,7 @@
 layout: post
 title: "Ecommerce Data Analysis"
 subtitle: "Pandas and Seaborn "
-background: '/img/ecommerce/fondo.png'
+background: '/img/ecommerce/fondo3.png'
 output: html_document
 date: 2021-08-17 19 -0400
 category: Python
