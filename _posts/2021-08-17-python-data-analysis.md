@@ -1,3 +1,20 @@
+---
+layout: post
+title: "Ecommerce Data Analysis"
+subtitle: "Pandas and Seaborn "
+background: '/img/data analysis/tukeyy.png'
+output: html_document
+date: 2021-07-12 19:50:00 -0400
+category: Python
+tags: [data analysis, python, pandas, seaborn]
+comments: true
+---
+
+
+
+
+
+
 ```python
 import pandas as pd
 import matplotlib as plt
