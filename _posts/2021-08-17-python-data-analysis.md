@@ -2,18 +2,13 @@
 layout: post
 title: "Ecommerce Data Analysis"
 subtitle: "Pandas and Seaborn "
-background: '/img/data analysis/tukeyy.png'
+background: '/img/ecommerce/fondo.png'
 output: html_document
 date: 2021-08-17 19 -0400
 category: Python
 tags: [data analysis, python, pandas, seaborn]
 comments: true
 ---
-
-
-
-
-
 
 ```python
 import pandas as pd
@@ -117,14 +112,6 @@ q.set_xlabel("Precio de los productos", fontsize = 15)
 q.set_ylabel("Producto total", fontsize = 15)
 ```
 
-
-
-
-    Text(0, 0.5, 'Producto total')
-
-
-
-
     
 ![png](/img/ecommerce/output1.png))
     
@@ -138,9 +125,6 @@ Esto nos dice dos cosas:
 ```python
 df["Sexo"].value_counts()
 ```
-
-
-
 
     Mujeres    35937
     Hombre     27284
@@ -158,9 +142,6 @@ ax.set_ylabel("Numero de personas", fontsize = 15)
 ```
 
 
-
-
-    Text(0, 0.5, 'Numero de personas')
 
 
 
@@ -195,19 +176,9 @@ bx.set_xlabel("Canal por el que se vendio", fontsize = 15)
 bx.set_ylabel("Numero de ventas", fontsize = 15)
 ```
 
-
-
-
-    Text(0, 0.5, 'Numero de ventas')
-
-
-
-
     
 ![png](/img/ecommerce/output3.png)
     
-
-
 
 ```python
 d = sns.histplot(
@@ -218,14 +189,6 @@ d = sns.histplot(
 d.set_xlabel("Platorma Digital", fontsize = 15)
 d.set_ylabel("Numero de ventas", fontsize = 15)
 ```
-
-
-
-
-    Text(0, 0.5, 'Numero de ventas')
-
-
-
 
     
 ![png](/img/ecommerce/output4.png)
@@ -242,14 +205,6 @@ sns.displot(df,
             height=5, 
             facet_kws=dict(margin_titles=True))
 ```
-
-
-
-
-    <seaborn.axisgrid.FacetGrid at 0x1d3e27f7ac0>
-
-
-
 
     
 ![png](/img/ecommerce/output5.png)
@@ -284,7 +239,6 @@ Podemos englobar el conocimiento que tenemos sobre el data set hasta ahora:
  .sort_values('Precio', ascending=False)
 )
 ```
-
 
 
 
@@ -576,14 +530,6 @@ sns.displot(df,
             height=4, 
             facet_kws=dict(margin_titles=True))
 ```
-
-
-
-
-    <seaborn.axisgrid.FacetGrid at 0x182e18a6460>
-
-
-
 
     
 ![png](/img/ecommerce/output6.png)
