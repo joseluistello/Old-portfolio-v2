@@ -126,7 +126,7 @@ q.set_ylabel("Producto total", fontsize = 15)
 
 
     
-![png](output_9_1.png)
+![png](img/dataoutput_9_1.png)
     
 
 
