@@ -126,7 +126,7 @@ q.set_ylabel("Producto total", fontsize = 15)
 
 
     
-![png](img/../../img/ecommerce/output1.png))
+![png](/img/ecommerce/output1.png))
     
 
 
@@ -166,7 +166,7 @@ ax.set_ylabel("Numero de personas", fontsize = 15)
 
 
     
-![png](img/../../img/ecommerce/output2.png)
+![png](/img/ecommerce/output2.png)
     
 
 
