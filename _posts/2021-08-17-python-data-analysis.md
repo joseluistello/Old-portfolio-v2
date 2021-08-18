@@ -204,7 +204,7 @@ bx.set_ylabel("Numero de ventas", fontsize = 15)
 
 
     
-![png](img/../../img/ecommerce/output3.png)
+![png](/img/ecommerce/output3.png)
     
 
 
@@ -228,7 +228,7 @@ d.set_ylabel("Numero de ventas", fontsize = 15)
 
 
     
-![png](img/../../img/ecommerce/output4.png)
+![png](/img/ecommerce/output4.png)
     
 
 
@@ -252,7 +252,7 @@ sns.displot(df,
 
 
     
-![png](img/../../img/ecommerce/output5.png)
+![png](/img/ecommerce/output5.png)
     
 
 
@@ -586,7 +586,7 @@ sns.displot(df,
 
 
     
-![png](img/../../img/ecommerce/output6.png)
+![png](/img/ecommerce/output6.png)
     
 
 
