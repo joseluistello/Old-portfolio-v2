@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Ecommerce Data Analysis"
-subtitle: "Pandas and Seaborn "
+title: "Analizando los datos de un comercio electronico"
+subtitle: "Utilizando Pandas y Seaborn"
 background: '/img/ecommerce/fondo3.png'
 output: html_document
 date: 2021-08-17 19 -0400
@@ -9,6 +9,11 @@ category: Python
 tags: [data analysis, python, pandas, seaborn]
 comments: true
 ---
+
+Estos son datos que tome del canal [A2 Capacitación: Excel](https://www.youtube.com/channel/UCSW-_m4KXiok4Hq2nK97atw).
+
+Este dataset es de un comercio electronico 
+
 
 ```python
 import pandas as pd
