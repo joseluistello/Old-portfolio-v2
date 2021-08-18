@@ -4,7 +4,7 @@ title: "Ecommerce Data Analysis"
 subtitle: "Pandas and Seaborn "
 background: '/img/data analysis/tukeyy.png'
 output: html_document
-date: 2021-07-12 19:50:00 -0400
+date: 2021-08-17 19 -0400
 category: Python
 tags: [data analysis, python, pandas, seaborn]
 comments: true
