@@ -126,7 +126,7 @@ q.set_ylabel("Producto total", fontsize = 15)
 
 
     
-![png](img/dataoutput_9_1.png)
+![png](img/../../img/ecommerce/output1.png))
     
 
 
@@ -166,7 +166,7 @@ ax.set_ylabel("Numero de personas", fontsize = 15)
 
 
     
-![png](output_12_1.png)
+![png](img/../../img/ecommerce/output2.png)
     
 
 
@@ -204,7 +204,7 @@ bx.set_ylabel("Numero de ventas", fontsize = 15)
 
 
     
-![png](output_14_1.png)
+![png](img/../../img/ecommerce/output3.png)
     
 
 
@@ -228,7 +228,7 @@ d.set_ylabel("Numero de ventas", fontsize = 15)
 
 
     
-![png](output_15_1.png)
+![png](img/../../img/ecommerce/output4.png)
     
 
 
@@ -252,7 +252,7 @@ sns.displot(df,
 
 
     
-![png](output_16_1.png)
+![png](img/../../img/ecommerce/output5.png)
     
 
 
@@ -586,7 +586,7 @@ sns.displot(df,
 
 
     
-![png](output_25_1.png)
+![png](img/../../img/ecommerce/output6.png)
     
 
 
