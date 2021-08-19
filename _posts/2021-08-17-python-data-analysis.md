@@ -10,9 +10,14 @@ tags: [data analysis, python, pandas, seaborn]
 comments: true
 ---
 
-Estos son datos que tome del canal [A2 Capacitación: Excel](https://www.youtube.com/channel/UCSW-_m4KXiok4Hq2nK97atw).
 
-Este dataset es de un comercio electronico 
+Estos son datos que tome del canal A2 Capacitación: Excel.
+
+Hola, este es un proyecto especial ya que lo escribire en español. Creo en que (equivocadamente) le di la espalda a un lenguaje tan bello como lo es el español. Llegue a la conclusion de que mis contribuciones pueden ser mayores en el mundo hispano.
+
+¿Que mejor que un pequeño analisis para celebrar?
+
+Empecemos por cargar las librerias correspondientes y los datos.
 
 
 ```python
