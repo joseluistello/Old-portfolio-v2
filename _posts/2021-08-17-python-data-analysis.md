@@ -29,8 +29,42 @@ import matplotlib.pyplot as plt
 
 
 ```python
-df = pd.read_csv('data/Datos.csv')
+df = pd.read_csv(
+    'data/Datos.csv',
+    dtype={
+        "Orden": int,
+        "Medio" : str,
+        "Vendedor" : str,
+        "Plataforma" : str,
+        "Tipo_Orden" : str,
+        "Tipo_Cliente" : str,
+        "Categoría" : str,
+        "Producto" : str,
+        "Precio" : int,
+    },
+)
+
 ```
+
+
+
+Si te preguntas porque escribí el codigo de esa manera, aqui tienes la respuesta:
+
+Es mucho más facil editar el tipo de dato antes de, que despues de.
+
+Este es un ejemplo de como tendriamos que modificar cada tipo de dato.
+
+    df["Precio"] = pd.to_numeric(df["Precio"])
+
+Ewk, me no like it.
+
+Ahora es tiempo de hacer dos cosas:
+
+    Colocar un limite al maximo de filas que se muestran en cada Return
+    Establecer un default para el tamaño de las graficas de Seaborn
+
+
+
 
 Lo primero que me gustaria son dos cosas: 
 
@@ -39,15 +73,17 @@ Lo primero que me gustaria son dos cosas:
 
 
 ```python
-# Show up 5 rows by default
 pd.set_option("display.max_rows", 12)
 
-# Increase plots size
 %matplotlib inline
 plt.rcParams['figure.figsize'] = (12, 10)
 ```
 
-Quiero entender que tipo de dato tengo y cual debo cambiar. 
+
+
+Les sugiero que utilicen este default. Es comodo poner un limite en el display de filas así como aumentar el tamaño de los plots.
+
+#### ¡Tiempo de entender nuestros datos!
 
 
 ```python
@@ -74,6 +110,28 @@ df.info()
     dtypes: int64(2), object(10)
     memory usage: 5.8+ MB
     
+
+
+
+#### Le Magnifique 
+
+Tenemos variables interesantes para trabajar. Bueno, como lo explique en mi incompleto articulo sobre [mi proceso de datos](https://joseluistello.github.io/r/2021/07/12/data-analysis-process.html), la idea detras de un analisis es buscar la relacion entre las variables.
+
+Podriamos llamarlo como el tratar de encontrar un "path" o "camino" entre la relaciones que conviven en nuestro dataset.
+
+Dicho lo anterior, es importante tener en cuenta a que tipo de variables nos enfrentamos.
+
+    ¿Son cualitativas o cuantitativas?
+    ¿Son continuas o categorias?
+    ¿Dependen la una de la otra?
+    Y si es así ¿como demostramos esa dependencia?
+
+Para este caso, mi objetivo no es especifico. Tal vez, mi primer paso pueda ser el entender que canales son los mas beneficiosos para la empresa o saber que productos se venden mas. Inclusive puedo mezclar los dos objetivos anteriores y hacer un nuevo objetivo que busque entender cuales son los canales que mas venden y que productos son los que mas venden.
+
+Vamos a echarle un 👁️ a nuesra variable de precio.
+
+
+
 
 
 ```python
