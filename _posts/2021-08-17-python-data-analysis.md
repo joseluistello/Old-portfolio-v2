@@ -378,13 +378,6 @@ plt.show
 ```
 
 
-
-
-    <function matplotlib.pyplot.show(close=None, block=None)>
-
-
-
-
     
 ![png](/img/ecommerce/output1.png)
     
