@@ -11,13 +11,20 @@ comments: true
 ---
 
 
-Estos son datos que tome del canal A2 Capacitación: Excel.
+#### ¡Hola! 👋  
 
-Hola, este es un proyecto especial ya que lo escribire en español. Creo en que (equivocadamente) le di la espalda a un lenguaje tan bello como lo es el español. Llegue a la conclusion de que mis contribuciones pueden ser mayores en el mundo hispano.
+Este es un proyecto especial, por primera vez escribire en español. Creo en que (equivocadamente) le di la espalda al español bajo una falsa premisa. Ahora se que puedo contribuir  al ecosistema hispano más de lo que podria en el anglosajon.
 
-¿Que mejor que un pequeño analisis para celebrar?
+Empezare publicando un analisis donde detallare cada uno de mis pasos. Lo hare con datos que tome del canal [A2 Capacitación: Excel](https://www.youtube.com/channel/UCSW-_m4KXiok4Hq2nK97atw) y el cual les recomiendo seguir si quieren aprender Excel.
 
-Empecemos por cargar las librerias correspondientes y los datos.
+Dejando de lado lo anterior, hace tiempo escribi un articulo (esta incompleto) sobre [mi proceso para analizar datos](https://joseluistello.github.io/r/2021/07/12/data-analysis-process.html), la idea detras de este approach es abordar el analisis a traves de diferentes etapas. Estas etapas buscan estandarizar la manera en que analizo cualquier tipo de dato.
+
+El outcome de mi proceso consiste en priorizar la legibilidad de mi analisis abordando cada etapa de forma separada (más no aislada).
+
+Al final del día, lo que busco es entender la relacion entre mis variables y encontrar un path entre las observaciones dentro de mis datos. 
+
+
+Empecemos por cargar nuestras librerias y datos <3
 
 
 ```python
@@ -43,33 +50,22 @@ df = pd.read_csv(
         "Precio" : int,
     },
 )
-
 ```
 
-
-
-Si te preguntas porque escribí el codigo de esa manera, aqui tienes la respuesta:
-
-Es mucho más facil editar el tipo de dato antes de, que despues de.
+La razón del porque esribi el upload del archivo de esta manera se debe a que es más facil editar el tipo de dato antes de, que despues de.
 
 Este es un ejemplo de como tendriamos que modificar cada tipo de dato.
 
-    df["Precio"] = pd.to_numeric(df["Precio"])
-
-Ewk, me no like it.
-
-Ahora es tiempo de hacer dos cosas:
-
-    Colocar un limite al maximo de filas que se muestran en cada Return
-    Establecer un default para el tamaño de las graficas de Seaborn
+- df["Precio"] = pd.to_numeric(df["Precio"])
 
 
 
+Ahora es tiempo de dos cosas:
 
-Lo primero que me gustaria son dos cosas: 
-
-1. Colocar un limite a la muestra de filas
+1. Colocar un limite al maximo de filas que se muestran en cada return
 2. Establecer un default para el tamaño de las graficas 
+
+Les sugiero que utilicen este default. Es comodo establecer limites en el display de filas así como aumentar el tamaño de los plots.
 
 
 ```python
@@ -79,11 +75,7 @@ pd.set_option("display.max_rows", 12)
 plt.rcParams['figure.figsize'] = (12, 10)
 ```
 
-
-
-Les sugiero que utilicen este default. Es comodo poner un limite en el display de filas así como aumentar el tamaño de los plots.
-
-#### ¡Tiempo de entender nuestros datos!
+### ¡Tiempo de entender nuestros datos! 
 
 
 ```python
@@ -95,7 +87,7 @@ df.info()
     Data columns (total 12 columns):
      #   Column        Non-Null Count  Dtype 
     ---  ------        --------------  ----- 
-     0   Orden         63221 non-null  int64 
+     0   Orden         63221 non-null  int32 
      1   Fecha         63221 non-null  object
      2   Medio         63221 non-null  object
      3   Vendedor      63221 non-null  object
@@ -106,207 +98,43 @@ df.info()
      8   Sexo          63221 non-null  object
      9   Categoría     63221 non-null  object
      10  Producto      63221 non-null  object
-     11  Precio        63221 non-null  int64 
-    dtypes: int64(2), object(10)
-    memory usage: 5.8+ MB
+     11  Precio        63221 non-null  int32 
+    dtypes: int32(2), object(10)
+    memory usage: 5.3+ MB
     
 
+❤️ **Le Magnifique**  ❤️
+
+Tenemos variables interesantes pero primero debemos entender a que nos enfrentamos. El hecho de hacer preguntas como:
+* ¿Son cualitativas o cuantitativas? 
+* ¿Son continuas o categorias? 
+Nos ayuda a tener una idea de como abordar un analisis. Empecemos por explicar la ciasificación de las variables.
+
+- Los datos categoricos responden a preguntas como "qué", "quienes", o "donde", y se clasifican en tres grupos:
+    - Datos nominales 
+        - No tienen un orden (Paises)
+    - Datos ordinales 
+        - Tienen un orden (Grado de quemadura)
+    - Datos binarios (dicotomicos) 
+        - Solo tienen dos niveles (Genero)
+
+- Los datos cuantitativos responden a preguntas como "cuántos", "cuánto" o con "qué" frecuencia, y se clasifican en dos grupos:
+    - Datos discretos - No tienen decimales
+        - Se pueden clasificar
+        - Pueden ser ordinales (1ra, 2da, 3ra clase)
+        - Pueden ser binarios (Vivo o muerto 1/0)
+        - Pueden ser intervalios o ratios (Temperaturas)
+    - Datos continuos - Tienen decimales
+        - Lo mismo de arriba
 
 
-#### Le Magnifique 
-
-Tenemos variables interesantes para trabajar. Bueno, como lo explique en mi incompleto articulo sobre [mi proceso de datos](https://joseluistello.github.io/r/2021/07/12/data-analysis-process.html), la idea detras de un analisis es buscar la relacion entre las variables.
-
-Podriamos llamarlo como el tratar de encontrar un "path" o "camino" entre la relaciones que conviven en nuestro dataset.
-
-Dicho lo anterior, es importante tener en cuenta a que tipo de variables nos enfrentamos.
-
-    ¿Son cualitativas o cuantitativas?
-    ¿Son continuas o categorias?
-    ¿Dependen la una de la otra?
-    Y si es así ¿como demostramos esa dependencia?
-
-Para este caso, mi objetivo no es especifico. Tal vez, mi primer paso pueda ser el entender que canales son los mas beneficiosos para la empresa o saber que productos se venden mas. Inclusive puedo mezclar los dos objetivos anteriores y hacer un nuevo objetivo que busque entender cuales son los canales que mas venden y que productos son los que mas venden.
-
-Vamos a echarle un 👁️ a nuesra variable de precio.
-
-
-
+Ahora que damos más claro esta parte, es hora de clasificar nuestro dataset.
 
 
 ```python
-### Cambiare precio a un valor numeroc ya que estaba como un tipo objeto.
-df["Precio"] = pd.to_numeric(df["Precio"])
+df.head()
 ```
 
-#### Mi analisis cambia dependiendo el objetivo. 
-
-Por ejemplo, mi objetivo puede ser entender que canales son los mas beneficiosos para la empresa o entender que productos se venden mas. Inclusive puedo mezclar los dos objetivos anteriores y hacer un nuevo objetivo que busque entender cuales son los canales que mas venden y que productos son los que mas venden. 
-
-En este caso no hay un objetivo pero marcare mi ritmo tratando de emular uno.
-
-- Primero, quiero entender las distribuciones de distintas variables.
-- Despues, quiero mezclar las variables y hacer un analisis mas profundo.
-- Por ultimo, comunicar lo que entendi de todo el analisis. 
-
-
-```python
-df["Precio"].describe()
-```
-
-
-
-
-    count    63221.000000
-    mean        40.680312
-    std         13.574989
-    min         10.000000
-    25%         34.000000
-    50%         40.000000
-    75%         50.000000
-    max        100.000000
-    Name: Precio, dtype: float64
-
-
-
-
-```python
-q = sns.histplot(
-    df, 
-    x="Precio",
-    linewidth=3, 
-    kde = True)
-q.set_xlabel("Precio de los productos", fontsize = 15)
-q.set_ylabel("Producto total", fontsize = 15)
-```
-
-    
-![png](/img/ecommerce/output1.png))
-    
-
-
-Esto nos dice dos cosas: 
-* La primera es que el precio de los productos de la tienda se encuentran entre el rango de 10 y 100 pesos.
-* Y la segunda es que la mayoria de los productos se encuentra entre un precio de 20 y 50 pesos.
-
-
-```python
-df["Sexo"].value_counts()
-```
-
-    Mujeres    35937
-    Hombre     27284
-    Name: Sexo, dtype: int64
-
-
-
-
-```python
-ax = sns.histplot(df,
-                  x="Sexo",
-                  linewidth=4)
-ax.set_xlabel("Genero", fontsize = 15)
-ax.set_ylabel("Numero de personas", fontsize = 15)
-```
-
-
-
-
-
-
-    
-![png](/img/ecommerce/output2.png)
-    
-
-
-
-```python
-df["Medio"].value_counts()
-```
-
-
-
-
-    Propio        32150
-    Influencer    31071
-    Name: Medio, dtype: int64
-
-
-
-
-```python
-bx = sns.histplot(df,
-                  x="Medio",
-                  hue='Sexo',
-                  linewidth=2)
-bx.set_title("Distribucion por genero", fontsize=18)
-bx.set_xlabel("Canal por el que se vendio", fontsize = 15)
-bx.set_ylabel("Numero de ventas", fontsize = 15)
-```
-
-    
-![png](/img/ecommerce/output3.png)
-    
-
-```python
-d = sns.histplot(
-    df, 
-    x="Plataforma",
-    hue="Sexo",
-    linewidth=2)
-d.set_xlabel("Platorma Digital", fontsize = 15)
-d.set_ylabel("Numero de ventas", fontsize = 15)
-```
-
-    
-![png](/img/ecommerce/output4.png)
-    
-
-
-
-```python
-sns.displot(df, 
-            x="Precio", 
-            col="Plataforma", 
-            row="Sexo", 
-            binwidth=3, 
-            height=5, 
-            facet_kws=dict(margin_titles=True))
-```
-
-    
-![png](/img/ecommerce/output5.png)
-    
-
-
-Ya estamos obteniendo insights.
-
-1. Hay casi 7,000 mujeres mas que hombres dentro de la plataforma.
-2. Se vende un poco más por canales propios y los generos siguen esa tendencia. 
-3. Las plataformas que más predomina es Instagram, seguido de Youtube, Facebook y el Website del comercio.
-4. Las mujeres se mantienen a la cabeza dentro de los 4 canales. 
-5. En el ultimo histograma podemos observar distintas cosas.
-    - 4.1 Las mujeres compran más articulos que los hombres dentro de cualquier plataforma
-    - 4.2 Las mujeres compran articulos del maximo rango en cualquier plataforma.
-    - 4.3 La plataforma que más productos de alto valor vende es Instagram.
-
-Podemos englobar el conocimiento que tenemos sobre el data set hasta ahora:
-1. Sabemos como se distribuye el precio de los productos y donde se concentra la mayor parte de los productos
-2. Sabemos la disparidad del genero
-3. Sabemos que canal y plataformas son las que mas venden productos
-4. Donde se compran los articulos de alto valor y que genero los compra
-
-
-#### Es tiempo de seguir avanzando en nuestro analisis
-
-
-```python
-(df
- .groupby('Sexo')['Precio']
- .sum().reset_index()
- .sort_values('Precio', ascending=False)
-)
-```
 
 
 
@@ -328,20 +156,95 @@ Podemos englobar el conocimiento que tenemos sobre el data set hasta ahora:
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>Orden</th>
+      <th>Fecha</th>
+      <th>Medio</th>
+      <th>Vendedor</th>
+      <th>Plataforma</th>
+      <th>Comision</th>
+      <th>Tipo_Orden</th>
+      <th>Tipo_Cliente</th>
       <th>Sexo</th>
+      <th>Categoría</th>
+      <th>Producto</th>
       <th>Precio</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>1</th>
-      <td>Mujeres</td>
-      <td>1380627</td>
+      <th>0</th>
+      <td>1</td>
+      <td>06/08/2017</td>
+      <td>Propio</td>
+      <td>Directo en Tienda</td>
+      <td>Website</td>
+      <td>0%</td>
+      <td>Compra</td>
+      <td>Repetido</td>
+      <td>Hombre</td>
+      <td>Pantalones</td>
+      <td>Pants de Entrenamiento Reactivo</td>
+      <td>40</td>
     </tr>
     <tr>
-      <th>0</th>
+      <th>1</th>
+      <td>1</td>
+      <td>06/08/2017</td>
+      <td>Propio</td>
+      <td>Directo en Tienda</td>
+      <td>Website</td>
+      <td>0%</td>
+      <td>Compra</td>
+      <td>Repetido</td>
       <td>Hombre</td>
-      <td>1191223</td>
+      <td>Sudaderas y chamarras</td>
+      <td>Sudadera sin Costuras</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>06/08/2017</td>
+      <td>Propio</td>
+      <td>Directo en Tienda</td>
+      <td>Website</td>
+      <td>0%</td>
+      <td>Compra</td>
+      <td>Repetido</td>
+      <td>Mujeres</td>
+      <td>Leggings</td>
+      <td>Leggings Ombre</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>06/08/2017</td>
+      <td>Propio</td>
+      <td>Directo en Tienda</td>
+      <td>Website</td>
+      <td>0%</td>
+      <td>Compra</td>
+      <td>Repetido</td>
+      <td>Mujeres</td>
+      <td>Bra deportivo</td>
+      <td>Bra Vital sin costuras</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>06/08/2017</td>
+      <td>Propio</td>
+      <td>Directo en Tienda</td>
+      <td>Website</td>
+      <td>0%</td>
+      <td>Compra</td>
+      <td>Repetido</td>
+      <td>Hombre</td>
+      <td>Camisetas</td>
+      <td>Camiseta Heather</td>
+      <td>50</td>
     </tr>
   </tbody>
 </table>
@@ -349,11 +252,313 @@ Podemos englobar el conocimiento que tenemos sobre el data set hasta ahora:
 
 
 
+- Datos Categoricos
+     - Medio
+     - Vendedor
+     - Plataforma
+     - Tipo_Orden
+     - Tipo_Cliente
+     - Sexo
+     - Categoia
+     - Producto
+- Datos Continuos
+     - Fecha
+     - Comision
+     - Precio
+     
+¿En que tipo de subgrupo crees que entren? Te lo dejo de tarea 😂 
+
+Una de las cosas que me gusta hacer antes de buscar patrones es aislar variables. 
+Este aislamiento me permite generar pistas acerca del dataset. Puedo ver el peso de cada variable, su distribución, sus rangos, las desviaciones que tiene, etc.  
+
 
 ```python
-(df
- .groupby(['Plataforma', 'Sexo'])
- ['Precio']
+(
+df["Sexo"]
+    .value_counts()
+)
+```
+
+
+
+
+    Mujeres    35937
+    Hombre     27284
+    Name: Sexo, dtype: int64
+
+
+
+
+```python
+(
+df["Sexo"]
+    .value_counts(normalize=True)
+    .mul(100)
+    .round(1)
+    .astype(str) + '%'
+)
+```
+
+
+
+
+    Mujeres    56.8%
+    Hombre     43.2%
+    Name: Sexo, dtype: object
+
+
+
+Ahora se que existe una mayoría de mujeres dentro de mi set, lo cual me da señales que planeo ir guardando. Pensemoslo de esta manera:
+Ir directo a enteder la relacion entre plataformas/ventas/sexo puede salir mal, existe la posibilidad de sesgar mis pensamientos en torno a un resultado. 
+Puedo concluir en que se debe invertir dinero en tal plataforma porque esto atraera 'X' clientes hombres. Cuando tal vez, existan mejores lugares para poner el dinero. 
+
+Por cierto, escribo el codigo en vertical debido a que quiero hacer legible mi analisis para su reproducción, al mismo tiempo que emulo los pipelines de R.
+
+Bueno, sigamos marchando!
+
+
+```python
+(
+df["Plataforma"]
+    .value_counts(normalize=True)
+    .mul(100)
+    .round(1)
+    .astype(str)+ '%'
+)
+```
+
+
+
+
+    Instagram    53.6%
+    Youtube      17.5%
+    Facebook     15.4%
+    Website      13.5%
+    Name: Plataforma, dtype: object
+
+
+
+Lo que nos arroja este resultado es el total de observaciones que presento cada plataforma. Esto quiere decir (hasta ahora) que Instagram es la que más unidades vende, pero eso no significa que sea la que más revenue genere.
+
+
+```python
+(
+df["Vendedor"]
+    .value_counts(normalize=True)
+    .mul(100)
+    .round(1)
+    .astype(str)+ '%'
+)
+```
+
+
+
+
+    Publicidad Insta      20.0%
+    Directo en Tienda     13.5%
+    Publicidad Face        9.4%
+    Publicidad Youtube     7.9%
+    karlagvzcia            4.5%
+                          ...  
+    geogluisovec           0.5%
+    gypseajain             0.5%
+    nicole.izuristilo      0.5%
+    anacsimdao             0.3%
+    andreaheraz            0.3%
+    Name: Vendedor, Length: 44, dtype: object
+
+
+
+
+```python
+df["Vendedor"].hist(bins=10, color='r')
+plt.xticks(rotation='vertical')
+plt.grid(False)
+plt.show
+```
+
+
+
+
+    <function matplotlib.pyplot.show(close=None, block=None)>
+
+
+
+
+    
+![png](/img/ecommerce/output1.png)
+    
+
+
+
+```python
+(
+df["Tipo_Cliente"]
+    .value_counts()
+)
+```
+
+
+
+
+    Repetido    32561
+    Nuevo       30660
+    Name: Tipo_Cliente, dtype: int64
+
+
+
+
+```python
+(
+df["Tipo_Orden"]
+    .value_counts(normalize=True)
+    .mul(100)
+    .round(1)
+    .astype(str)+ '%'
+)
+```
+
+
+
+
+    Compra        91.0%
+    Devolucion     9.0%
+    Name: Tipo_Orden, dtype: object
+
+
+
+
+```python
+(
+df["Comision"]
+    .value_counts()
+)
+```
+
+
+
+
+    0%     32150
+    30%    12807
+    20%     6702
+    10%     5872
+    40%     5690
+    Name: Comision, dtype: int64
+
+
+
+
+```python
+(
+df["Medio"]
+    .value_counts(normalize=True)
+    .mul(100)
+    .round(1)
+    .astype(str)+ '%'
+)
+```
+
+
+
+
+    Propio        50.9%
+    Influencer    49.1%
+    Name: Medio, dtype: object
+
+
+
+
+```python
+( 
+df["Precio"]
+    .describe()
+    .round(1)
+)
+```
+
+
+
+
+    count    63221.0
+    mean        40.7
+    std         13.6
+    min         10.0
+    25%         34.0
+    50%         40.0
+    75%         50.0
+    max        100.0
+    Name: Precio, dtype: float64
+
+
+
+
+```python
+PrecioDist = sns.histplot(
+    df, 
+    x="Precio",
+    bins=10,
+    linewidth=3, 
+    kde = True)
+PrecioDist.set_xlabel("Precio de los productos", fontsize = 15)
+PrecioDist.set_ylabel("Volumen de productos", fontsize = 15)
+```
+
+
+
+
+    
+![png](/img/ecommerce/output2.png)
+    
+
+
+Bueno, ya se puso interesante la cosa. Hasta ahora hemos aprendido:
+1. El volumen de ventas es dominado por Instagram, lejos de Youtube, Facebook y el Website
+2. Las mujeres representan el 56.8% de las observaciones mientras que los hombres tienen el 43.2%
+3. El 55.3% de las ventas se concentra en 5 vendedores y el 42.9% en 3
+4. Hay 44 vendedores "afiliados" a la compañia, me parecen muchos. Me causa algo de ruido.
+5. Tienen "buena" retencion y lo coloco entre comillas ya que bien puede desplozarme despues de que un repetido compro, o sea que no hubo una tercera vez.
+6. Hubo pocas devoluciones comparado a sus compras, 9% comparado con un 91%
+7. Existen 5 tipos de comisiones donde la mayoria se concentra entre el 0% y 30%
+8. El precio de los productos tiene un de 10 pesos y un maximo 100 pesos donde la mayoria de los productos se concentra entre los 20 y 50 pesos
+
+
+##### Es tiempo de entender las relaciones entre nuestas variables. 
+
+El aislamiento ya dio muchas pistas así que es tiempo de parar. He llegado al punto donde es necesario contar con un plan de ataque pues de lo contrario terminare perdiendome. Tengo muchas preguntas, desde saber donde se concentran las comisiones y porque, hasta entender de donde viene realmente el crecimiento.
+
+Pensemoslo un poco, si las comisiones del 40% se concentran en un rango de precio elevado (100) , tendriamos un dropeo del revenue del 40 pesos. A los 60 pesos restantes todavía tenemos que agregarle mas costos fijos y variables. 
+La empresa puede estar perdiendo dinero sin siquiera notarlo. 
+
+Se que estoy limitado por paradigmas, esquemas y modelos pero en otro contexto esto podría ser cierto. Mucho ojo.
+
+Si no fui muy claro, dejame que te lo explique de esta manera. En este punto debemos comenzar a preguntarnos que es lo que queremos lograr y como una variable depende o se relaciona con la otra, y el como podemos sacar el maximo provecho de eso.
+
+**(Inserta imagen creada en Lunacy)[]**
+
+Mmmmm, voy a utilizar un approach top-down. Esto significa que ire desde arriba hacía abajo explorando cada relacion que este en mi cabeza con un rumbo definido. 
+
+Listo pues, ahora que todo quedo claro es tiempo de comenzar.
+
+
+```python
+bx = sns.histplot(df,
+                  x="Medio",
+                  hue='Sexo',
+                  linewidth=2)
+bx.set_title("Distribucion por genero", fontsize=18)
+bx.set_xlabel("Canal", fontsize = 15)
+bx.set_ylabel("Numero de unidades vendidas", fontsize = 15)
+```
+
+    
+![png](/img/ecommerce/output3.png)
+
+
+
+```python
+(
+df
+ .groupby('Sexo')['Precio']
  .sum()
  .reset_index()
  .sort_values('Precio', ascending=False)
@@ -381,92 +586,6 @@ Podemos englobar el conocimiento que tenemos sobre el data set hasta ahora:
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Plataforma</th>
-      <th>Sexo</th>
-      <th>Precio</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>3</th>
-      <td>Instagram</td>
-      <td>Mujeres</td>
-      <td>741824</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Instagram</td>
-      <td>Hombre</td>
-      <td>637018</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>Youtube</td>
-      <td>Mujeres</td>
-      <td>237670</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Facebook</td>
-      <td>Mujeres</td>
-      <td>213132</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>Youtube</td>
-      <td>Hombre</td>
-      <td>211950</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>Website</td>
-      <td>Mujeres</td>
-      <td>188001</td>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>Facebook</td>
-      <td>Hombre</td>
-      <td>182941</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Website</td>
-      <td>Hombre</td>
-      <td>159314</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-```python
-df.groupby('Sexo')['Precio'].sum().reset_index().sort_values('Precio', ascending=False)
-```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
       <th>Sexo</th>
       <th>Precio</th>
     </tr>
@@ -490,7 +609,14 @@ df.groupby('Sexo')['Precio'].sum().reset_index().sort_values('Precio', ascending
 
 
 ```python
-df.groupby(['Sexo', 'Plataforma'])['Precio'].sum().reset_index().sort_values('Precio', ascending=False)
+(
+df
+ .groupby(['Sexo', 'Plataforma'])
+ ['Precio']
+ .sum()
+ .reset_index(level='Sexo')
+ .sort_values('Sexo', ascending=False)
+)
 ```
 
 
@@ -515,58 +641,54 @@ df.groupby(['Sexo', 'Plataforma'])['Precio'].sum().reset_index().sort_values('Pr
     <tr style="text-align: right;">
       <th></th>
       <th>Sexo</th>
-      <th>Plataforma</th>
       <th>Precio</th>
+    </tr>
+    <tr>
+      <th>Plataforma</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>5</th>
+      <th>Facebook</th>
       <td>Mujeres</td>
-      <td>Instagram</td>
-      <td>741824</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Hombre</td>
-      <td>Instagram</td>
-      <td>637018</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>Mujeres</td>
-      <td>Youtube</td>
-      <td>237670</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Mujeres</td>
-      <td>Facebook</td>
       <td>213132</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>Hombre</td>
-      <td>Youtube</td>
-      <td>211950</td>
+      <th>Instagram</th>
+      <td>Mujeres</td>
+      <td>741824</td>
     </tr>
     <tr>
-      <th>6</th>
+      <th>Website</th>
       <td>Mujeres</td>
-      <td>Website</td>
       <td>188001</td>
     </tr>
     <tr>
-      <th>0</th>
+      <th>Youtube</th>
+      <td>Mujeres</td>
+      <td>237670</td>
+    </tr>
+    <tr>
+      <th>Facebook</th>
       <td>Hombre</td>
-      <td>Facebook</td>
       <td>182941</td>
     </tr>
     <tr>
-      <th>2</th>
+      <th>Instagram</th>
       <td>Hombre</td>
-      <td>Website</td>
+      <td>637018</td>
+    </tr>
+    <tr>
+      <th>Website</th>
+      <td>Hombre</td>
       <td>159314</td>
+    </tr>
+    <tr>
+      <th>Youtube</th>
+      <td>Hombre</td>
+      <td>211950</td>
     </tr>
   </tbody>
 </table>
@@ -576,17 +698,47 @@ df.groupby(['Sexo', 'Plataforma'])['Precio'].sum().reset_index().sort_values('Pr
 
 
 ```python
-df["Tipo_Orden"].value_counts()
+sns.displot(df, 
+            x="Precio", 
+            col="Plataforma", 
+            row="Sexo", 
+            binwidth=6, 
+            height=5, 
+            facet_kws=dict(margin_titles=True))
 ```
+    
+![png](/img/ecommerce/output4.png)
+    
 
 
+Ok, los volumenes de ventas en el punto de aislamiento no estaban fuera de la realidad. 
+Es hora de recapitular lo que sabemos:
+1. Los dos generos compran más por canal propio, esto quiere decir Website y adveriting de la compañia en las diferentes plataformas
+2. Las mujeres compraron 1,380,627 pesos mientras que los hombres compraron 1,191,223 pesos, una diferencia del 14%
+3. Las plataformas más revenue genero entre las mujeres (en orden) fueron: 
+    - Instagram con 741,824 pesos  
+    - Youtube, Facebook y el Website acumularon un revenue de 638,803 pesos
+4. Los hombres siguieron el mismo patron de revenue:
+    - Instagram con 637,018
+    - Youtube, Facebook y el Website acumularon un revenue de 554,205 pesos
+5. El histograma de la plataforma pareciese que arroja cosas interesantes pero en realidad, los huecos que vemos en la fila de hombres es simplemente el reflejo de la diferencia en el revenue. Los hombres compraron menos, por ende, no se vendieron los mismos productos que con las mujeres.
 
 
-    Compra        57540
-    Devolucion     5681
-    Name: Tipo_Orden, dtype: int64
+```python
+sns.displot(df, 
+            x="Tipo_Cliente", 
+            col='Medio',
+            row="Sexo", 
+            binwidth=6, 
+            height=5, 
+            facet_kws=dict(margin_titles=True))
+```
+    
+![png](/img/ecommerce/output5.png)
+    
 
 
+#### Es tiempo de seguir avanzando en nuestro analisis
 
 
 ```python
@@ -599,86 +751,9 @@ sns.displot(df,
             facet_kws=dict(margin_titles=True))
 ```
 
-    
+
 ![png](/img/ecommerce/output6.png)
     
-
-
-
-```python
-df["Tipo_Cliente"].value_counts()
-```
-
-
-
-
-    Repetido    32561
-    Nuevo       30660
-    Name: Tipo_Cliente, dtype: int64
-
-
-
-
-```python
-df["Producto"].value_counts()
-```
-
-
-
-
-    Leggings Flex             1832
-    Tanga sin costuras        1285
-    Sudadera Degree           1187
-    Leggings Ombre            1182
-    Sudadera Cross back       1181
-                              ... 
-    Top Fit sin costuras       106
-    Sudadera Fitness           104
-    Camiseta Fitness           102
-    Unitardo Deportivo 7/8     102
-    Solace Sweater              83
-    Name: Producto, Length: 101, dtype: int64
-
-
-
-
-```python
-df["Categoría"].value_counts()
-```
-
-
-
-
-    Pantalones               8067
-    Leggings                 7772
-    Chamarras y Sudaderas    7445
-    Interior                 7233
-    Sudaderas y chamarras    7010
-    Camisetas y Tops         6412
-    Bra deportivo            5885
-    Camisetas                4374
-    Shorts                   3656
-    Ropa Interior            3127
-    Calcetines               2240
-    Name: Categoría, dtype: int64
-
-
-
-
-```python
-df["Comision"].value_counts()
-```
-
-
-
-
-    0%     32150
-    30%    12807
-    20%     6702
-    10%     5872
-    40%     5690
-    Name: Comision, dtype: int64
-
 
 
 
