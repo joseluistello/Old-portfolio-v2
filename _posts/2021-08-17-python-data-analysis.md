@@ -531,9 +531,10 @@ La empresa puede estar perdiendo dinero sin siquiera notarlo.
 
 Se que estoy limitado por paradigmas, esquemas y modelos pero en otro contexto esto podría ser cierto. Mucho ojo.
 
-Si no fui muy claro, dejame que te lo explique de esta manera. En este punto debemos comenzar a preguntarnos que es lo que queremos lograr y como una variable depende o se relaciona con la otra, y el como podemos sacar el maximo provecho de eso.
+Si no fui muy claro, dejame que te lo explique de esta manera. En este punto debemos comenzar a preguntarnos que es lo que queremos lograr y como una variable depende o se relaciona con la otra, y el como podemos sacar el maximo provecho de eso. Algo así como esto:
 
-**(Inserta imagen creada en Lunacy)[]**
+![png](/img/ecommerce/dependencies.png)
+    
 
 Mmmmm, voy a utilizar un approach top-down. Esto significa que ire desde arriba hacía abajo explorando cada relacion que este en mi cabeza con un rumbo definido. 
 
@@ -757,6 +758,3 @@ sns.displot(df,
 
 
 
-```python
-
-```
