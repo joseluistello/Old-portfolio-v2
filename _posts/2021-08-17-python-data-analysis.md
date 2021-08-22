@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Analizando los datos de un comercio electronico"
-subtitle: "Utilizando Pandas y Seaborn"
+title: "Ecommerce Data Analysis"
+subtitle: "Looking for insights with Python, Pandas & Matplotlib"
 background: '/img/ecommerce/fondo3.png'
 output: html_document
 date: 2021-08-17 19 -0400
