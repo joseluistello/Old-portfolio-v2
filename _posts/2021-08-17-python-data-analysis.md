@@ -13,19 +13,16 @@ comments: true
 
 #### ¡Hola! 👋  
 
-Este es un proyecto especial, por primera vez escribire en español. Creo en que (equivocadamente) le di la espalda al español bajo una falsa premisa. Ahora se que puedo contribuir  al ecosistema hispano más de lo que podria en el anglosajon.
+Este es un proyecto especial, por primera vez escribire en español. Creo que al darle la espalda al español bajo falsas premisas. Se que puedo contribuir  al ecosistema hispano más de lo que podria en el anglosajon.
 
-Empezare publicando un analisis donde detallare cada uno de mis pasos. Lo hare con datos que tome del canal [A2 Capacitación: Excel](https://www.youtube.com/channel/UCSW-_m4KXiok4Hq2nK97atw) y el cual les recomiendo seguir si quieren aprender Excel.
+Empezare contribuyendo con un analisis donde detallare cada uno de mis pasos. Lo hare con datos que tome del canal [A2 Capacitación: Excel](https://www.youtube.com/channel/UCSW-_m4KXiok4Hq2nK97atw) que por cierto recomiendo si quieren aprender Excel.
 
-Dejando de lado lo anterior, hace tiempo escribi un articulo (esta incompleto) sobre [mi proceso para analizar datos](https://joseluistello.github.io/r/2021/07/12/data-analysis-process.html), la idea detras de este approach es abordar el analisis a traves de diferentes etapas. Estas etapas buscan estandarizar la manera en que analizo cualquier tipo de dato.
+Dejando de lado lo anterior, hace tiempo escribi un articulo (que esta incompleto) sobre [mi proceso para analizar datos](https://joseluistello.github.io/r/2021/07/12/data-analysis-process.html), la idea detras de este approach es abordar el analisis a traves de diferentes etapas. Estas etapas buscan estandarizar la manera en que analizo cualquier tipo de dataset.
 
-El outcome de mi proceso consiste en priorizar la legibilidad de mi analisis abordando cada etapa de forma separada (más no aislada).
-
-Al final del día, lo que busco es entender la relacion entre mis variables y encontrar un path entre las observaciones dentro de mis datos. 
+El outcome de mi proceso consiste en priorizar la legibilidad de mi analisis abordando cada etapa de forma separada (más no aislada). Al final del día lo que busco es entender la relacion entre mis variables y encontrar un path entre las observaciones dentro de mis datos. 
 
 
-Empecemos por cargar nuestras librerias y datos <3
-
+Empecemos por cargar las librerias que ocupare y el dataset que descargue.
 
 ```python
 import pandas as pd
@@ -33,7 +30,6 @@ import matplotlib as plt
 import seaborn as sns
 import matplotlib.pyplot as plt
 ```
-
 
 ```python
 df = pd.read_csv(
@@ -52,12 +48,11 @@ df = pd.read_csv(
 )
 ```
 
-La razón del porque esribi el upload del archivo de esta manera se debe a que es más facil editar el tipo de dato antes de, que despues de.
+La razón del porque esribi así el upload del archivo se debe a que es más facil editar el tipo de dato antes de, que despues de.
 
-Este es un ejemplo de como tendriamos que modificar cada tipo de dato.
+Por ejemplo, así tendriamos que modificarlo despues de:
 
 - df["Precio"] = pd.to_numeric(df["Precio"])
-
 
 
 Ahora es tiempo de dos cosas:
@@ -65,8 +60,7 @@ Ahora es tiempo de dos cosas:
 1. Colocar un limite al maximo de filas que se muestran en cada return
 2. Establecer un default para el tamaño de las graficas 
 
-Les sugiero que utilicen este default. Es comodo establecer limites en el display de filas así como aumentar el tamaño de los plots.
-
+Les sugiero que utilicen este default. Es comodo establecer limites en el display de filas así como aumentar el tamaño de los plots, el default de los plots suele ser algo pequeño. Ojo, es recomendación, bien puedes activar esto despues del analisis cuando descargues tus imagenes.
 
 ```python
 pd.set_option("display.max_rows", 12)
