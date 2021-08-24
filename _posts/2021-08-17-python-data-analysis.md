@@ -151,7 +151,6 @@ df.head()
     <tr style="text-align: right;">
       <th></th>
       <th>Orden</th>
-      <th>Fecha</th>
       <th>Medio</th>
       <th>Vendedor</th>
       <th>Plataforma</th>
@@ -166,9 +165,7 @@ df.head()
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
       <td>1</td>
-      <td>06/08/2017</td>
       <td>Propio</td>
       <td>Directo en Tienda</td>
       <td>Website</td>
@@ -181,9 +178,7 @@ df.head()
       <td>40</td>
     </tr>
     <tr>
-      <th>1</th>
       <td>1</td>
-      <td>06/08/2017</td>
       <td>Propio</td>
       <td>Directo en Tienda</td>
       <td>Website</td>
@@ -196,9 +191,7 @@ df.head()
       <td>50</td>
     </tr>
     <tr>
-      <th>2</th>
       <td>1</td>
-      <td>06/08/2017</td>
       <td>Propio</td>
       <td>Directo en Tienda</td>
       <td>Website</td>
@@ -211,9 +204,7 @@ df.head()
       <td>36</td>
     </tr>
     <tr>
-      <th>3</th>
       <td>1</td>
-      <td>06/08/2017</td>
       <td>Propio</td>
       <td>Directo en Tienda</td>
       <td>Website</td>
@@ -226,9 +217,7 @@ df.head()
       <td>40</td>
     </tr>
     <tr>
-      <th>4</th>
       <td>1</td>
-      <td>06/08/2017</td>
       <td>Propio</td>
       <td>Directo en Tienda</td>
       <td>Website</td>
