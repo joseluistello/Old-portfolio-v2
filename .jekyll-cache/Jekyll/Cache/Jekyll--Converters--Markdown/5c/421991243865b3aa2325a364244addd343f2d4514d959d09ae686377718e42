@@ -1,0 +1,663 @@
+I"��<h4 id="hola-">¡Hola! 👋</h4>
+
+<p>Este es un proyecto especial, por primera vez escribire en español. Creo que al darle la espalda al español bajo falsas premisas. Se que puedo contribuir  al ecosistema hispano más de lo que podria en el anglosajon.</p>
+
+<p>Empezare contribuyendo con un analisis donde detallare cada uno de mis pasos. Lo hare con datos que tome del canal <a href="https://www.youtube.com/channel/UCSW-_m4KXiok4Hq2nK97atw">A2 Capacitación: Excel</a> que por cierto recomiendo si quieren aprender Excel.</p>
+
+<p>Dejando de lado lo anterior, hace tiempo escribi un articulo (que esta incompleto) sobre <a href="https://joseluistello.github.io/r/2021/07/12/data-analysis-process.html">mi proceso para analizar datos</a>, la idea detras de este approach es abordar el analisis a traves de diferentes etapas. Estas etapas buscan estandarizar la manera en que analizo cualquier tipo de dataset.</p>
+
+<p>El outcome de mi proceso consiste en priorizar la legibilidad de mi analisis abordando cada etapa de forma separada (más no aislada). Al final del día lo que busco es entender la relacion entre mis variables y encontrar un path entre las observaciones dentro de mis datos.</p>
+
+<p>Empecemos por cargar las librerias que ocupare y el dataset que descargue.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span>
+    <span class="s">'data/Datos.csv'</span><span class="p">,</span>
+    <span class="n">dtype</span><span class="o">=</span><span class="p">{</span>
+        <span class="s">"Orden"</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="s">"Medio"</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="s">"Vendedor"</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="s">"Plataforma"</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="s">"Tipo_Orden"</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="s">"Tipo_Cliente"</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="s">"Categoría"</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="s">"Producto"</span> <span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="s">"Precio"</span> <span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>La razón del porque esribi así el upload del archivo se debe a que es más facil editar el tipo de dato antes de, que despues de.</p>
+
+<p>Por ejemplo, así tendriamos que modificarlo despues de:</p>
+
+<ul>
+  <li>df[“Precio”] = pd.to_numeric(df[“Precio”])</li>
+</ul>
+
+<p>Ahora es tiempo de dos cosas:</p>
+
+<ol>
+  <li>Colocar un limite al maximo de filas que se muestran en cada return</li>
+  <li>Establecer un default para el tamaño de las graficas</li>
+</ol>
+
+<p>Les sugiero que utilicen este default. Es comodo establecer limites en el display de filas así como aumentar el tamaño de los plots, el default de los plots suele ser algo pequeño. Ojo, es recomendación, bien puedes activar esto despues del analisis cuando descargues tus imagenes.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pd</span><span class="p">.</span><span class="n">set_option</span><span class="p">(</span><span class="s">"display.max_rows"</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">'figure.figsize'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="tiempo-de-entender-nuestros-datos">¡Tiempo de entender nuestros datos!</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">info</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 63221 entries, 0 to 63220
+Data columns (total 12 columns):
+ #   Column        Non-Null Count  Dtype 
+---  ------        --------------  ----- 
+ 0   Orden         63221 non-null  int32 
+ 1   Fecha         63221 non-null  object
+ 2   Medio         63221 non-null  object
+ 3   Vendedor      63221 non-null  object
+ 4   Plataforma    63221 non-null  object
+ 5   Comision      63221 non-null  object
+ 6   Tipo_Orden    63221 non-null  object
+ 7   Tipo_Cliente  63221 non-null  object
+ 8   Sexo          63221 non-null  object
+ 9   Categoría     63221 non-null  object
+ 10  Producto      63221 non-null  object
+ 11  Precio        63221 non-null  int32 
+dtypes: int32(2), object(10)
+memory usage: 5.3+ MB
+</code></pre></div></div>
+
+<p>❤️ <strong>Le Magnifique</strong>  ❤️</p>
+
+<p>Tenemos variables interesantes pero primero debemos entender a que nos enfrentamos. El hecho de hacer preguntas como:</p>
+<ul>
+  <li>¿Son cualitativas o cuantitativas?</li>
+  <li>
+    <p>¿Son continuas o categorias? 
+Nos ayuda a tener una idea de como abordar un analisis. Empecemos por explicar la ciasificación de las variables.</p>
+  </li>
+  <li>Los datos categoricos responden a preguntas como “qué”, “quienes”, o “donde”, y se clasifican en tres grupos:
+    <ul>
+      <li>Datos nominales
+        <ul>
+          <li>No tienen un orden (Paises)</li>
+        </ul>
+      </li>
+      <li>Datos ordinales
+        <ul>
+          <li>Tienen un orden (Grado de quemadura)</li>
+        </ul>
+      </li>
+      <li>Datos binarios (dicotomicos)
+        <ul>
+          <li>Solo tienen dos niveles (Genero)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Los datos cuantitativos responden a preguntas como “cuántos”, “cuánto” o con “qué” frecuencia, y se clasifican en dos grupos:
+    <ul>
+      <li>Datos discretos - No tienen decimales
+        <ul>
+          <li>Se pueden clasificar</li>
+          <li>Pueden ser ordinales (1ra, 2da, 3ra clase)</li>
+          <li>Pueden ser binarios (Vivo o muerto 1/0)</li>
+          <li>Pueden ser intervalios o ratios (Temperaturas)</li>
+        </ul>
+      </li>
+      <li>Datos continuos - Tienen decimales
+        <ul>
+          <li>Lo mismo de arriba</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>Ahora que damos más claro esta parte, es hora de clasificar nuestro dataset.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Orden</th>
+      <th>Fecha</th>
+      <th>Medio</th>
+      <th>Vendedor</th>
+      <th>Plataforma</th>
+      <th>Comision</th>
+      <th>Tipo_Orden</th>
+      <th>Tipo_Cliente</th>
+      <th>Sexo</th>
+      <th>Categoría</th>
+      <th>Producto</th>
+      <th>Precio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>06/08/2017</td>
+      <td>Propio</td>
+      <td>Directo en Tienda</td>
+      <td>Website</td>
+      <td>0%</td>
+      <td>Compra</td>
+      <td>Repetido</td>
+      <td>Hombre</td>
+      <td>Pantalones</td>
+      <td>Pants de Entrenamiento Reactivo</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>06/08/2017</td>
+      <td>Propio</td>
+      <td>Directo en Tienda</td>
+      <td>Website</td>
+      <td>0%</td>
+      <td>Compra</td>
+      <td>Repetido</td>
+      <td>Hombre</td>
+      <td>Sudaderas y chamarras</td>
+      <td>Sudadera sin Costuras</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>06/08/2017</td>
+      <td>Propio</td>
+      <td>Directo en Tienda</td>
+      <td>Website</td>
+      <td>0%</td>
+      <td>Compra</td>
+      <td>Repetido</td>
+      <td>Mujeres</td>
+      <td>Leggings</td>
+      <td>Leggings Ombre</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>06/08/2017</td>
+      <td>Propio</td>
+      <td>Directo en Tienda</td>
+      <td>Website</td>
+      <td>0%</td>
+      <td>Compra</td>
+      <td>Repetido</td>
+      <td>Mujeres</td>
+      <td>Bra deportivo</td>
+      <td>Bra Vital sin costuras</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>06/08/2017</td>
+      <td>Propio</td>
+      <td>Directo en Tienda</td>
+      <td>Website</td>
+      <td>0%</td>
+      <td>Compra</td>
+      <td>Repetido</td>
+      <td>Hombre</td>
+      <td>Camisetas</td>
+      <td>Camiseta Heather</td>
+      <td>50</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<ul>
+  <li>Datos Categoricos
+    <ul>
+      <li>Medio</li>
+      <li>Vendedor</li>
+      <li>Plataforma</li>
+      <li>Tipo_Orden</li>
+      <li>Tipo_Cliente</li>
+      <li>Sexo</li>
+      <li>Categoia</li>
+      <li>Producto</li>
+    </ul>
+  </li>
+  <li>Datos Continuos
+    <ul>
+      <li>Fecha</li>
+      <li>Comision</li>
+      <li>Precio</li>
+    </ul>
+  </li>
+</ul>
+
+<p>¿En que tipo de subgrupo crees que entren? Te lo dejo de tarea 😂</p>
+
+<p>Una de las cosas que me gusta hacer antes de buscar patrones es aislar variables. 
+Este aislamiento me permite generar pistas acerca del dataset. Puedo ver el peso de cada variable, su distribución, sus rangos, las desviaciones que tiene, etc.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span>
+<span class="n">df</span><span class="p">[</span><span class="s">"Sexo"</span><span class="p">]</span>
+    <span class="p">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Mujeres    35937
+Hombre     27284
+Name: Sexo, dtype: int64
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span>
+<span class="n">df</span><span class="p">[</span><span class="s">"Sexo"</span><span class="p">]</span>
+    <span class="p">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="p">.</span><span class="nb">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s">'%'</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Mujeres    56.8%
+Hombre     43.2%
+Name: Sexo, dtype: object
+</code></pre></div></div>
+
+<p>Ahora se que existe una mayoría de mujeres dentro de mi set, lo cual me da señales que planeo ir guardando. Pensemoslo de esta manera:
+Ir directo a enteder la relacion entre plataformas/ventas/sexo puede salir mal, existe la posibilidad de sesgar mis pensamientos en torno a un resultado. 
+Puedo concluir en que se debe invertir dinero en tal plataforma porque esto atraera ‘X’ clientes hombres. Cuando tal vez, existan mejores lugares para poner el dinero.</p>
+
+<p>Por cierto, escribo el codigo en vertical debido a que quiero hacer legible mi analisis para su reproducción, al mismo tiempo que emulo los pipelines de R.</p>
+
+<p>Bueno, sigamos marchando!</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span>
+<span class="n">df</span><span class="p">[</span><span class="s">"Plataforma"</span><span class="p">]</span>
+    <span class="p">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="p">.</span><span class="nb">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">+</span> <span class="s">'%'</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Instagram    53.6%
+Youtube      17.5%
+Facebook     15.4%
+Website      13.5%
+Name: Plataforma, dtype: object
+</code></pre></div></div>
+
+<p>Lo que nos arroja este resultado es el total de observaciones que presento cada plataforma. Esto quiere decir (hasta ahora) que Instagram es la que más unidades vende, pero eso no significa que sea la que más revenue genere.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span>
+<span class="n">df</span><span class="p">[</span><span class="s">"Vendedor"</span><span class="p">]</span>
+    <span class="p">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="p">.</span><span class="nb">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">+</span> <span class="s">'%'</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Publicidad Insta      20.0%
+Directo en Tienda     13.5%
+Publicidad Face        9.4%
+Publicidad Youtube     7.9%
+karlagvzcia            4.5%
+                      ...  
+geogluisovec           0.5%
+gypseajain             0.5%
+nicole.izuristilo      0.5%
+anacsimdao             0.3%
+andreaheraz            0.3%
+Name: Vendedor, Length: 44, dtype: object
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">[</span><span class="s">"Vendedor"</span><span class="p">].</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">'r'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="s">'vertical'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">grid</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span>
+</code></pre></div></div>
+
+<p><img src="/img/ecommerce/output1.png" alt="png" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span>
+<span class="n">df</span><span class="p">[</span><span class="s">"Tipo_Cliente"</span><span class="p">]</span>
+    <span class="p">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Repetido    32561
+Nuevo       30660
+Name: Tipo_Cliente, dtype: int64
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span>
+<span class="n">df</span><span class="p">[</span><span class="s">"Tipo_Orden"</span><span class="p">]</span>
+    <span class="p">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="p">.</span><span class="nb">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">+</span> <span class="s">'%'</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Compra        91.0%
+Devolucion     9.0%
+Name: Tipo_Orden, dtype: object
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span>
+<span class="n">df</span><span class="p">[</span><span class="s">"Comision"</span><span class="p">]</span>
+    <span class="p">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0%     32150
+30%    12807
+20%     6702
+10%     5872
+40%     5690
+Name: Comision, dtype: int64
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span>
+<span class="n">df</span><span class="p">[</span><span class="s">"Medio"</span><span class="p">]</span>
+    <span class="p">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">mul</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+    <span class="p">.</span><span class="nb">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">+</span> <span class="s">'%'</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Propio        50.9%
+Influencer    49.1%
+Name: Medio, dtype: object
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span> 
+<span class="n">df</span><span class="p">[</span><span class="s">"Precio"</span><span class="p">]</span>
+    <span class="p">.</span><span class="n">describe</span><span class="p">()</span>
+    <span class="p">.</span><span class="nb">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>count    63221.0
+mean        40.7
+std         13.6
+min         10.0
+25%         34.0
+50%         40.0
+75%         50.0
+max        100.0
+Name: Precio, dtype: float64
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">PrecioDist</span> <span class="o">=</span> <span class="n">sns</span><span class="p">.</span><span class="n">histplot</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">,</span> 
+    <span class="n">x</span><span class="o">=</span><span class="s">"Precio"</span><span class="p">,</span>
+    <span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> 
+    <span class="n">kde</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+<span class="n">PrecioDist</span><span class="p">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">"Precio de los productos"</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">PrecioDist</span><span class="p">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">"Volumen de productos"</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/img/ecommerce/output2.png" alt="png" /></p>
+
+<p>Bueno, ya se puso interesante la cosa. Hasta ahora hemos aprendido:</p>
+<ol>
+  <li>El volumen de ventas es dominado por Instagram, lejos de Youtube, Facebook y el Website</li>
+  <li>Las mujeres representan el 56.8% de las observaciones mientras que los hombres tienen el 43.2%</li>
+  <li>El 55.3% de las ventas se concentra en 5 vendedores y el 42.9% en 3</li>
+  <li>Hay 44 vendedores “afiliados” a la compañia, me parecen muchos. Me causa algo de ruido.</li>
+  <li>Tienen “buena” retencion y lo coloco entre comillas ya que bien puede desplozarme despues de que un repetido compro, o sea que no hubo una tercera vez.</li>
+  <li>Hubo pocas devoluciones comparado a sus compras, 9% comparado con un 91%</li>
+  <li>Existen 5 tipos de comisiones donde la mayoria se concentra entre el 0% y 30%</li>
+  <li>El precio de los productos tiene un de 10 pesos y un maximo 100 pesos donde la mayoria de los productos se concentra entre los 20 y 50 pesos</li>
+</ol>
+
+<h5 id="es-tiempo-de-entender-las-relaciones-entre-nuestas-variables">Es tiempo de entender las relaciones entre nuestas variables.</h5>
+
+<p>El aislamiento ya dio muchas pistas así que es tiempo de parar. He llegado al punto donde es necesario contar con un plan de ataque pues de lo contrario terminare perdiendome. Tengo muchas preguntas, desde saber donde se concentran las comisiones y porque, hasta entender de donde viene realmente el crecimiento.</p>
+
+<p>Pensemoslo un poco, si las comisiones del 40% se concentran en un rango de precio elevado (100) , tendriamos un dropeo del revenue del 40 pesos. A los 60 pesos restantes todavía tenemos que agregarle mas costos fijos y variables. 
+La empresa puede estar perdiendo dinero sin siquiera notarlo.</p>
+
+<p>Se que estoy limitado por paradigmas, esquemas y modelos pero en otro contexto esto podría ser cierto. Mucho ojo.</p>
+
+<p>Si no fui muy claro, dejame que te lo explique de esta manera. En este punto debemos comenzar a preguntarnos que es lo que queremos lograr y como una variable depende o se relaciona con la otra, y el como podemos sacar el maximo provecho de eso. Algo así como esto:</p>
+
+<p><img src="/img/ecommerce/dependencies.png" alt="png" /></p>
+
+<p>Mmmmm, voy a utilizar un approach top-down. Esto significa que ire desde arriba hacía abajo explorando cada relacion que este en mi cabeza con un rumbo definido.</p>
+
+<p>Listo pues, ahora que todo quedo claro es tiempo de comenzar.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bx</span> <span class="o">=</span> <span class="n">sns</span><span class="p">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span>
+                  <span class="n">x</span><span class="o">=</span><span class="s">"Medio"</span><span class="p">,</span>
+                  <span class="n">hue</span><span class="o">=</span><span class="s">'Sexo'</span><span class="p">,</span>
+                  <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">bx</span><span class="p">.</span><span class="n">set_title</span><span class="p">(</span><span class="s">"Distribucion por genero"</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">bx</span><span class="p">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">"Canal"</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">bx</span><span class="p">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">"Numero de unidades vendidas"</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="/img/ecommerce/output3.png" alt="png" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span>
+<span class="n">df</span>
+ <span class="p">.</span><span class="n">groupby</span><span class="p">(</span><span class="s">'Sexo'</span><span class="p">)[</span><span class="s">'Precio'</span><span class="p">]</span>
+ <span class="p">.</span><span class="nb">sum</span><span class="p">()</span>
+ <span class="p">.</span><span class="n">reset_index</span><span class="p">()</span>
+ <span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'Precio'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Sexo</th>
+      <th>Precio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>Mujeres</td>
+      <td>1380627</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>Hombre</td>
+      <td>1191223</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span>
+<span class="n">df</span>
+ <span class="p">.</span><span class="n">groupby</span><span class="p">([</span><span class="s">'Sexo'</span><span class="p">,</span> <span class="s">'Plataforma'</span><span class="p">])</span>
+ <span class="p">[</span><span class="s">'Precio'</span><span class="p">]</span>
+ <span class="p">.</span><span class="nb">sum</span><span class="p">()</span>
+ <span class="p">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s">'Sexo'</span><span class="p">)</span>
+ <span class="p">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s">'Sexo'</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Sexo</th>
+      <th>Precio</th>
+    </tr>
+    <tr>
+      <th>Plataforma</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Facebook</th>
+      <td>Mujeres</td>
+      <td>213132</td>
+    </tr>
+    <tr>
+      <th>Instagram</th>
+      <td>Mujeres</td>
+      <td>741824</td>
+    </tr>
+    <tr>
+      <th>Website</th>
+      <td>Mujeres</td>
+      <td>188001</td>
+    </tr>
+    <tr>
+      <th>Youtube</th>
+      <td>Mujeres</td>
+      <td>237670</td>
+    </tr>
+    <tr>
+      <th>Facebook</th>
+      <td>Hombre</td>
+      <td>182941</td>
+    </tr>
+    <tr>
+      <th>Instagram</th>
+      <td>Hombre</td>
+      <td>637018</td>
+    </tr>
+    <tr>
+      <th>Website</th>
+      <td>Hombre</td>
+      <td>159314</td>
+    </tr>
+    <tr>
+      <th>Youtube</th>
+      <td>Hombre</td>
+      <td>211950</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">displot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> 
+            <span class="n">x</span><span class="o">=</span><span class="s">"Precio"</span><span class="p">,</span> 
+            <span class="n">col</span><span class="o">=</span><span class="s">"Plataforma"</span><span class="p">,</span> 
+            <span class="n">row</span><span class="o">=</span><span class="s">"Sexo"</span><span class="p">,</span> 
+            <span class="n">binwidth</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> 
+            <span class="n">height</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> 
+            <span class="n">facet_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">margin_titles</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p><img src="/img/ecommerce/output4.png" alt="png" /></p>
+
+<p>Ok, los volumenes de ventas en el punto de aislamiento no estaban fuera de la realidad. 
+Es hora de recapitular lo que sabemos:</p>
+<ol>
+  <li>Los dos generos compran más por canal propio, esto quiere decir Website y adveriting de la compañia en las diferentes plataformas</li>
+  <li>Las mujeres compraron 1,380,627 pesos mientras que los hombres compraron 1,191,223 pesos, una diferencia del 14%</li>
+  <li>Las plataformas más revenue genero entre las mujeres (en orden) fueron:
+    <ul>
+      <li>Instagram con 741,824 pesos</li>
+      <li>Youtube, Facebook y el Website acumularon un revenue de 638,803 pesos</li>
+    </ul>
+  </li>
+  <li>Los hombres siguieron el mismo patron de revenue:
+    <ul>
+      <li>Instagram con 637,018</li>
+      <li>Youtube, Facebook y el Website acumularon un revenue de 554,205 pesos</li>
+    </ul>
+  </li>
+  <li>El histograma de la plataforma pareciese que arroja cosas interesantes pero en realidad, los huecos que vemos en la fila de hombres es simplemente el reflejo de la diferencia en el revenue. Los hombres compraron menos, por ende, no se vendieron los mismos productos que con las mujeres.</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">displot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> 
+            <span class="n">x</span><span class="o">=</span><span class="s">"Tipo_Cliente"</span><span class="p">,</span> 
+            <span class="n">col</span><span class="o">=</span><span class="s">'Medio'</span><span class="p">,</span>
+            <span class="n">row</span><span class="o">=</span><span class="s">"Sexo"</span><span class="p">,</span> 
+            <span class="n">binwidth</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> 
+            <span class="n">height</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> 
+            <span class="n">facet_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">margin_titles</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p><img src="/img/ecommerce/output5.png" alt="png" /></p>
+
+<h4 id="es-tiempo-de-seguir-avanzando-en-nuestro-analisis">Es tiempo de seguir avanzando en nuestro analisis</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">displot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> 
+            <span class="n">x</span><span class="o">=</span><span class="s">"Tipo_Orden"</span><span class="p">,</span> 
+            <span class="n">col</span><span class="o">=</span><span class="s">"Plataforma"</span><span class="p">,</span> 
+            <span class="n">row</span><span class="o">=</span><span class="s">"Sexo"</span><span class="p">,</span> 
+            <span class="n">binwidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> 
+            <span class="n">height</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> 
+            <span class="n">facet_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">margin_titles</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p><img src="/img/ecommerce/output6.png" alt="png" /></p>
+
+:ET
