@@ -577,18 +577,6 @@ sns.displot(df,
     
 
 
-Ok, los volumenes de ventas en el punto de aislamiento no estaban fuera de la realidad. 
-Es hora de recapitular lo que sabemos:
-1. Los dos generos compran más por canal propio, esto quiere decir Website y adveriting de la compañia en las diferentes plataformas
-2. Las mujeres compraron 1,380,627 pesos mientras que los hombres compraron 1,191,223 pesos, una diferencia del 14%
-3. Las plataformas más revenue genero entre las mujeres (en orden) fueron: 
-    - Instagram con 741,824 pesos  
-    - Youtube, Facebook y el Website acumularon un revenue de 638,803 pesos
-4. Los hombres siguieron el mismo patron de revenue:
-    - Instagram con 637,018
-    - Youtube, Facebook y el Website acumularon un revenue de 554,205 pesos
-5. El histograma de la plataforma pareciese que arroja cosas interesantes pero en realidad, los huecos que vemos en la fila de hombres es simplemente el reflejo de la diferencia en el revenue. Los hombres compraron menos, por ende, no se vendieron los mismos productos que con las mujeres.
-
 
 ```python
 sns.displot(df, 
@@ -602,10 +590,6 @@ sns.displot(df,
     
 ![png](/img/ecommerce/output5.png)
     
-
-
-#### Es tiempo de seguir avanzando en nuestro analisis
-
 
 ```python
 sns.displot(df, 
@@ -622,4 +606,17 @@ sns.displot(df,
     
 
 
+Ok, los volumenes de ventas en el punto de aislamiento no estaban fuera de la realidad. 
+Es hora de recapitular lo que sabemos:
+1. Los dos generos compran más por canal propio, esto quiere decir Website y adveriting de la compañia en las diferentes plataformas
+2. Las mujeres compraron 1,380,627 pesos mientras que los hombres compraron 1,191,223 pesos, una diferencia del 14%
+3. Las plataformas más revenue genero entre las mujeres (en orden) fueron: 
+    - Instagram con 741,824 pesos  
+    - Youtube, Facebook y el Website acumularon un revenue de 638,803 pesos
+4. Los hombres siguieron el mismo patron de revenue:
+    - Instagram con 637,018
+    - Youtube, Facebook y el Website acumularon un revenue de 554,205 pesos
+5. El histograma de la plataforma pareciese que arroja cosas interesantes pero en realidad, los huecos que vemos en la fila de hombres es simplemente el reflejo de la diferencia en el revenue. Los hombres compraron menos, por ende, no se vendieron los mismos productos que con las mujeres.
+6. Los medios propios retienen a los clientes mientras que los influencers atraen nuevos clientes
+7. La mayoría de las devoluciones se encuentra en Instagram
 
