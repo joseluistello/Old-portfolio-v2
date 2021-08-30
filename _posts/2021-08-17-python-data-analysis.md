@@ -13,11 +13,9 @@ comments: true
 
 #### ¡Hola! 👋  
 
-Este es un proyecto especial, por primera vez escribire en español. Creo que al darle la espalda al español bajo falsas premisas. Se que puedo contribuir  al ecosistema hispano más de lo que podria en el anglosajon.
+Este es un proyecto especial, por primera vez escribire en español. Empezare con un analisis donde detallare cada uno de mis pasos. Lo hare con datos que tome del canal [A2 Capacitación: Excel](https://www.youtube.com/channel/UCSW-_m4KXiok4Hq2nK97atw), que por cierto recomiendo si quieren aprender Excel.
 
-Empezare contribuyendo con un analisis donde detallare cada uno de mis pasos. Lo hare con datos que tome del canal [A2 Capacitación: Excel](https://www.youtube.com/channel/UCSW-_m4KXiok4Hq2nK97atw) que por cierto recomiendo si quieren aprender Excel.
-
-Dejando de lado lo anterior, hace tiempo escribi un articulo (que esta incompleto) sobre [mi proceso para analizar datos](https://joseluistello.github.io/r/2021/07/12/data-analysis-process.html), la idea detras de este approach es abordar el analisis a traves de diferentes etapas. Estas etapas buscan estandarizar la manera en que analizo cualquier tipo de dataset.
+Hace tiempo escribi un articulo (que esta incompleto) sobre [mi proceso para analizar datos](https://joseluistello.github.io/r/2021/07/12/data-analysis-process.html), la idea detras de este approach es abordar el analisis a traves de diferentes etapas. Estas etapas buscan estandarizar la manera en que analizo cualquier tipo de dataset.
 
 El outcome de mi proceso consiste en priorizar la legibilidad de mi analisis abordando cada etapa de forma separada (más no aislada). Al final del día lo que busco es entender la relacion entre mis variables y encontrar un path entre las observaciones dentro de mis datos. 
 
