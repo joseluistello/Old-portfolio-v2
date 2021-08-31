@@ -58,11 +58,13 @@ Ahora es tiempo de dos cosas:
 1. Colocar un limite al maximo de filas que se muestran en cada return
 2. Establecer un default para el tamaño de las graficas 
 
-Les sugiero que utilicen este default. Es comodo establecer limites en el display de filas así como aumentar el tamaño de los plots, el default de los plots suele ser algo pequeño. Ojo, es recomendación, bien puedes activar esto despues del analisis cuando descargues tus imagenes.
+Sugiero utilizar estos parametros para la comodidad de su analisis. Establecer limites en el display de las filas así como controlar el tamaño de los plots puede variar. 
 
 ```python
+### Este codigo limita las filas de una columna ###
 pd.set_option("display.max_rows", 12)
 
+### Este codigo establece un parametro de los plots en ancho y alto ###
 %matplotlib inline
 plt.rcParams['figure.figsize'] = (12, 10)
 ```
