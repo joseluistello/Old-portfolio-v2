@@ -69,7 +69,7 @@ pd.set_option("display.max_rows", 12)
 plt.rcParams['figure.figsize'] = (12, 10)
 ```
 
-### ¡Tiempo de entender nuestros datos! 
+### ¡Es hora de empezar!
 
 
 ```python
@@ -96,9 +96,7 @@ df.info()
     dtypes: int32(2), object(10)
     memory usage: 5.3+ MB
     
-
-❤️ **Le Magnifique**  ❤️
-
+    
 Tenemos variables interesantes pero primero debemos entender a que nos enfrentamos. El hecho de hacer preguntas como:
 * ¿Son cualitativas o cuantitativas? 
 * ¿Son continuas o categorias? 
