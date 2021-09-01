@@ -140,7 +140,7 @@ La clasificación de nuestro dataset quedaría así:
 
 Una de las cosas que me gusta hacer antes de buscar patrones es aislar variables. Este aislamiento me permite generar pistas acerca del dataset. Puedo ver el peso de cada variable, su distribución, sus rangos, las desviaciones que tiene, etc.  
 
-Por ejemplo, puedo entender la cantidad de mujeres y hombres.
+Por ejemplo, puedo aislar la variable de Sexo.
 
 ```python
 (
@@ -171,7 +171,7 @@ df["Sexo"]
 
 
 Ahora se que existe una mayoría de mujeres dentro de mi set, lo cual me da señales que planeo ir guardando. Pensemoslo de esta manera:
-Ir directo a enteder la relacion entre plataformas/ventas/sexo puede salir mal, existe la posibilidad de sesgar mis pensamientos en torno a un resultado. 
+Ir directo a enteder la relacion entre plataformas/ventas/sexo puede salir mal (o no), existe la posibilidad de sesgar mis pensamientos en torno a un resultado. 
 Puedo concluir en que se debe invertir dinero en tal plataforma porque esto atraera 'X' clientes hombres. Cuando tal vez, existan mejores lugares para poner el dinero. 
 
 Por cierto, escribo el codigo en vertical debido a que quiero hacer legible mi analisis para su reproducción, al mismo tiempo que emulo los pipelines de R.
