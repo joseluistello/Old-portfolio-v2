@@ -56,9 +56,9 @@ Por ejemplo, así tendriamos que modificarlo despues de:
 Ahora es tiempo de dos cosas:
 
 1. Colocar un limite al maximo de filas que se muestran en cada return
-2. Establecer un default para el tamaño de las graficas 
+2. Establecer un default para el tamaño de los plots 
 
-Sugiero utilizar estos parametros para la comodidad de su analisis. Establecer limites en el display de las filas así como controlar el tamaño de los plots puede variar. 
+Sugiero utilizar estos parametros para la comodidad de tu analisis. El siguiente codigo establece limites en el display de las filas y controla el tamaño de las graficas que creas.
 
 ```python
 ### Este codigo limita las filas de una columna ###
@@ -69,7 +69,7 @@ pd.set_option("display.max_rows", 12)
 plt.rcParams['figure.figsize'] = (12, 10)
 ```
 
-### ¡Es hora de empezar!
+### Entendiendo las variables
 
 
 ```python
@@ -97,7 +97,7 @@ df.info()
     memory usage: 5.3+ MB
     
     
-Tenemos variables interesantes pero primero debemos entender a que nos enfrentamos. El hecho de hacer preguntas como:
+Primero debemos entender a que nos enfrentamos. El hecho de hacer preguntas como:
 * ¿Son cualitativas o cuantitativas? 
 * ¿Son continuas o categorias? 
 Nos ayuda a tener una idea de como abordar un analisis. Empecemos por explicar la ciasificación de las variables.
@@ -120,7 +120,7 @@ Nos ayuda a tener una idea de como abordar un analisis. Empecemos por explicar l
         - Lo mismo de arriba
 
 
-Ahora que damos más claro esta parte, es hora de clasificar nuestro dataset.
+La clasificación de nuestro dataset quedaría así:
 
 - Datos Categoricos
      - Medio
@@ -136,11 +136,11 @@ Ahora que damos más claro esta parte, es hora de clasificar nuestro dataset.
      - Comision
      - Precio
      
-¿En que tipo de subgrupo crees que entren? Te lo dejo de tarea 😂 
+### Analizando las variables
 
-Una de las cosas que me gusta hacer antes de buscar patrones es aislar variables. 
-Este aislamiento me permite generar pistas acerca del dataset. Puedo ver el peso de cada variable, su distribución, sus rangos, las desviaciones que tiene, etc.  
+Una de las cosas que me gusta hacer antes de buscar patrones es aislar variables. Este aislamiento me permite generar pistas acerca del dataset. Puedo ver el peso de cada variable, su distribución, sus rangos, las desviaciones que tiene, etc.  
 
+Por ejemplo, puedo entender la cantidad de mujeres y hombres.
 
 ```python
 (
@@ -149,14 +149,9 @@ df["Sexo"]
 )
 ```
 
-
-
-
     Mujeres    35937
     Hombre     27284
     Name: Sexo, dtype: int64
-
-
 
 
 ```python
@@ -168,9 +163,6 @@ df["Sexo"]
     .astype(str) + '%'
 )
 ```
-
-
-
 
     Mujeres    56.8%
     Hombre     43.2%
