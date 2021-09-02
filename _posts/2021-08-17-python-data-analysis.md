@@ -174,10 +174,7 @@ Ahora se que existe una mayoría de mujeres dentro de mi set, lo cual me da señ
 Ir directo a enteder la relacion entre plataformas/ventas/sexo puede salir mal (o no), existe la posibilidad de sesgar mis pensamientos en torno a un resultado. 
 Puedo concluir en que se debe invertir dinero en tal plataforma porque esto atraera 'X' clientes hombres. Cuando tal vez, existan mejores lugares para poner el dinero. 
 
-Por cierto, escribo el codigo en vertical debido a que quiero hacer legible mi analisis para su reproducción, al mismo tiempo que emulo los pipelines de R.
-
-Bueno, sigamos marchando!
-
+**Por cierto**, tratare de emular las pipelines del tidyverse. Por ello escribo el codigo en vertical. Me parece que es mas legible de esa manera!
 
 ```python
 (
@@ -189,15 +186,11 @@ df["Plataforma"]
 )
 ```
 
-
-
-
     Instagram    53.6%
     Youtube      17.5%
     Facebook     15.4%
     Website      13.5%
     Name: Plataforma, dtype: object
-
 
 
 Lo que nos arroja este resultado es el total de observaciones que presento cada plataforma. Esto quiere decir (hasta ahora) que Instagram es la que más unidades vende, pero eso no significa que sea la que más revenue genere.
