@@ -96,7 +96,7 @@ import json
 
 ```python
 # DEFINIENDO PARAMETROS #
-api_key = '27ae1dd809036202bcf78ee64609eb76'
+api_key = 'Ingresa_tu_apikey_aqui'
 company = "NVDA"
 years = 5
 
