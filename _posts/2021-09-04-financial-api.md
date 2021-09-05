@@ -19,7 +19,6 @@ En esta ocasión vamos a trabajar con una [API Financiera](https://financialmode
 La razón detras de este proyecto es que quiero mostrarles una manera rapida de analizar empresas desde el lado cuantitativo/descriptivo. He pasado el ultimo año desarrollando modelos financieros, soy un "hobbyista" de las finanzas. Siempre me interesaron las finanzas corporativas y valuaciones de empresas como un mero pasamiento. 
 
 
-```python
 Pero primero, ¿que es una API?
 
 Una API es una interfaz que ofrece un servicio de comunicación. A diferencia de una UI (interfaz de usuario) que conecta a una persona con una computadora, una API conecta computadoras o software entre ellos mismos.
@@ -44,7 +43,7 @@ Esto es justo lo que haremos ahora. Imaginemos a una API Rest como un ente que n
 
 ¡Es hora de empezar!
 
-```
+
 
 
 ```python
