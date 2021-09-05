@@ -44,8 +44,6 @@ Esto es justo lo que haremos ahora. Imaginemos a una API Rest como un ente que n
 ¡Es hora de empezar!
 
 
-
-
 ```python
 import requests 
 import json
