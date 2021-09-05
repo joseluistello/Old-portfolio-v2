@@ -1,10 +1,8 @@
-I"��<h4 id="hola-">¡Hola! 👋</h4>
+I"�~<h4 id="hola-">¡Hola! 👋</h4>
 
-<p>Este es un proyecto especial, por primera vez escribire en español. Creo que al darle la espalda al español bajo falsas premisas. Se que puedo contribuir  al ecosistema hispano más de lo que podria en el anglosajon.</p>
+<p>Este es un proyecto especial, por primera vez escribire en español. Empezare con un analisis donde detallare cada uno de mis pasos. Lo hare con datos que tome del canal <a href="https://www.youtube.com/channel/UCSW-_m4KXiok4Hq2nK97atw">A2 Capacitación: Excel</a>, que por cierto recomiendo si quieren aprender Excel.</p>
 
-<p>Empezare contribuyendo con un analisis donde detallare cada uno de mis pasos. Lo hare con datos que tome del canal <a href="https://www.youtube.com/channel/UCSW-_m4KXiok4Hq2nK97atw">A2 Capacitación: Excel</a> que por cierto recomiendo si quieren aprender Excel.</p>
-
-<p>Dejando de lado lo anterior, hace tiempo escribi un articulo (que esta incompleto) sobre <a href="https://joseluistello.github.io/r/2021/07/12/data-analysis-process.html">mi proceso para analizar datos</a>, la idea detras de este approach es abordar el analisis a traves de diferentes etapas. Estas etapas buscan estandarizar la manera en que analizo cualquier tipo de dataset.</p>
+<p>Hace tiempo escribi un articulo (que esta incompleto) sobre <a href="https://joseluistello.github.io/r/2021/07/12/data-analysis-process.html">mi proceso para analizar datos</a>, la idea detras de este approach es abordar el analisis a traves de diferentes etapas. Estas etapas buscan estandarizar la manera en que analizo cualquier tipo de dataset.</p>
 
 <p>El outcome de mi proceso consiste en priorizar la legibilidad de mi analisis abordando cada etapa de forma separada (más no aislada). Al final del día lo que busco es entender la relacion entre mis variables y encontrar un path entre las observaciones dentro de mis datos.</p>
 
@@ -44,18 +42,20 @@
 
 <ol>
   <li>Colocar un limite al maximo de filas que se muestran en cada return</li>
-  <li>Establecer un default para el tamaño de las graficas</li>
+  <li>Establecer un default para el tamaño de los plots</li>
 </ol>
 
-<p>Les sugiero que utilicen este default. Es comodo establecer limites en el display de filas así como aumentar el tamaño de los plots, el default de los plots suele ser algo pequeño. Ojo, es recomendación, bien puedes activar esto despues del analisis cuando descargues tus imagenes.</p>
+<p>Sugiero utilizar estos parametros para la comodidad de tu analisis. El siguiente codigo establece limites en el display de las filas y controla el tamaño de las graficas que creas.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pd</span><span class="p">.</span><span class="n">set_option</span><span class="p">(</span><span class="s">"display.max_rows"</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">### Este codigo limita las filas de una columna ###
+</span><span class="n">pd</span><span class="p">.</span><span class="n">set_option</span><span class="p">(</span><span class="s">"display.max_rows"</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
 
-<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="c1">### Este codigo establece un parametro de los plots en ancho y alto ###
+</span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 <span class="n">plt</span><span class="p">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s">'figure.figsize'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 </code></pre></div></div>
 
-<h3 id="tiempo-de-entender-nuestros-datos">¡Tiempo de entender nuestros datos!</h3>
+<h3 id="entendiendo-las-variables">Entendiendo las variables</h3>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">info</span><span class="p">()</span>
 </code></pre></div></div>
@@ -81,9 +81,7 @@ dtypes: int32(2), object(10)
 memory usage: 5.3+ MB
 </code></pre></div></div>
 
-<p>❤️ <strong>Le Magnifique</strong>  ❤️</p>
-
-<p>Tenemos variables interesantes pero primero debemos entender a que nos enfrentamos. El hecho de hacer preguntas como:</p>
+<p>Primero debemos entender a que nos enfrentamos. El hecho de hacer preguntas como:</p>
 <ul>
   <li>¿Son cualitativas o cuantitativas?</li>
   <li>
@@ -128,122 +126,7 @@ Nos ayuda a tener una idea de como abordar un analisis. Empecemos por explicar l
   </li>
 </ul>
 
-<p>Ahora que damos más claro esta parte, es hora de clasificar nuestro dataset.</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df</span><span class="p">.</span><span class="n">head</span><span class="p">()</span>
-</code></pre></div></div>
-
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Orden</th>
-      <th>Fecha</th>
-      <th>Medio</th>
-      <th>Vendedor</th>
-      <th>Plataforma</th>
-      <th>Comision</th>
-      <th>Tipo_Orden</th>
-      <th>Tipo_Cliente</th>
-      <th>Sexo</th>
-      <th>Categoría</th>
-      <th>Producto</th>
-      <th>Precio</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>06/08/2017</td>
-      <td>Propio</td>
-      <td>Directo en Tienda</td>
-      <td>Website</td>
-      <td>0%</td>
-      <td>Compra</td>
-      <td>Repetido</td>
-      <td>Hombre</td>
-      <td>Pantalones</td>
-      <td>Pants de Entrenamiento Reactivo</td>
-      <td>40</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>06/08/2017</td>
-      <td>Propio</td>
-      <td>Directo en Tienda</td>
-      <td>Website</td>
-      <td>0%</td>
-      <td>Compra</td>
-      <td>Repetido</td>
-      <td>Hombre</td>
-      <td>Sudaderas y chamarras</td>
-      <td>Sudadera sin Costuras</td>
-      <td>50</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1</td>
-      <td>06/08/2017</td>
-      <td>Propio</td>
-      <td>Directo en Tienda</td>
-      <td>Website</td>
-      <td>0%</td>
-      <td>Compra</td>
-      <td>Repetido</td>
-      <td>Mujeres</td>
-      <td>Leggings</td>
-      <td>Leggings Ombre</td>
-      <td>36</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1</td>
-      <td>06/08/2017</td>
-      <td>Propio</td>
-      <td>Directo en Tienda</td>
-      <td>Website</td>
-      <td>0%</td>
-      <td>Compra</td>
-      <td>Repetido</td>
-      <td>Mujeres</td>
-      <td>Bra deportivo</td>
-      <td>Bra Vital sin costuras</td>
-      <td>40</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>1</td>
-      <td>06/08/2017</td>
-      <td>Propio</td>
-      <td>Directo en Tienda</td>
-      <td>Website</td>
-      <td>0%</td>
-      <td>Compra</td>
-      <td>Repetido</td>
-      <td>Hombre</td>
-      <td>Camisetas</td>
-      <td>Camiseta Heather</td>
-      <td>50</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+<p>La clasificación de nuestro dataset quedaría así:</p>
 
 <ul>
   <li>Datos Categoricos
@@ -267,10 +150,11 @@ Nos ayuda a tener una idea de como abordar un analisis. Empecemos por explicar l
   </li>
 </ul>
 
-<p>¿En que tipo de subgrupo crees que entren? Te lo dejo de tarea 😂</p>
+<h3 id="analizando-las-variables">Analizando las variables</h3>
 
-<p>Una de las cosas que me gusta hacer antes de buscar patrones es aislar variables. 
-Este aislamiento me permite generar pistas acerca del dataset. Puedo ver el peso de cada variable, su distribución, sus rangos, las desviaciones que tiene, etc.</p>
+<p>Una de las cosas que me gusta hacer antes de buscar patrones es aislar variables. Este aislamiento me permite generar pistas acerca del dataset. Puedo ver el peso de cada variable, su distribución, sus rangos, las desviaciones que tiene, etc.</p>
+
+<p>Por ejemplo, puedo aislar la variable de Sexo.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span>
 <span class="n">df</span><span class="p">[</span><span class="s">"Sexo"</span><span class="p">]</span>
@@ -298,12 +182,10 @@ Name: Sexo, dtype: object
 </code></pre></div></div>
 
 <p>Ahora se que existe una mayoría de mujeres dentro de mi set, lo cual me da señales que planeo ir guardando. Pensemoslo de esta manera:
-Ir directo a enteder la relacion entre plataformas/ventas/sexo puede salir mal, existe la posibilidad de sesgar mis pensamientos en torno a un resultado. 
+Ir directo a enteder la relacion entre plataformas/ventas/sexo puede salir mal (o no), existe la posibilidad de sesgar mis pensamientos en torno a un resultado. 
 Puedo concluir en que se debe invertir dinero en tal plataforma porque esto atraera ‘X’ clientes hombres. Cuando tal vez, existan mejores lugares para poner el dinero.</p>
 
-<p>Por cierto, escribo el codigo en vertical debido a que quiero hacer legible mi analisis para su reproducción, al mismo tiempo que emulo los pipelines de R.</p>
-
-<p>Bueno, sigamos marchando!</p>
+<p><strong>Por cierto</strong>, tratare de emular las pipelines del tidyverse. Por ello escribo el codigo en vertical. Me parece que es mas legible de esa manera!</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">(</span>
 <span class="n">df</span><span class="p">[</span><span class="s">"Plataforma"</span><span class="p">]</span>
@@ -616,6 +498,28 @@ La empresa puede estar perdiendo dinero sin siquiera notarlo.</p>
 
 <p><img src="/img/ecommerce/output4.png" alt="png" /></p>
 
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">displot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> 
+            <span class="n">x</span><span class="o">=</span><span class="s">"Tipo_Cliente"</span><span class="p">,</span> 
+            <span class="n">col</span><span class="o">=</span><span class="s">'Medio'</span><span class="p">,</span>
+            <span class="n">row</span><span class="o">=</span><span class="s">"Sexo"</span><span class="p">,</span> 
+            <span class="n">binwidth</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> 
+            <span class="n">height</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> 
+            <span class="n">facet_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">margin_titles</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p><img src="/img/ecommerce/output5.png" alt="png" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">displot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> 
+            <span class="n">x</span><span class="o">=</span><span class="s">"Tipo_Orden"</span><span class="p">,</span> 
+            <span class="n">col</span><span class="o">=</span><span class="s">"Plataforma"</span><span class="p">,</span> 
+            <span class="n">row</span><span class="o">=</span><span class="s">"Sexo"</span><span class="p">,</span> 
+            <span class="n">binwidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> 
+            <span class="n">height</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> 
+            <span class="n">facet_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">margin_titles</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p><img src="/img/ecommerce/output6.png" alt="png" /></p>
+
 <p>Ok, los volumenes de ventas en el punto de aislamiento no estaban fuera de la realidad. 
 Es hora de recapitular lo que sabemos:</p>
 <ol>
@@ -634,30 +538,8 @@ Es hora de recapitular lo que sabemos:</p>
     </ul>
   </li>
   <li>El histograma de la plataforma pareciese que arroja cosas interesantes pero en realidad, los huecos que vemos en la fila de hombres es simplemente el reflejo de la diferencia en el revenue. Los hombres compraron menos, por ende, no se vendieron los mismos productos que con las mujeres.</li>
+  <li>Los medios propios retienen a los clientes mientras que los influencers atraen nuevos clientes</li>
+  <li>La mayoría de las devoluciones se encuentra en Instagram</li>
 </ol>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">displot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> 
-            <span class="n">x</span><span class="o">=</span><span class="s">"Tipo_Cliente"</span><span class="p">,</span> 
-            <span class="n">col</span><span class="o">=</span><span class="s">'Medio'</span><span class="p">,</span>
-            <span class="n">row</span><span class="o">=</span><span class="s">"Sexo"</span><span class="p">,</span> 
-            <span class="n">binwidth</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> 
-            <span class="n">height</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> 
-            <span class="n">facet_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">margin_titles</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
-</code></pre></div></div>
-
-<p><img src="/img/ecommerce/output5.png" alt="png" /></p>
-
-<h4 id="es-tiempo-de-seguir-avanzando-en-nuestro-analisis">Es tiempo de seguir avanzando en nuestro analisis</h4>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sns</span><span class="p">.</span><span class="n">displot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> 
-            <span class="n">x</span><span class="o">=</span><span class="s">"Tipo_Orden"</span><span class="p">,</span> 
-            <span class="n">col</span><span class="o">=</span><span class="s">"Plataforma"</span><span class="p">,</span> 
-            <span class="n">row</span><span class="o">=</span><span class="s">"Sexo"</span><span class="p">,</span> 
-            <span class="n">binwidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> 
-            <span class="n">height</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> 
-            <span class="n">facet_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">margin_titles</span><span class="o">=</span><span class="bp">True</span><span class="p">))</span>
-</code></pre></div></div>
-
-<p><img src="/img/ecommerce/output6.png" alt="png" /></p>
 
 :ET

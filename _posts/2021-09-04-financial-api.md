@@ -10,14 +10,23 @@ tags: [API, financial analysis, python, pandas, matplotlib]
 comments: true
 ---
 
-
-
 ¡Holaaaaaa! 
 
 En esta ocasión vamos a trabajar con una [API Financiera](https://financialmodelingprep.com/developer/docs)
 
-La razón detras de este proyecto es que quiero mostrarles una manera rapida de analizar empresas desde el lado cuantitativo/descriptivo. He pasado el ultimo año desarrollando modelos financieros, soy un "hobbyista" de las finanzas. Siempre me interesaron las finanzas corporativas y valuaciones de empresas como un mero pasamiento. 
+La razón de este proyecto es mostrarles una manera rapida de analizar empresas desde el lado cuantitativo/descriptivo. He pasado el ultimo año desarrollando modelos financieros, soy un "hobbyista" de las finanzas. Siempre me interesaron el mundo de lo corporativo y las valuaciones como un mero pasamiento.  
 
+![png](/img/financial_api/modelo1.png)
+
+![png](/img/financial_api/modelo2.png)
+
+![png](/img/financial_api/modelo3.png)
+
+![png](/img/financial_api/modelo4.png)
+
+Se el dolor y el amor que uno puede sentir al buscar datos financieros dentro de un reporte anual K10. Por eso hice este proyecto. Hay maneras mas rapidas de sacar datos financieros, inclusve para no analizarlos con Python si no guardarlos y tu manipularlos con la herramienta que mas te gusta (como Excel).
+
+--- 
 
 Pero primero, ¿que es una API?
 
@@ -277,175 +286,6 @@ pd.DataFrame.from_records(df).head()
 
 
 
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>date</th>
-      <th>symbol</th>
-      <th>reportedCurrency</th>
-      <th>fillingDate</th>
-      <th>acceptedDate</th>
-      <th>period</th>
-      <th>revenue</th>
-      <th>costOfRevenue</th>
-      <th>grossProfit</th>
-      <th>grossProfitRatio</th>
-      <th>...</th>
-      <th>incomeBeforeTaxRatio</th>
-      <th>incomeTaxExpense</th>
-      <th>netIncome</th>
-      <th>netIncomeRatio</th>
-      <th>eps</th>
-      <th>epsdiluted</th>
-      <th>weightedAverageShsOut</th>
-      <th>weightedAverageShsOutDil</th>
-      <th>link</th>
-      <th>finalLink</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2021-01-31</td>
-      <td>NVDA</td>
-      <td>USD</td>
-      <td>2021-02-26</td>
-      <td>2021-02-26 17:03:14</td>
-      <td>FY</td>
-      <td>16675000000</td>
-      <td>6279000000</td>
-      <td>10396000000</td>
-      <td>0.623448</td>
-      <td>...</td>
-      <td>0.264408</td>
-      <td>77000000</td>
-      <td>4332000000</td>
-      <td>0.259790</td>
-      <td>1.724522</td>
-      <td>1.724522</td>
-      <td>2468000000</td>
-      <td>2512000000</td>
-      <td>https://www.sec.gov/Archives/edgar/data/104581...</td>
-      <td>https://www.sec.gov/Archives/edgar/data/104581...</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2020-01-26</td>
-      <td>NVDA</td>
-      <td>USD</td>
-      <td>2020-02-20 00:00:00</td>
-      <td>2020-02-20 16:38:18</td>
-      <td>FY</td>
-      <td>10918000000</td>
-      <td>4150000000</td>
-      <td>6768000000</td>
-      <td>0.619894</td>
-      <td>...</td>
-      <td>0.272028</td>
-      <td>174000000</td>
-      <td>2796000000</td>
-      <td>0.256091</td>
-      <td>1.131068</td>
-      <td>1.131068</td>
-      <td>2472000000</td>
-      <td>2472000000</td>
-      <td>https://www.sec.gov/Archives/edgar/data/104581...</td>
-      <td>https://www.sec.gov/Archives/edgar/data/104581...</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2019-01-27</td>
-      <td>NVDA</td>
-      <td>USD</td>
-      <td>2019-02-21 00:00:00</td>
-      <td>2019-02-21 16:37:18</td>
-      <td>FY</td>
-      <td>11716000000</td>
-      <td>4545000000</td>
-      <td>7171000000</td>
-      <td>0.612069</td>
-      <td>...</td>
-      <td>0.332537</td>
-      <td>123000000</td>
-      <td>4141000000</td>
-      <td>0.353448</td>
-      <td>1.656400</td>
-      <td>1.656400</td>
-      <td>2500000000</td>
-      <td>2500000000</td>
-      <td>https://www.sec.gov/Archives/edgar/data/104581...</td>
-      <td>https://www.sec.gov/Archives/edgar/data/104581...</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2018-01-28</td>
-      <td>NVDA</td>
-      <td>USD</td>
-      <td>2018-02-28 00:00:00</td>
-      <td>2018-02-28 16:31:19</td>
-      <td>FY</td>
-      <td>9714000000</td>
-      <td>3892000000</td>
-      <td>5822000000</td>
-      <td>0.599341</td>
-      <td>...</td>
-      <td>0.329010</td>
-      <td>282000000</td>
-      <td>3047000000</td>
-      <td>0.313671</td>
-      <td>1.205301</td>
-      <td>1.205301</td>
-      <td>2528000000</td>
-      <td>2528000000</td>
-      <td>https://www.sec.gov/Archives/edgar/data/104581...</td>
-      <td>https://www.sec.gov/Archives/edgar/data/104581...</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2017-01-29</td>
-      <td>NVDA</td>
-      <td>USD</td>
-      <td>2017-03-01 00:00:00</td>
-      <td>2017-03-01 17:30:49</td>
-      <td>FY</td>
-      <td>6910000000</td>
-      <td>2847000000</td>
-      <td>4063000000</td>
-      <td>0.587988</td>
-      <td>...</td>
-      <td>0.275687</td>
-      <td>239000000</td>
-      <td>1666000000</td>
-      <td>0.241100</td>
-      <td>0.641757</td>
-      <td>0.641757</td>
-      <td>2596000000</td>
-      <td>2596000000</td>
-      <td>https://www.sec.gov/Archives/edgar/data/104581...</td>
-      <td>https://www.sec.gov/Archives/edgar/data/104581...</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 35 columns</p>
-</div>
-
-
-
 Ya tenemos nuestro dataframe. Es hora de quitar algunas columnas y buscar valores nulos.
 
 
@@ -511,185 +351,6 @@ df[["revenue", "costOfRevenue"]] = df[["revenue", "costOfRevenue"]] / 1000000000
 
 
 ```python
-df
-```
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>date</th>
-      <th>revenue</th>
-      <th>costOfRevenue</th>
-      <th>grossProfit</th>
-      <th>researchAndDevelopmentExpenses</th>
-      <th>generalAndAdministrativeExpenses</th>
-      <th>sellingAndMarketingExpenses</th>
-      <th>sellingGeneralAndAdministrativeExpenses</th>
-      <th>otherExpenses</th>
-      <th>operatingExpenses</th>
-      <th>...</th>
-      <th>ebitda</th>
-      <th>ebitdaratio</th>
-      <th>operatingIncome</th>
-      <th>operatingIncomeRatio</th>
-      <th>totalOtherIncomeExpensesNet</th>
-      <th>incomeBeforeTax</th>
-      <th>incomeTaxExpense</th>
-      <th>netIncome</th>
-      <th>weightedAverageShsOut</th>
-      <th>weightedAverageShsOutDil</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>4</th>
-      <td>2017-01-29</td>
-      <td>6.910</td>
-      <td>2.847</td>
-      <td>4063000000</td>
-      <td>1463000000</td>
-      <td>6.630000e+08</td>
-      <td>0.0</td>
-      <td>666000000</td>
-      <td>0.0</td>
-      <td>2129000000</td>
-      <td>...</td>
-      <td>2150000000</td>
-      <td>0.311143</td>
-      <td>1934000000</td>
-      <td>0.279884</td>
-      <td>29000000</td>
-      <td>1905000000</td>
-      <td>239000000</td>
-      <td>1666000000</td>
-      <td>2596000000</td>
-      <td>2596000000</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2018-01-28</td>
-      <td>9.714</td>
-      <td>3.892</td>
-      <td>5822000000</td>
-      <td>1797000000</td>
-      <td>8.150000e+08</td>
-      <td>0.0</td>
-      <td>815000000</td>
-      <td>0.0</td>
-      <td>2612000000</td>
-      <td>...</td>
-      <td>3589000000</td>
-      <td>0.369467</td>
-      <td>3210000000</td>
-      <td>0.330451</td>
-      <td>14000000</td>
-      <td>3196000000</td>
-      <td>282000000</td>
-      <td>3047000000</td>
-      <td>2528000000</td>
-      <td>2528000000</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2019-01-27</td>
-      <td>11.716</td>
-      <td>4.545</td>
-      <td>7171000000</td>
-      <td>2376000000</td>
-      <td>9.910000e+08</td>
-      <td>0.0</td>
-      <td>991000000</td>
-      <td>0.0</td>
-      <td>3367000000</td>
-      <td>...</td>
-      <td>4584000000</td>
-      <td>0.391260</td>
-      <td>3804000000</td>
-      <td>0.324684</td>
-      <td>-92000000</td>
-      <td>3896000000</td>
-      <td>123000000</td>
-      <td>4141000000</td>
-      <td>2500000000</td>
-      <td>2500000000</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2020-01-26</td>
-      <td>10.918</td>
-      <td>4.150</td>
-      <td>6768000000</td>
-      <td>2829000000</td>
-      <td>1.093000e+09</td>
-      <td>0.0</td>
-      <td>1093000000</td>
-      <td>0.0</td>
-      <td>3922000000</td>
-      <td>...</td>
-      <td>3403000000</td>
-      <td>0.311687</td>
-      <td>2846000000</td>
-      <td>0.260670</td>
-      <td>-124000000</td>
-      <td>2970000000</td>
-      <td>174000000</td>
-      <td>2796000000</td>
-      <td>2472000000</td>
-      <td>2472000000</td>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>2021-01-31</td>
-      <td>16.675</td>
-      <td>6.279</td>
-      <td>10396000000</td>
-      <td>3924000000</td>
-      <td>0.000000e+00</td>
-      <td>0.0</td>
-      <td>1940000000</td>
-      <td>0.0</td>
-      <td>5864000000</td>
-      <td>...</td>
-      <td>5691000000</td>
-      <td>0.341289</td>
-      <td>4532000000</td>
-      <td>0.271784</td>
-      <td>123000000</td>
-      <td>4409000000</td>
-      <td>77000000</td>
-      <td>4332000000</td>
-      <td>2468000000</td>
-      <td>2512000000</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 23 columns</p>
-</div>
-
-
-
-¡Listo! Veamos a lo que me refiero
-
-
-```python
 plt.bar(df['date'], df['revenue'])
 plt.title('Crecimiento en las ventas de NVDA', fontsize=14)
 plt.xlabel('Año', fontsize=10)
@@ -700,7 +361,7 @@ plt.show()
 
 
     
-![png](output_15_0.png)
+![png](/img/financial_api/output1.png)
     
 
 
@@ -736,11 +397,7 @@ plt.show()
 
 
     
-![png](output_16_0.png)
+![png](/img/financial_api/output2.png)
     
 
 
-
-```python
-
-```
