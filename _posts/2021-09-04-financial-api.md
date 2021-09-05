@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Working with API Rest and JSON"
-subtitle: "Financial analysis x10 faster"
-background: '/img/ecommerce/fondo3.png'
+subtitle: "Financial Analysis x10 Faster"
+background: '/img/financial_api/fondo2.png'
 output: html_document
 date: 2021-09-04 19 -0400
 category: Python
