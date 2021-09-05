@@ -212,6 +212,8 @@ import seaborn as sns
 plt.rcParams['figure.figsize'] = (12, 10)
 ```
 
+Utilizare las ventas de la compañia y los costes de las ventas como comparación a través de los 5 años. 
+
 
 ```python
 ## Este codigo te permite seleccionar las columnas de tu interes con el proposito
