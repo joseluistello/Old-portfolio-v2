@@ -15,7 +15,7 @@ comments: true
 
 En esta ocasión vamos a trabajar con una [API Financiera](https://financialmodelingprep.com/developer/docs)
 
-La razón de este proyecto es mostrarles una manera rapida de analizar cuantitativamente empresas. He pasado el ultimo año desarrollando modelos financieros, soy un "hobbyista" de las finanzas. Siempre me intereso el mundo de las finanzas corporativas y las valuaciones como un mero pasatiempo.
+Hice este proyecto para enseñar una manera rapida de analizar cuantitativamente a las empresas. El ultimo estuve aprendiendo finanzas y desarrollando modelos financieros. Podría decirse que soy un "hobbyista" de las finanzas.
 
 ![png](/img/financial_api/modelo1.png)
 
