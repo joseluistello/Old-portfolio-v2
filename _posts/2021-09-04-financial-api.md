@@ -75,25 +75,27 @@ Hay 3 reglas que se deben seguir para usar una API REST.
 
 Nuestro metodo sera de tipo GET que es lo mismo a pedir informacion de la API.
 Nuestros parametros seran:
-1. La llave de la API (la puedes conseguir creando una cuenta en el portal de la API) 
+1. La llave de la API (la puedes conseguir [creando una cuenta](https://financialmodelingprep.com/register) en el portal de la API) 
 2. El ticket en la bolsa de la empresa de nuestro interes
 3. Los años
 
-En esta ocasion haremos un request de datos financieros del Income Statement de NVDA. Si lo que quieres es su Balance Sheet o Cash Flow solo cambia esto la parte de income-statement en la URL por balance-sheet o cash-flow
-
+En esta ocasion haremos un request de datos financieros del Income Statement de NVDA. 
 
 ```python
 import requests 
 import json
 ```
 
-
 ```python
 # DEFINIENDO PARAMETROS #
 api_key = 'Ingresa_tu_apikey_aqui'
 company = "NVDA"
 years = 5
+```
 
+Si lo que quieres es su Balance Sheet o Cash Flow solo cambia esto la parte de income-statement en la URL por balance-sheet o cash-flow
+
+```python
 # REQUEST GET  con el package Requests.
 r = requests.get(f'https://financialmodelingprep.com/api/v3/income-statement/{company}?limit={years}&apikey={api_key}')
 data = r.json()
