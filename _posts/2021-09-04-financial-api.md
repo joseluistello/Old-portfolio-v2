@@ -15,7 +15,7 @@ comments: true
 
 En esta ocasión vamos a trabajar con una [API Financiera](https://financialmodelingprep.com/developer/docs)
 
-Hice este proyecto para enseñar una manera rapida de analizar cuantitativamente a las empresas. El ultimo estuve aprendiendo finanzas y desarrollando modelos financieros. Podría decirse que soy un "hobbyista" de las finanzas.
+Hice este proyecto para enseñar una manera rapida de analizar cuantitativamente a las empresas. El ultimo año estuve aprendiendo finanzas y desarrollando modelos financieros, podria decirse que soy un "hobbyista" de las finanzas.
 
 ![png](/img/financial_api/modelo1.png)
 
@@ -25,15 +25,16 @@ Hice este proyecto para enseñar una manera rapida de analizar cuantitativamente
 
 ![png](/img/financial_api/modelo4.png)
 
-Se el dolor y el amor que uno puede sentir al buscar datos financieros dentro de un reporte anual K10. Por eso hice este proyecto. Hay maneras rapidas de sacar datos financieros sin necesidad de copiar y pegarlos a mano en nuestro Excel. 
+Se el dolor y el amor que podemos experimentar al crear modelos financieros. Buscar dentro de un reporte anual K10  y pasar datos a mano es un proceso lento y lleno de fricciones. Por eso hice este proyecto, esta es mi propuesta para agilizar la recolección de datos financieros. 
 
 En este proyecto aprenderas sobre:
 
-1. Que son las API REST 
-2. Como extraer datos de una API
-3. Transformar los datos de JSON de una API a un dataframe de Pandas
-4. Como graficar los datos con Matplotlib y Numpy
-5. Como guardar los datos dentro de un CSV para que los en Excel o R
+1. Que son las API 
+2. Que es REST
+3. Como extraer datos de una API
+4. Transformar los datos de JSON de una API a un dataframe de Pandas
+5. Como graficar los datos con Matplotlib y Numpy
+6. Como guardar los datos dentro de un CSV para que los manipules con en Excel, R u otra herramienta de tu agrado
 
 --- 
 
@@ -41,11 +42,11 @@ En este proyecto aprenderas sobre:
 
 Una API es una interfaz que ofrece un servicio de comunicación. A diferencia de una UI (interfaz de usuario) que conecta a una persona con una computadora, una API conecta computadoras o software entre ellos mismos.
 
-Estan hechas de diferentes partes que actuan como herramientas o servicios. Un programador puede llamar a uno de estos servicios a traves de metodos, requests o endpoints que estan definidas en las espicificaciones de una API. 
+Estan hechas de diferentes partes que actuan como herramientas o servicios. Un programador puede llamar a uno de estos servicios a traves de metodos, requests o endpoints los cuales estan definidos en las espicificaciones de una API. 
 
-Pero la API como tal no es practica de usar, debe diseñarse a través de una arquitectura llamada REST que ayuda a manejar la información. 
+#### ¿Que es REST? 
 
-REST fue propuesta por Roy Thomas en un paper titulado " Architectural Styles and the Design of Network-based Software Architectures", y una idea basica detras de REST es tratar a los datos como objetos que puedes llamar, crear o destruir y a través de metodos y que son representados en formato JSON, XML o RDF. 
+REST fue propuesto por Roy Thomas en un paper titulado " Architectural Styles and the Design of Network-based Software Architectures". REST es un tipo de diseño/arquitectura al que se puede someter una API. Una de las ideas detras de REST es ver a los datos como objetos que puedes llamar, crear o destruir a través de metodos y que son representados en formato JSON, XML o RDF. 
 
 | Metodo | Descripcion |
 | ----------- | ----------- |
@@ -56,19 +57,13 @@ REST fue propuesta por Roy Thomas en un paper titulado " Architectural Styles an
 
 [Como explicarle REST a tu esposa](http://www.looah.com/source/view/2284)
 
-
-Esto es justo lo que haremos ahora. Imaginemos a una API Rest como un ente que nos ayuda a traer datos desde una base externa. Nuestra computadora necesita comunicarse con otra y REST es la mejor forma de hacerlo.
-
-¡Es hora de empezar!
-
+Esto es justo lo que haremos ahora. Imaginemos a una API de arquitectura tipo REST como un ente que nos ayuda a traer datos desde una base externa. Nuestra computadora necesita comunicarse con otra y REST es la mejor forma de hacerlo.
 
 Utilizaremos el modulo **requests** para enviar pedimentos HTTP de manera sencilla. 
 
 HTTP o Hypertext Transfer Protocol es un protocolo Request-Response (pedido y respuesta) cuya funcion principal es establecer una comunicación entre sistemas de la Internet que conforman el World Wide Web (WWW).
 
-Fue diseñado y creado para ser un puente entre los clientes y servidores. Este "puente" tiene metodos definidos que indican acciones deseadas por parte de un cliente hacia un recurso especifico. Lo que el recurso represente depende de lo que se implemento en el servidor. 
-
-Basicamente REST es la manera en que HTTP se debe usar.
+Fue diseñado y creado para ser un puente entre los clientes y servidores. Este "puente" tiene metodos definidos que indican acciones deseadas por parte de un cliente hacia un recurso especifico. Lo que el recurso represente depende de lo que se implemento en el servidor. Basicamente REST es la manera en que HTTP se debe usar.
 
 
 #### Extrayendo datos de una API
@@ -84,8 +79,7 @@ Nuestros parametros seran:
 2. El ticket en la bolsa de la empresa de nuestro interes
 3. Los años
 
-En esta ocasion haremos un request de datos financieros del Income Statement de NVDA.
-Si lo que quieres es su Balance Sheet o Cash Flow solo cambia esto la parte de income-statement en la URL por balance-sheet o cash-flow
+En esta ocasion haremos un request de datos financieros del Income Statement de NVDA. Si lo que quieres es su Balance Sheet o Cash Flow solo cambia esto la parte de income-statement en la URL por balance-sheet o cash-flow
 
 
 ```python
