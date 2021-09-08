@@ -217,7 +217,9 @@ import seaborn as sns
 plt.rcParams['figure.figsize'] = (12, 10)
 ```
 
-Utilizare las ventas de la compañia y los costes de las ventas como comparación a través de los 5 años. 
+Utilizare dos metricas para comparar dentro de un periodo de 5 años:
+1. Las ventas de la compañia 
+2. Los costes de en los que incurre la compañia para hacer esas ventas 
 
 
 ```python
