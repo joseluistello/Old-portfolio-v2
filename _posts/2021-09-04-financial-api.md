@@ -73,7 +73,8 @@ Hay 3 reglas que se deben seguir para usar una API REST.
 2. Definir los parametros
 3. Hacer el request
 
-Nuestro metodo sera de tipo GET que es lo mismo a pedir informacion de la API.
+Nuestro metodo sera de tipo GET que es lo mismo que pedir informacion de la API.
+
 Nuestros parametros seran:
 1. La llave de la API (la puedes conseguir [creando una cuenta](https://financialmodelingprep.com/register) en el portal de la API) 
 2. El ticket en la bolsa de la empresa de nuestro interes
@@ -108,13 +109,15 @@ print(data)
 
 #### Transformando los datos JSON a un DF
 
-La razón por la cual queremos transformar estos datos es por el proposito de manupilación. Trabajar con un JSON no es recomendable pues es dificil analizarlo cuando esta en su estado natural, solo son buenos para pasar información entre servidores. Pandas nos permite transformarlos de una manera super sencilla, solo necesitamos el siguiente pedazo de codigo.
+Trabajar con un JSON no es recomendable pues es dificil manipularlo, al final del día fueron creados para enviar y recibir información entre servidores pero no para ser analizados. Contrario a esto, Pandas nos permite transformarlos de una manera super sencilla a un Dataframe con el siguiente codigo.
 
+Primero importamos pandas. 
 
 ```python
 import pandas as pd
 ```
 
+Y despues escribimos este pedazo de codigo.
 
 ```python
 df = pd.DataFrame(data)
@@ -165,9 +168,12 @@ df.info()
     memory usage: 1.5+ KB
     
 
-Listo. Los datos vienen sin valores nulos y estan en buen estado así que podemos manejarlos a partir de ahora en adelante. 
-Lo unico que hare es quitar quitar algunas columnas como los ratios pero no es necesario que tu lo hagas si no es necesario. Lo que si es necesario es que apliques un SORT. Esto te permite cambiar el orden del frame a partir de sus fechas, esto con el objetivo de graficar. 
+Listo. Los datos vienen sin valores nulos y estan en buen estado así que podemos analizarlos a partir de ahora. 
+Lo unico que hare es quitar quitar algunas columnas como los ratios, pero no es necesario que tu lo hagas si no quieres. 
 
+Lo que si es necesario es que apliques un SORT. Esto te permite cambiar el orden del frame a partir de sus fechas, pues si lo graficos de esta manera los plots te saldran invertidos.
+
+Con esto dropeamos o eliminalos las columnas.
 
 ```python
 df = df.drop(columns=['reportedCurrency', 
@@ -184,6 +190,7 @@ df = df.drop(columns=['reportedCurrency',
                       'epsdiluted'])
 ```
 
+Y con esto volteamos el frame.
 
 ```python
 df = df.sort_values("date")
@@ -191,8 +198,11 @@ df = df.sort_values("date")
 
 #### Graficando los datos
 
-Bueno, es hora de hacer algnos plots para que veas lo facil que es graficar los datos.
-Primero voy a cargar las librerias, despues aplicare una configuración para el tamaño de los plots y por ultimo dividire las columnas de mi interes para que el axis de Y no arroje visualizaciones raras.
+Ahora que transformamos y limpiamos los datos, es hora de hacer algunos plots para mostrarte lo facil que es graficar el frame.
+
+1. Primero cargare las librerias 
+2. Despues aplicare una configuración para el tamaño de los plots
+3. Por ultimo dividire las columnas de mi interes para que el axis de Y no arroje visualizaciones raras jaja.
 
 
 ```python
