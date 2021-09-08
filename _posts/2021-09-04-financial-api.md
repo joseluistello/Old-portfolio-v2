@@ -31,10 +31,11 @@ En este proyecto aprenderas sobre:
 
 1. Que son las API 
 2. Que es REST
-3. Como extraer datos de una API
-4. Transformar los datos de JSON de una API a un dataframe de Pandas
-5. Como graficar los datos con Matplotlib y Numpy
-6. Como guardar los datos dentro de un CSV para que los manipules con en Excel, R u otra herramienta de tu agrado
+3. Que es HTTP
+4. Como extraer datos de una API
+5. Transformar los datos de JSON de una API a un dataframe de Pandas
+6. Como graficar los datos con Matplotlib y Numpy
+7. Como guardar los datos dentro de un CSV para que los manipules con en Excel, R u otra herramienta de tu agrado
 
 --- 
 
@@ -57,9 +58,9 @@ REST fue propuesto por Roy Thomas en un paper titulado " Architectural Styles an
 
 [Como explicarle REST a tu esposa](http://www.looah.com/source/view/2284)
 
-Esto es justo lo que haremos ahora. Imaginemos a una API de arquitectura tipo REST como un ente que nos ayuda a traer datos desde una base externa. Nuestra computadora necesita comunicarse con otra y REST es la mejor forma de hacerlo.
+Esto es justo lo que haremos ahora. Imaginemos a una API de arquitectura tipo REST como un ente que nos ayuda a traer datos desde una base externa. Nuestra computadora necesita comunicarse con otra y una API REST es la mejor forma de hacerlo. Para ello, utilizaremos el modulo **requests** de Python donde podemos enviar pedimentos HTTP de manera sencilla. 
 
-Utilizaremos el modulo **requests** para enviar pedimentos HTTP de manera sencilla. 
+Pero, ¿que es HTTP?
 
 HTTP o Hypertext Transfer Protocol es un protocolo Request-Response (pedido y respuesta) cuya funcion principal es establecer una comunicación entre sistemas de la Internet que conforman el World Wide Web (WWW).
 
