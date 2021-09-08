@@ -64,8 +64,7 @@ Pero, ¿que es HTTP?
 
 HTTP o Hypertext Transfer Protocol es un protocolo Request-Response (pedido y respuesta) cuya funcion principal es establecer una comunicación entre sistemas de la Internet que conforman el World Wide Web (WWW).
 
-Fue diseñado y creado para ser un puente entre los clientes y servidores. Este "puente" tiene metodos definidos que indican acciones deseadas por parte de un cliente hacia un recurso especifico. Lo que el recurso represente depende de lo que se implemento en el servidor. Basicamente REST es la manera en que HTTP se debe usar.
-
+Fue creado para actuar como un puente entre los clientes y servidores. Este "puente" tiene metodos definidos que indican acciones *deseadas* por parte de un cliente hacia un recurso especifico. Lo que el recurso represente depende de lo que se implemento en el servidor. Basicamente REST es la manera en que HTTP se debe usar.
 
 #### Extrayendo datos de una API
 
