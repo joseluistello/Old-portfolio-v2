@@ -211,7 +211,6 @@ import numpy as np
 import seaborn as sns
 ```
 
-
 ```python
 ### Este codigo establece la anchura y la altura de los plots (bastante util) 
 %matplotlib inline
