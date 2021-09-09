@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="/img/favicon_io/favicon-16x16.png">
+  
+
+  <title>
+    Semiconductor Industry Analysis - Simplifying Complexity
+    
+  </title>
+
+  <meta name="description" content="We know that Semiconductors industry it’s a complex industry. Without this industry, We could not be reading this article. We could not imagine all this prog...">
+
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,700;1,300;1,400&display=swap" rel="stylesheet"> 
+  <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://joseluistello.github.io/r/2021/06/28/semiconductors-part1.html">
+  <link rel="alternate" type="application/rss+xml" title="Simplifying Complexity" href="/feed.xml">
+
+</head>
+
+
+<body>  
+
+  
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+    
+      <img src="/img/favicon_io/favicon-32x32.png" alt="">
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/posts">Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://joseluistello.substack.com">Library</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Page Header -->
+
+<header class="masthead" style="background-image: url('/img/semiconductores/3.png')">
+  
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Semiconductor Industry Analysis</h1>
+            
+            <h2 class="subheading">Visualizing the Stock Market With Tidyverse and TidyQuant</h2>
+            
+            <span class="meta">Posted by
+              <a href="#">Jose Luis Tello</a>
+              on June 28, 2021 &middot; <span class="reading-time" title="Estimated read time">
+  
+   19 mins  read </span>
+
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+        <p>We know that Semiconductors industry it’s a complex industry. Without this industry, We could not be reading this article. We could not imagine all this progress. But understand this monster it’s hard.</p>
+
+<hr />
+<p>That’s why I created this project. <strong>I’m going to divide the project in 2 parts.</strong></p>
+
+<blockquote>
+  <p>The first part is divided into 4 main points:</p>
+</blockquote>
+
+<ul>
+  <li>A short introduction about the business model that exist in the industry</li>
+  <li>A comparation about some index’s with specially focus on FOX Index</li>
+  <li>Select the companies that we will be analyzing throughout the project</li>
+  <li>Create models around the data and plot some nice visualizations</li>
+</ul>
+
+<blockquote>
+  <p>The second part is divided into X points:</p>
+</blockquote>
+
+<ul>
+  <li>I’m going to talk about one companie in particular</li>
+  <li>Select some financial ratios</li>
+  <li>Download and plot the data</li>
+  <li>Explain patterns</li>
+  <li>Regression analysis and forecasting modeling</li>
+</ul>
+
+<hr />
+<blockquote>
+  <p><strong>For me</strong>, the goal of this project consists on show you my knowledge on quant financial analysis, statistical learning and writing.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>For you</strong>, the project consists on understanding how the industry works, his performance over the years and why not, pick the opportunity to invest in the semiconductor industry.</p>
+</blockquote>
+
+<hr />
+<p>Let’s begin with the first main point… <strong>the business models.</strong> In order to understand the complexity around the industry, we need an overview of the process for creating an IC’S</p>
+
+<p><img src="/img/semiconductores/process.png" alt="Index" /></p>
+
+<blockquote>
+  <p><em>As wee see, there are many steps. But we can categorize the whole process in three major business models.</em></p>
+</blockquote>
+
+<p><img src="/img/semiconductores/HD.png" alt="Index" /></p>
+
+<h3 id="1--foundry">1.- Foundry</h3>
+
+<p><strong>Foundry companies are concerned only with IC manufacturing.</strong></p>
+
+<blockquote>
+  <p>The foundry model is a microelectronics engineering and manufacturing business model consisting of a semiconductor fabrication plant, or foundry, and an integrated circuit design operation, each belonging to separate companies or subsidiaries.</p>
+</blockquote>
+
+<p><strong>Foundry Model it’s dominated by TSMC.</strong></p>
+
+<h3 id="2--idm">2.- IDM</h3>
+
+<p><strong>IDMs design and manufacture integrated circuits (ICs).</strong></p>
+
+<blockquote>
+  <p>An integrated device manufacturer (IDM) is a semiconductor company which designs, manufactures, and sells integrated circuit (IC) products. As a classification, IDM is often used to differentiate between a company which handles semiconductor manufacturing in-house, and a fabless semiconductor company, which outsources production to a third-party. Due to the dynamic nature of the semiconductor industry, the term IDM has become less accurate than when it was coined.</p>
+</blockquote>
+
+<p><strong>Intel and Texas instruments are examples of this model.</strong></p>
+
+<h3 id="3--fabless">3.- Fabless</h3>
+
+<p>Fabless companies focus only on IC design.</p>
+
+<blockquote>
+  <p>Fabless manufacturing is the design and sale of hardware devices and semiconductor chips while outsourcing their fabrication (or fab) to a specialized manufacturer called a semiconductor foundry. Foundries are typically, but not exclusively, located in the United States, People’s Republic of China, and Taiwan. Fabless companies can benefit from lower capital costs while concentrating their research and development resources on the end market. Some fabless companies and pure play foundries (like TSMC) may offer integrated-circuit design services to third parties.</p>
+</blockquote>
+
+<p><strong>Broadcom, Qualcomm and AMD are examples of this model.</strong></p>
+
+<h3 id="lets-begin-with-an-index-performance-comparation">Let’s begin with an index performance comparation</h3>
+
+<p>I’m going to use the <strong>PHLX Semiconductor Sector</strong> Index</p>
+
+<blockquote>
+  <p>PHLX Semiconductor Sector is a Philadelphia Stock Exchange capitalization-weighted index composed of the 30 largest companies primarily involved in the design, distribution, manufacture, and sale of semiconductors. It was created in 1993 by the Philadelphia Stock Exchange</p>
+</blockquote>
+
+<p><img src="/img/semiconductores/performancecomparation.png" alt="Index" /></p>
+
+<ul>
+  <li><strong>Blue_SOX.-</strong> PHLX Semiconductor</li>
+  <li><strong>BlueSky_DJI.-</strong> Dow Jones Industrial</li>
+  <li><strong>Pink_IXIC.-</strong> NASDAQ COMPOSITE</li>
+  <li><strong>Purple_GSPC.-</strong> S&amp;P 500</li>
+  <li><strong>Orange_DAX.-</strong> German Index</li>
+  <li><strong>Yellow_TSXV.-</strong> S&amp;P/TSX CANADA COMPOSITE INDEX</li>
+</ul>
+
+<p><strong>If we look closely, the PHLX Index outperforms the NASDAQ COMPOSITE which contains companies like Apple, Amazon, Facebook and Alphabet… not bad, right?</strong> So, for this project i’m going to choose 2 or 3 per model:</p>
+
+<ul>
+  <li><strong>Foundry:</strong> TSMC and UMC.</li>
+  <li><strong>IDM’s:</strong> Intel, Texas instruments and NPX</li>
+  <li><strong>Fabless:</strong> Broadcomm, Qualcomm and Nvidia.</li>
+</ul>
+
+<p>These are the packages I will use throughout the project:</p>
+
+<ul>
+  <li><strong>Tidyquant</strong> for finance</li>
+  <li><strong>Tidyverse</strong> for dplyr and ggplot2</li>
+  <li><strong>Fpp3</strong> for forecasting models</li>
+  <li><strong>Ggthemes</strong> for beautiful plots</li>
+</ul>
+
+<hr />
+
+<h3 id="code">CODE</h3>
+
+<h4 id="first-i-need-to-download-the-data">First, I need to download the data:</h4>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sc_companies</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"TSM"</span><span class="p">,</span><span class="w"> </span><span class="s2">"UMC"</span><span class="p">,</span><span class="w"> </span><span class="s2">"INTC"</span><span class="p">,</span><span class="w"> </span><span class="s2">"TXN"</span><span class="p">,</span><span class="w"> </span><span class="s2">"NXP"</span><span class="p">,</span><span class="w"> </span><span class="s2">"NVDA"</span><span class="p">,</span><span class="w"> </span><span class="s2">"AVGO"</span><span class="p">,</span><span class="w"> </span><span class="s2">"QCOM"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">tq_get</span><span class="p">(</span><span class="n">get</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"stock.prices"</span><span class="p">,</span><span class="w">
+         </span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"2015-01-01"</span><span class="p">,</span><span class="w">
+         </span><span class="n">to</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">"2021-06-27"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">foundry</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"TSM"</span><span class="p">,</span><span class="w"> </span><span class="s2">"UMC"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">tq_get</span><span class="p">(</span><span class="n">get</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"stock.prices"</span><span class="p">,</span><span class="w">
+         </span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"2015-01-01"</span><span class="p">,</span><span class="w">
+         </span><span class="n">to</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">"2021-06-27"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">idm</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"INTC"</span><span class="p">,</span><span class="w"> </span><span class="s2">"TXN"</span><span class="p">,</span><span class="w"> </span><span class="s2">"NXP"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">tq_get</span><span class="p">(</span><span class="n">get</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"stock.prices"</span><span class="p">,</span><span class="w">
+         </span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"2015-01-01"</span><span class="p">,</span><span class="w">
+         </span><span class="n">to</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">"2021-06-27"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fabless</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"NVDA"</span><span class="p">,</span><span class="w"> </span><span class="s2">"AVGO"</span><span class="p">,</span><span class="w"> </span><span class="s2">"QCOM"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">tq_get</span><span class="p">(</span><span class="n">get</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"stock.prices"</span><span class="p">,</span><span class="w">
+         </span><span class="n">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"2015-01-01"</span><span class="p">,</span><span class="w">
+         </span><span class="n">to</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">"2021-06-27"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="then-i-need-to-plot-the-data">Then, I need to plot the data</h4>
+
+<p><strong>Let’s see an overview</strong></p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">ggplot</span><span class="p">(</span><span class="n">sc_companies</span><span class="p">,</span><span class="w"> 
+         </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">close</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">symbol</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+    </span><span class="n">geom_line</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Semiconductor Stock Price"</span><span class="p">,</span><span class="w">
+         </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'A comparation between companies'</span><span class="p">,</span><span class="w">
+         </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Date'</span><span class="p">,</span><span class="w">
+         </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="s2">"Close Price"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">theme_minimal</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">scale_color_brewer</span><span class="p">(</span><span class="n">palette</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Dark2"</span><span class="p">)</span><span class="w"> 
+</span></code></pre></div></div>
+
+<p><img src="/img/semiconductores/semiconductorstockprice.png" alt="Index" /></p>
+
+<p><strong>Let’s wrap for a better view.</strong></p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">ggplot</span><span class="p">(</span><span class="n">sc_companies</span><span class="p">,</span><span class="w"> 
+         </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">close</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">symbol</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+    </span><span class="n">geom_line</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Semiconductor Stock Price Growth"</span><span class="p">,</span><span class="w">
+         </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">''</span><span class="p">,</span><span class="w">
+         </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Date'</span><span class="p">,</span><span class="w">
+         </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="s2">"Close Price"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">theme_minimal</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">scale_color_brewer</span><span class="p">(</span><span class="n">palette</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Dark2"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="w"> </span><span class="n">symbol</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"free_y"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/img/semiconductores/semiconductorwrap.png" alt="Index" /></p>
+
+<h3 id="its-time-to-see-between-business-models">It’s time to see between business models.</h3>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">ggplot</span><span class="p">(</span><span class="n">foundry</span><span class="p">,</span><span class="w"> 
+         </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">close</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">symbol</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+    </span><span class="n">geom_line</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Semiconductor Stock Price"</span><span class="p">,</span><span class="w">
+         </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Foundry business model'</span><span class="p">,</span><span class="w">
+         </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Date'</span><span class="p">,</span><span class="w">
+         </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="s2">"Close Price"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">theme_minimal</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">scale_color_brewer</span><span class="p">(</span><span class="n">palette</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Dark2"</span><span class="p">)</span><span class="w"> 
+</span></code></pre></div></div>
+
+<p><img src="/img/semiconductores/foundrystock.png" alt="Index" /></p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">ggplot</span><span class="p">(</span><span class="n">fabless</span><span class="p">,</span><span class="w"> 
+         </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">close</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">symbol</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+    </span><span class="n">geom_line</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Semiconductor Stock Price"</span><span class="p">,</span><span class="w">
+         </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Fabless business model'</span><span class="p">,</span><span class="w">
+         </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Date'</span><span class="p">,</span><span class="w">
+         </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="s2">"Close Price"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">theme_minimal</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">scale_color_brewer</span><span class="p">(</span><span class="n">palette</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Dark2"</span><span class="p">)</span><span class="w"> 
+</span></code></pre></div></div>
+
+<p><img src="/img/semiconductores/fablessstock.png" alt="Index" /></p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">ggplot</span><span class="p">(</span><span class="n">idm</span><span class="p">,</span><span class="w"> 
+         </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">close</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">symbol</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+    </span><span class="n">geom_line</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Semiconductor Stock Price"</span><span class="p">,</span><span class="w">
+         </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'IDM business model'</span><span class="p">,</span><span class="w">
+         </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Date'</span><span class="p">,</span><span class="w">
+         </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="s2">"Close Price"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">theme_minimal</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">scale_color_brewer</span><span class="p">(</span><span class="n">palette</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Dark2"</span><span class="p">)</span><span class="w"> 
+</span></code></pre></div></div>
+
+<p><img src="/img/semiconductores/idmstock.png" alt="Index" /></p>
+
+<h3 id="the-trend-its-kinda-obvious-but-remember-i-have-my-personal-goals-for-this-project">The trend it’s kinda obvious but remember… I have my personal goals for this project</h3>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w">  </span><span class="n">sc_companies</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+    </span><span class="n">filter</span><span class="p">(</span><span class="n">symbol</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"QCOM"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+   </span><span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">close</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">symbol</span><span class="p">))</span><span class="w">  </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_line</span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"indianred3"</span><span class="p">,</span><span class="w"> 
+            </span><span class="n">size</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_smooth</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Semiconductor Stock "</span><span class="p">,</span><span class="w">
+         </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Qualcomm Trend'</span><span class="p">,</span><span class="w">
+         </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'Date'</span><span class="p">,</span><span class="w">
+         </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="s2">"Close Price"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">theme_minimal</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">scale_color_brewer</span><span class="p">(</span><span class="n">palette</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Dark2"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="w"> </span><span class="n">symbol</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"free_y"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/img/semiconductores/qualcomtrend.png" alt="Index" /></p>
+
+<h3 id="lets-see-the-anual-returns-for-each-companie-categorize-by-model">Let’s see the anual returns for each companie categorize by model</h3>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">semicompanies_return_yearly_idm</span><span class="w"> </span><span class="o">&lt;-</span><span class="w">  </span><span class="n">idm</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">group_by</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">tq_transmute</span><span class="p">(</span><span class="n">select</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">adjusted</span><span class="p">,</span><span class="w"> 
+                 </span><span class="n">mutate_fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">periodReturn</span><span class="p">,</span><span class="w"> 
+                 </span><span class="n">period</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"yearly"</span><span class="p">,</span><span class="w"> 
+                 </span><span class="n">col_rename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"yearly.returns"</span><span class="p">)</span><span class="w"> 
+</span></code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">semicompanies_return_yearly_idm</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">year</span><span class="p">(</span><span class="n">date</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yearly.returns</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">symbol</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">geom_bar</span><span class="p">(</span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"dodge"</span><span class="p">,</span><span class="w"> </span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"identity"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Anual Returns"</span><span class="p">,</span><span class="w"> 
+         </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"IDM Business Model"</span><span class="p">,</span><span class="w">
+         </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Returns"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">scale_y_continuous</span><span class="p">(</span><span class="n">labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scales</span><span class="o">::</span><span class="n">percent</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">coord_flip</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">theme_tq</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">scale_fill_tq</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/img/semiconductores/idmreturns.png" alt="Index" /></p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">semicompanies_return_yearly_fabless</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">fabless</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">group_by</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">tq_transmute</span><span class="p">(</span><span class="n">select</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">adjusted</span><span class="p">,</span><span class="w"> 
+                 </span><span class="n">mutate_fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">periodReturn</span><span class="p">,</span><span class="w"> 
+                 </span><span class="n">period</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"yearly"</span><span class="p">,</span><span class="w"> 
+                 </span><span class="n">col_rename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"yearly.returns"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">semicompanies_return_yearly_fabless</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">year</span><span class="p">(</span><span class="n">date</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yearly.returns</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">symbol</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">geom_bar</span><span class="p">(</span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"dodge"</span><span class="p">,</span><span class="w"> </span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"identity"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Anual Returns"</span><span class="p">,</span><span class="w"> 
+         </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Fabless Business Model"</span><span class="p">,</span><span class="w">
+         </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Returns"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">scale_y_continuous</span><span class="p">(</span><span class="n">labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scales</span><span class="o">::</span><span class="n">percent</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">coord_flip</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">theme_tq</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">scale_fill_tq</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/img/semiconductores/fablessreturn.png" alt="Index" /></p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">semicompanies_return_yearly_foundry</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">foundry</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">group_by</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">tq_transmute</span><span class="p">(</span><span class="n">select</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">adjusted</span><span class="p">,</span><span class="w"> 
+                 </span><span class="n">mutate_fun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">periodReturn</span><span class="p">,</span><span class="w"> 
+                 </span><span class="n">period</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"yearly"</span><span class="p">,</span><span class="w"> 
+                 </span><span class="n">col_rename</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"yearly.returns"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">semicompanies_return_yearly_foundry</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+    </span><span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">year</span><span class="p">(</span><span class="n">date</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yearly.returns</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">symbol</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">geom_bar</span><span class="p">(</span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"dodge"</span><span class="p">,</span><span class="w"> </span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"identity"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Anual Returns"</span><span class="p">,</span><span class="w"> 
+         </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Foundry Business Model"</span><span class="p">,</span><span class="w">
+         </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Returns"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">scale_y_continuous</span><span class="p">(</span><span class="n">labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scales</span><span class="o">::</span><span class="n">percent</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">coord_flip</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">theme_tq</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+    </span><span class="n">scale_fill_tq</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/img/semiconductores/foundryreturn.png" alt="Index" /></p>
+
+
+        <hr>
+
+        <div class="clearfix">
+
+          
+          <a class="btn btn-primary float-left" href="/r/2021/05/22/forecasting_mexico_GDPPC.html" data-toggle="tooltip" data-placement="top" title="An Introduction to Forecasting Modeling">&larr; Previous<span class="d-none d-md-inline">
+              Post</span></a>
+          
+          
+          <a class="btn btn-primary float-right" href="/r/2021/07/12/data-analysis-process.html" data-toggle="tooltip" data-placement="top" title="Data Analysis Process">Next<span class="d-none d-md-inline">
+              Post</span> &rarr;</a>
+          
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+
+<hr>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          
+          <li class="list-inline-item">
+            <a href="mailto:joluistello@gmail.com">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          
+          
+          
+          
+        </ul>
+        <p class="copyright text-muted">Copyright &copy; Jose Luis Tello 2021</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/startbootstrap-clean-blog/js/scripts.js"></script>
+
+<script src="/assets/scripts.js"></script>
+
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX-X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-XXXXXXXXX-X');
+</script>
+
+
+
+</body>
+
+</html>

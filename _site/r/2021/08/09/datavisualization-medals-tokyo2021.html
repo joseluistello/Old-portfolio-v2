@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="/img/favicon_io/favicon-16x16.png">
+  
+
+  <title>
+    Data Visualization Olympic Medals 2021 - Simplifying Complexity
+    
+  </title>
+
+  <meta name="description" content="library(tidyverse)">
+
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,700;1,300;1,400&display=swap" rel="stylesheet"> 
+  <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://joseluistello.github.io/r/2021/08/09/datavisualization-medals-tokyo2021.html">
+  <link rel="alternate" type="application/rss+xml" title="Simplifying Complexity" href="/feed.xml">
+
+</head>
+
+
+<body>  
+
+  
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+    
+      <img src="/img/favicon_io/favicon-32x32.png" alt="">
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/posts">Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://joseluistello.substack.com">Library</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Page Header -->
+
+<header class="masthead" style="background-image: url('/img/tokyo2021/tokyo3.png')">
+  
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Data Visualization Olympic Medals 2021</h1>
+            
+            <h2 class="subheading">Visualizing Tokyo with R, Ggplot and Dplyr</h2>
+            
+            <span class="meta">Posted by
+              <a href="#">Jose Luis Tello</a>
+              on August 09, 2021 &middot; <span class="reading-time" title="Estimated read time">
+  
+   9 mins  read </span>
+
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+        <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">medals</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="s2">"data/raw/tokyo2021.csv"</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+<p>MMMM… I need to change this col names!</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">str</span><span class="p">(</span><span class="n">medals</span><span class="p">)</span><span class="w">
+
+</span><span class="c1">## 'data.frame':    93 obs. of  8 variables:</span><span class="w">
+</span><span class="c1">##  $ Rank         : int  1 2 3 4 5 6 7 8 9 10 ...</span><span class="w">
+</span><span class="c1">##  $ Team.NOC     : chr  "United States of America" "People's Republic of China" "Japan" "Great Britain" ...</span><span class="w">
+</span><span class="c1">##  $ Gold.Medal   : int  39 38 27 22 20 17 10 10 10 10 ...</span><span class="w">
+</span><span class="c1">##  $ Silver.Medal : int  41 32 14 21 28 7 12 12 11 10 ...</span><span class="w">
+</span><span class="c1">##  $ Bronze.Medal : int  33 18 17 22 23 22 14 11 16 20 ...</span><span class="w">
+</span><span class="c1">##  $ Total        : int  113 88 58 65 71 46 36 33 37 40 ...</span><span class="w">
+</span><span class="c1">##  $ Rank.by.Total: int  1 2 5 4 3 6 9 10 8 7 ...</span><span class="w">
+</span><span class="c1">##  $ NOCCode      : chr  "USA" "CHN" "JPN" "GBR" ...</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="data-wrangling">Data Wrangling</h2>
+
+<ol>
+  <li>Create a frame with new column names</li>
+</ol>
+
+<!-- -->
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tokyo2021</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rename</span><span class="p">(</span><span class="n">medals</span><span class="p">,</span><span class="w"> 
+    </span><span class="n">country</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Team.NOC</span><span class="p">,</span><span class="w">
+    </span><span class="n">gold</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Gold.Medal</span><span class="p">,</span><span class="w">
+    </span><span class="n">silver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Silver.Medal</span><span class="p">,</span><span class="w">
+    </span><span class="n">bronze</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Bronze.Medal</span><span class="p">,</span><span class="w">
+    </span><span class="n">rankbytotal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Rank.by.Total</span><span class="p">,</span><span class="w">
+    </span><span class="n">ccode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">NOCCode</span><span class="w">
+            </span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tokyo</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as_tibble</span><span class="p">(</span><span class="n">tokyo2021</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h2 id="data-viz">Data Viz!</h2>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tokyo</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+</span><span class="n">group_by</span><span class="p">(</span><span class="n">country</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+</span><span class="n">count</span><span class="p">(</span><span class="n">gold</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+</span><span class="n">filter</span><span class="p">(</span><span class="n">gold</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reorder</span><span class="p">(</span><span class="n">country</span><span class="p">,</span><span class="w"> </span><span class="n">gold</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gold</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span><span class="n">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'identity'</span><span class="p">,</span><span class="w"> 
+        </span><span class="n">size</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="w"> 
+        </span><span class="n">fill</span><span class="o">=</span><span class="s2">"darkgoldenrod2"</span><span class="p">,)</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span><span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gold</span><span class="p">),</span><span class="w">
+        </span><span class="n">vjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">.5</span><span class="p">,</span><span class="w"> </span><span class="n">nudge_y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">.90</span><span class="p">,</span><span class="w"> </span><span class="n">nudge_x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.15</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span><span class="n">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Country"</span><span class="p">,</span><span class="w">
+    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Gold Medals"</span><span class="p">,</span><span class="w">
+    </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Countries with the most Gold medals"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span><span class="n">coord_flip</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span><span class="n">theme_classic</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span><span class="n">theme</span><span class="p">(</span><span class="n">legend.position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"none"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/img/tokyo2021/gold.png" alt="Gold" /></p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tokyo</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+</span><span class="n">group_by</span><span class="p">(</span><span class="n">country</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+</span><span class="n">count</span><span class="p">(</span><span class="n">silver</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+</span><span class="n">filter</span><span class="p">(</span><span class="n">silver</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reorder</span><span class="p">(</span><span class="n">country</span><span class="p">,</span><span class="w"> </span><span class="n">silver</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">silver</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span><span class="n">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'identity'</span><span class="p">,</span><span class="w"> 
+        </span><span class="n">size</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="w">
+        </span><span class="n">fill</span><span class="o">=</span><span class="s2">"azure3"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span><span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">silver</span><span class="p">),</span><span class="w">
+        </span><span class="n">vjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">.5</span><span class="p">,</span><span class="w"> </span><span class="n">nudge_y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">.90</span><span class="p">,</span><span class="w"> </span><span class="n">nudge_x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.15</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span><span class="n">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Country"</span><span class="p">,</span><span class="w">
+    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Silver Medals"</span><span class="p">,</span><span class="w">
+    </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Countries with the most Silver medals"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span><span class="n">coord_flip</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span><span class="n">theme_classic</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span><span class="n">theme</span><span class="p">(</span><span class="n">legend.position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"none"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/img/tokyo2021/silver.png" alt="Silver" /></p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tokyo</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+</span><span class="n">group_by</span><span class="p">(</span><span class="n">country</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+</span><span class="n">count</span><span class="p">(</span><span class="n">bronze</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+</span><span class="n">filter</span><span class="p">(</span><span class="n">bronze</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reorder</span><span class="p">(</span><span class="n">country</span><span class="p">,</span><span class="w"> </span><span class="n">bronze</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bronze</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span><span class="n">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'identity'</span><span class="p">,</span><span class="w"> 
+        </span><span class="n">size</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="w">
+        </span><span class="n">fill</span><span class="o">=</span><span class="s2">"chocolate3"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span><span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">bronze</span><span class="p">),</span><span class="w">
+        </span><span class="n">vjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">.5</span><span class="p">,</span><span class="w"> </span><span class="n">nudge_y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">.90</span><span class="p">,</span><span class="w"> </span><span class="n">nudge_x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.15</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span><span class="n">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Country"</span><span class="p">,</span><span class="w">
+    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Bronze Medals"</span><span class="p">,</span><span class="w">
+    </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Countries with the most Bronze medals"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span><span class="n">coord_flip</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span><span class="n">theme_classic</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span><span class="n">theme</span><span class="p">(</span><span class="n">legend.position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"none"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/img/tokyo2021/bronze.png" alt="Bronze" /></p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">tokyo</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+</span><span class="n">select</span><span class="p">(</span><span class="n">country</span><span class="p">,</span><span class="w"> </span><span class="n">Total</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+</span><span class="n">slice_max</span><span class="p">(</span><span class="n">Total</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reorder</span><span class="p">(</span><span class="n">country</span><span class="p">,</span><span class="w"> </span><span class="n">Total</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Total</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span><span class="n">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'identity'</span><span class="p">,</span><span class="w"> 
+        </span><span class="n">size</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="w">
+        </span><span class="n">fill</span><span class="o">=</span><span class="s2">"chocolate3"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span><span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Total</span><span class="p">),</span><span class="w">
+        </span><span class="n">vjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">.70</span><span class="p">,</span><span class="w"> </span><span class="n">nudge_y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">nudge_x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.15</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span><span class="n">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Country"</span><span class="p">,</span><span class="w">
+    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Medals"</span><span class="p">,</span><span class="w">
+    </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Countries ranked by total medals"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span><span class="n">coord_flip</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span><span class="n">theme_classic</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span><span class="n">theme</span><span class="p">(</span><span class="n">legend.position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"none"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/img/tokyo2021/totalrank.png" alt="Total_Medals" /></p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">tokyo</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Total</span><span class="p">,</span><span class="w">
+                </span><span class="n">y</span><span class="o">=</span><span class="w"> </span><span class="n">..count..</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">..count..</span><span class="p">)))</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span><span class="n">geom_histogram</span><span class="p">(</span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"cornflowerblue"</span><span class="p">,</span><span class="w">
+                </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"black"</span><span class="p">,</span><span class="w">
+                </span><span class="n">binwidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">9</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span><span class="n">scale_y_continuous</span><span class="p">(</span><span class="n">labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">percent</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span><span class="n">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Medals"</span><span class="p">,</span><span class="w">
+    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Count Percent"</span><span class="p">,</span><span class="w">
+    </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Medals distribution"</span><span class="w">
+    </span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+</span><span class="n">theme_classic</span><span class="p">()</span><span class="w"> 
+</span></code></pre></div></div>
+
+<p><img src="/img/tokyo2021/histograms.png" alt="Distribution" /></p>
+
+
+        <hr>
+
+        <div class="clearfix">
+
+          
+          <a class="btn btn-primary float-left" href="/r/2021/07/12/data-analysis-process.html" data-toggle="tooltip" data-placement="top" title="Data Analysis Process">&larr; Previous<span class="d-none d-md-inline">
+              Post</span></a>
+          
+          
+          <a class="btn btn-primary float-right" href="/python/2021/08/17/python-data-analysis.html" data-toggle="tooltip" data-placement="top" title="Ecommerce Data Analysis">Next<span class="d-none d-md-inline">
+              Post</span> &rarr;</a>
+          
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+
+<hr>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          
+          <li class="list-inline-item">
+            <a href="mailto:joluistello@gmail.com">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          
+          
+          
+          
+        </ul>
+        <p class="copyright text-muted">Copyright &copy; Jose Luis Tello 2021</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/startbootstrap-clean-blog/js/scripts.js"></script>
+
+<script src="/assets/scripts.js"></script>
+
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX-X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-XXXXXXXXX-X');
+</script>
+
+
+
+</body>
+
+</html>

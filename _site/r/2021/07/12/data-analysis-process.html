@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="/img/favicon_io/favicon-16x16.png">
+  
+
+  <title>
+    Data Analysis Process - Simplifying Complexity
+    
+  </title>
+
+  <meta name="description" content="🚭 UNDER CONSTRUCTION 🚭">
+
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,700;1,300;1,400&display=swap" rel="stylesheet"> 
+  <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="https://joseluistello.github.io/r/2021/07/12/data-analysis-process.html">
+  <link rel="alternate" type="application/rss+xml" title="Simplifying Complexity" href="/feed.xml">
+
+</head>
+
+
+<body>  
+
+  
+  <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+    
+      <img src="/img/favicon_io/favicon-32x32.png" alt="">
+    </a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/posts">Posts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://joseluistello.substack.com">Library</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <!-- Page Header -->
+
+<header class="masthead" style="background-image: url('/img/data analysis/tukeyy.png')">
+  
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>Data Analysis Process</h1>
+            
+            <h2 class="subheading">A General View To My Approach</h2>
+            
+            <span class="meta">Posted by
+              <a href="#">Jose Luis Tello</a>
+              on July 12, 2021 &middot; <span class="reading-time" title="Estimated read time">
+  
+   34 mins  read </span>
+
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+
+        <h2 id="-under-construction-">🚭 UNDER CONSTRUCTION 🚭</h2>
+
+<p><strong>Essay in honor of <a href="https://en.wikipedia.org/wiki/John_Tukey">John W. Tukey.</a></strong></p>
+
+<blockquote>
+  <p><em>Without his contributions, I could not be writing this post… Hope you enjoy it.</em></p>
+</blockquote>
+
+<p>There is a <a href="https://www.espn.com/pdf/2016/0406/nba_hinkie_redact.pdf">famous letter</a> by Samuel Hinkie where he talks about his journey serving the Sixers. He wrote magnificent references, but there is one that I love on Seth Klarman and his approach at Baupost Group:</p>
+
+<blockquote>
+  <p><strong>“It isn’t the only way of thinking, but it’s how we approach it.”</strong></p>
+</blockquote>
+
+<p>Those words te way I see structures, data analysis, and problem-solving. This is not unique, but it’s how I approach it. In the end, the knowledge I have is the result of all the interactions throughout my life.</p>
+
+<h4 id="thinking-about-small-things">Thinking about small things</h4>
+
+<p>There are different methods to attack a problem, usually called mental models. These models are abstractions of how we see something. Usually, start as an assumption until knowledge and experience transform them into a tool of thinking that humans have made to approach solutions.</p>
+
+<p>An example could be Elon Musk and the <em>first-principles</em>. This mental model consists of breaking a whole problem into small parts. The first principles (and his reductionist nature) <a href="https://www.youtube.com/watch?v=NV3sBlRgzTI">helped Elon</a> back then in the early years when he creates a cheaper and more accessible rocket.</p>
+
+<blockquote>
+  <p><a href="https://en.wikipedia.org/wiki/Reductionism">Reductionism</a> is any of several related philosophical ideas regarding the associations between phenomena, which can be described in terms of other simpler or more fundamental phenomena. It is also described as an intellectual and philosophical position that interprets a complex system as the sum of its parts.</p>
+</blockquote>
+
+<p>In simple words, reductionism maintain that whole (phenomenon) can be understood from the essence of his parts and the relations among them, even if those parts are different from each other.</p>
+
+<p>I’m a big fan of reductionism. This way of thinking can be adopted when we are studying statistical models. It is helpful to see each part of a model and how <a href="https://www.youtube.com/watch?v=nk2CQITm_eo">it’s composed</a>.</p>
+
+<p><img src="/img/data%20analysis/linear%20regression.png" alt="alt text" /></p>
+
+<p>Or even for the purpose to describe three of the four fundamental forces in the universe. <a href="https://cosmicescapes.com/the-standard-model-of-particle-physics/">The Standard Model Of Particle Physics.</a></p>
+
+<h4 id="thinking-about-big-things">Thinking about big things</h4>
+
+<p>It’s time to see the whole picture. We know that reductionism breaks phenomenons into small things and understands the whole by seen the interaction among them.</p>
+
+<p>What about Holism?</p>
+
+<blockquote>
+  <p><a href="https://link.springer.com/chapter/10.1007/978-3-030-11636-1_5">Holism</a> maintain the contrary view, that the parts of a whole are internally related, so that the essence of each is partially constituted by the properties of all the others and of the whole. Hence, the whole cannot be understood from its parts and their relations to each other alone; and conversely, the parts cannot be fully understood apart from the whole.</p>
+</blockquote>
+
+<p>Business understand this way of thinking. Specially disciplines like growth and product who needs to understand the whole picture.</p>
+
+<p>This is a great example created by <a href="https://www.reforge.com/blog/growth-loops">Reforge</a></p>
+
+<p><img src="/img/data%20analysis/Loops.png" alt="Loops" /></p>
+
+<h4 id="the-union-between-small-and-big-things">The union between small and big things</h4>
+
+<p>I don’t believe that Reductionism and Holism are not mutually exclusive. I think they are great frameworks of thinking, and without fanaticism, we can use them powerfully.</p>
+
+<p>There’s a way named systematic thinking. This thinking creates a balance between Reductionism and Holism.</p>
+
+<blockquote>
+  <p><a href="https://www.intelligentspeculation.com/blog/systems-thinking">By thinking about the overall system</a> at once and how everything fits together, you are more likely to account for nuanced interactions between components that could lead to negative, unintended consequences if left unaccounted for.</p>
+</blockquote>
+
+<p>We can say that systemic thinking allows us to unite the two ways of looking at a phenomenon. With systems thinking, we can deconstruct a complex Phenomenon while understanding his context.</p>
+
+<ul>
+  <li>Can the product team invest in new improvements, or is it better to concentrate on closing deals?</li>
+  <li>Can the engineering team scale up at the same time as user acquisition and retention?</li>
+</ul>
+
+<p>We can stop seeing a problem as monolithic. Instead, we can treat a problem as a series of actions and consequences that are interrelated. With this thinking, we can visualize patterns to attack a problem.</p>
+
+<hr />
+
+<p>At this point you may be wondering how all this is related to data analysis?</p>
+
+<p>One step for any thinking framework is always analysis (vice versa), and this analysis always contains data. It doesn’t matter if it is critical thinking, design thinking, problem-solving, logical thinking, etc. Everything leads to analysis, reductionism, holism, and systems thinking.</p>
+
+<p>Let me show you what I mean with a real example using the <a href="https://www.kaggle.com/c/titanic">classical titanic dataset.</a></p>
+
+<p><img src="/img/data%20analysis/HD.png" alt="Index" /></p>
+
+<h4 id="1️⃣-understand-problem">1️⃣ Understand problem</h4>
+
+<p>As we see, the first step is to understand what problem you have and what do you want to accomplish. This is the most important and difficult part of data analysis (in my opinion).</p>
+
+<ul>
+  <li>What exactly is the question?</li>
+  <li>What motivates our efforts?</li>
+  <li>What are the risks?</li>
+  <li>What is our goal?</li>
+</ul>
+
+<p>For this example, the problem and the goal is simply. We are going to work with something clean and nicely done. But in most cases, your first question will lead to many other questions.</p>
+
+<p>For example, In my last project (4-3 months ago), I work with a construction holding. The project consists on creates storage tanks with a capacity of 200 thousand liters. The process includes steel plates of 3 tons and inches of various thicknesses, anti-corrosive paint, and sand-blast.</p>
+
+<p>The final product is something like this:</p>
+
+<p><img src="/img/data%20analysis/tanques-de-almacenamiento.png" alt="Tanks" /></p>
+
+<p>Construction projects are budgeted. If you agreed on a price range for a product, you can’t go outside that range.</p>
+
+<p>The problems come with the painting process. We reached a point where we were at 60% of the final goal (8 tanks), but our warehouse did not have enough paint left in stock to finish the project. Alarm bells began to ring. We had a problem that we didn’t know how to define.</p>
+
+<p>As a quality inspector, my job was to find the real problem and propose solutions. I worked hard that week… I stayed in the office until 2:30. I was trying to think about what was going on my way to my home.</p>
+
+<p>So, I design a lot of experiment-based in metrics, observation, and repetition. We work with quantitative metrics like temperature, dew point, relative humidity, pressure, etc.</p>
+
+<p><strong>The main goal of my experiment was to find my problem.</strong> I wanted to correlate like crazy. Weeks ago (and thanks to our client’s request for documentation), I designed a database to capture everything. It was nothing sophisticated, but it was enough to give me data. I subjected to all kinds of analysis my metric of paint expenditure per day… <em>multivariate regression analysis</em> was my close friend.</p>
+
+<p>I could not see anything. Yes, there was the correlation that there should be, but nothing out of the ordinary. The compressor pressure was constant, the temperature didn’t affect the flow rate and neither did the anchoring.</p>
+
+<p>All this work just to put me in the context that I need for understand MY PROBLEM.</p>
+
+<p>Do you want to know what the problem was? One of the suppliers made a mistake when he made the financial quotation. It never occurred to us to start from there, especially me. Sounds obvious but believe me, when we face timelines and pressure on our shoulders <strong>the obviousness goes unnoticed.</strong></p>
+
+<hr />
+
+<p>EDITAR de aqui para abajo</p>
+
+<hr />
+
+<h4 id="2️⃣-understand-data">2️⃣ Understand Data</h4>
+
+<p>We can classify data into 2 groups:</p>
+
+<ul>
+  <li>Qualitative data responds questions like <strong>what</strong> and is classify in two groups:
+    <ul>
+      <li>Nominal data - Don’t have and orden</li>
+      <li>Ordinal data - Have an orden
+        <blockquote>
+
+        </blockquote>
+      </li>
+    </ul>
+  </li>
+  <li>Quantitative data responds questions like <strong>how many</strong>, <strong>how much</strong>, or <strong>how often</strong> and is classify in two grupus:
+    <ul>
+      <li>Discrete data - Don’t have decimals
+        <ul>
+          <li>Ordinal</li>
+          <li>Nominal</li>
+          <li>Binary</li>
+        </ul>
+      </li>
+      <li>Continuos data - Have decimals
+        <ul>
+          <li>Ratio</li>
+          <li>Interval</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>Lets check our data dictionary and variable notes to explain data type based on statistics.</p>
+
+<p><img src="/img/data%20analysis/variablesdata.png" alt="Notes" /></p>
+
+<p><img src="/img/data%20analysis/notes.png" alt="Notes" /></p>
+
+<p>Time to classify this data:</p>
+
+<p><strong>Qualitative data</strong>:</p>
+<ul>
+  <li>Ordinal
+    <ul>
+      <li>Survival</li>
+      <li>Sex</li>
+      <li>Embarked</li>
+    </ul>
+  </li>
+  <li>Nominal
+    <ul>
+      <li>Cabin</li>
+      <li>Name</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Quantitative data</strong>:</p>
+<ul>
+  <li>Discrete
+    <ul>
+      <li>Nominal
+        <ul>
+          <li>Passanger ID</li>
+          <li>Age</li>
+        </ul>
+      </li>
+      <li>Ordinal
+        <ul>
+          <li>Survived</li>
+          <li>Pclass</li>
+          <li>Parch</li>
+          <li>Sibsp</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Continuos
+    <ul>
+      <li>Fare</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="3️⃣-preprocess-data">3️⃣ Preprocess Data</h4>
+
+<p>FINALLYYYYYYYYYYYYYY, LET’S CODE!</p>
+
+<p>But, first… why preprocess and analyze are together?</p>
+
+<p>As you see in the holistic view of my process, this section is a “loop”. We can’t analysis data in a bad “shape” and we can’t understand data if we don’t analyzed it.</p>
+
+<p>WE NEED Exploration and Preparation! Data isn’t perfect, our data needs to be prepared, analyzed and crafted for modeling.</p>
+
+<ol>
+  <li>There are inappropriate data types</li>
+  <li>The are missing values</li>
+  <li>The are values that need to be transform, grouped, etc.</li>
+</ol>
+
+<p>At this point, we know what type of data we have. It’s time to upload and fix the data. In R, data is different from the statistics standard.</p>
+
+<p>We have data types are:</p>
+<ul>
+  <li>character</li>
+  <li>numeric</li>
+  <li>integer</li>
+  <li>complex</li>
+  <li>logical</li>
+</ul>
+
+<p>And data structures:</p>
+<ul>
+  <li>vector</li>
+  <li>list</li>
+  <li>matrix</li>
+  <li>data frame</li>
+  <li>factors</li>
+</ul>
+
+<p>Sometimes, we need to transform our dat but first we need to check data structure!</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">str</span><span class="p">(</span><span class="n">train</span><span class="p">)</span><span class="w">
+</span><span class="s1">'data.frame'</span><span class="o">:</span><span class="w">	</span><span class="m">891</span><span class="w"> </span><span class="n">obs.</span><span class="w"> </span><span class="n">of</span><span class="w">  </span><span class="m">12</span><span class="w"> </span><span class="n">variables</span><span class="o">:</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">PassengerId</span><span class="o">:</span><span class="w"> </span><span class="n">int</span><span class="w">  </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Survived</span><span class="w">   </span><span class="o">:</span><span class="w"> </span><span class="n">int</span><span class="w">  </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Pclass</span><span class="w">     </span><span class="o">:</span><span class="w"> </span><span class="n">int</span><span class="w">  </span><span class="m">3</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Name</span><span class="w">       </span><span class="o">:</span><span class="w"> </span><span class="n">chr</span><span class="w">  </span><span class="s2">"Braund, Mr. Owen Harris"</span><span class="w"> </span><span class="s2">"Cumings, Mrs. John Bradley (Florence Briggs Thayer)"</span><span class="w"> </span><span class="s2">"Heikkinen, Miss. Laina"</span><span class="w"> </span><span class="s2">"Futrelle, Mrs. Jacques Heath (Lily May Peel)"</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Sex</span><span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">chr</span><span class="w">  </span><span class="s2">"male"</span><span class="w"> </span><span class="s2">"female"</span><span class="w"> </span><span class="s2">"female"</span><span class="w"> </span><span class="s2">"female"</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Age</span><span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">num</span><span class="w">  </span><span class="m">22</span><span class="w"> </span><span class="m">38</span><span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">35</span><span class="w"> </span><span class="m">35</span><span class="w"> </span><span class="kc">NA</span><span class="w"> </span><span class="m">54</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">27</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">SibSp</span><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="n">int</span><span class="w">  </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Parch</span><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="n">int</span><span class="w">  </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Ticket</span><span class="w">     </span><span class="o">:</span><span class="w"> </span><span class="n">chr</span><span class="w">  </span><span class="s2">"A/5 21171"</span><span class="w"> </span><span class="s2">"PC 17599"</span><span class="w"> </span><span class="s2">"STON/O2. 3101282"</span><span class="w"> </span><span class="s2">"113803"</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Fare</span><span class="w">       </span><span class="o">:</span><span class="w"> </span><span class="n">num</span><span class="w">  </span><span class="m">7.25</span><span class="w"> </span><span class="m">71.28</span><span class="w"> </span><span class="m">7.92</span><span class="w"> </span><span class="m">53.1</span><span class="w"> </span><span class="m">8.05</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Cabin</span><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="n">chr</span><span class="w">  </span><span class="s2">""</span><span class="w"> </span><span class="s2">"C85"</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="s2">"C123"</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Embarked</span><span class="w">   </span><span class="o">:</span><span class="w"> </span><span class="n">chr</span><span class="w">  </span><span class="s2">"S"</span><span class="w"> </span><span class="s2">"C"</span><span class="w"> </span><span class="s2">"S"</span><span class="w"> </span><span class="s2">"S"</span><span class="w"> </span><span class="n">...</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">str</span><span class="p">(</span><span class="n">test</span><span class="p">)</span><span class="w">
+</span><span class="s1">'data.frame'</span><span class="o">:</span><span class="w">	</span><span class="m">418</span><span class="w"> </span><span class="n">obs.</span><span class="w"> </span><span class="n">of</span><span class="w">  </span><span class="m">11</span><span class="w"> </span><span class="n">variables</span><span class="o">:</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">PassengerId</span><span class="o">:</span><span class="w"> </span><span class="n">int</span><span class="w">  </span><span class="m">892</span><span class="w"> </span><span class="m">893</span><span class="w"> </span><span class="m">894</span><span class="w"> </span><span class="m">895</span><span class="w"> </span><span class="m">896</span><span class="w"> </span><span class="m">897</span><span class="w"> </span><span class="m">898</span><span class="w"> </span><span class="m">899</span><span class="w"> </span><span class="m">900</span><span class="w"> </span><span class="m">901</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Pclass</span><span class="w">     </span><span class="o">:</span><span class="w"> </span><span class="n">int</span><span class="w">  </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Name</span><span class="w">       </span><span class="o">:</span><span class="w"> </span><span class="n">chr</span><span class="w">  </span><span class="s2">"Kelly, Mr. James"</span><span class="w"> </span><span class="s2">"Wilkes, Mrs. James (Ellen Needs)"</span><span class="w"> </span><span class="s2">"Myles, Mr. Thomas Francis"</span><span class="w"> </span><span class="s2">"Wirz, Mr. Albert"</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Sex</span><span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">chr</span><span class="w">  </span><span class="s2">"male"</span><span class="w"> </span><span class="s2">"female"</span><span class="w"> </span><span class="s2">"male"</span><span class="w"> </span><span class="s2">"male"</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Age</span><span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">num</span><span class="w">  </span><span class="m">34.5</span><span class="w"> </span><span class="m">47</span><span class="w"> </span><span class="m">62</span><span class="w"> </span><span class="m">27</span><span class="w"> </span><span class="m">22</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">SibSp</span><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="n">int</span><span class="w">  </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Parch</span><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="n">int</span><span class="w">  </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Ticket</span><span class="w">     </span><span class="o">:</span><span class="w"> </span><span class="n">chr</span><span class="w">  </span><span class="s2">"330911"</span><span class="w"> </span><span class="s2">"363272"</span><span class="w"> </span><span class="s2">"240276"</span><span class="w"> </span><span class="s2">"315154"</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Fare</span><span class="w">       </span><span class="o">:</span><span class="w"> </span><span class="n">num</span><span class="w">  </span><span class="m">7.83</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">9.69</span><span class="w"> </span><span class="m">8.66</span><span class="w"> </span><span class="m">12.29</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Cabin</span><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="n">chr</span><span class="w">  </span><span class="s2">""</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Embarked</span><span class="w">   </span><span class="o">:</span><span class="w"> </span><span class="n">chr</span><span class="w">  </span><span class="s2">"Q"</span><span class="w"> </span><span class="s2">"S"</span><span class="w"> </span><span class="s2">"Q"</span><span class="w"> </span><span class="s2">"S"</span><span class="w"> </span><span class="n">...</span><span class="w">
+</span></code></pre></div></div>
+
+<p><strong>As we see, we need to make some changes. 
+Specially in Survived, Sex, Pclass and Embarked variables.</strong></p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">train</span><span class="o">$</span><span class="n">Survived</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.factor</span><span class="p">(</span><span class="n">train</span><span class="o">$</span><span class="n">Survived</span><span class="p">)</span><span class="w">
+</span><span class="n">train</span><span class="o">$</span><span class="n">Embarked</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.factor</span><span class="p">(</span><span class="n">train</span><span class="o">$</span><span class="n">Embarked</span><span class="p">)</span><span class="w">
+</span><span class="n">train</span><span class="o">$</span><span class="n">Sex</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.factor</span><span class="p">(</span><span class="n">train</span><span class="o">$</span><span class="n">Sex</span><span class="p">)</span><span class="w">
+</span><span class="n">train</span><span class="o">$</span><span class="n">Pclass</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.factor</span><span class="p">(</span><span class="n">train</span><span class="o">$</span><span class="n">Pclass</span><span class="p">)</span><span class="w">
+
+
+</span><span class="n">test</span><span class="o">$</span><span class="n">Embarked</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.factor</span><span class="p">(</span><span class="n">test</span><span class="o">$</span><span class="n">Embarked</span><span class="p">)</span><span class="w">
+</span><span class="n">test</span><span class="o">$</span><span class="n">Sex</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.factor</span><span class="p">(</span><span class="n">test</span><span class="o">$</span><span class="n">Sex</span><span class="p">)</span><span class="w">
+</span><span class="n">test</span><span class="o">$</span><span class="n">Pclass</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">as.factor</span><span class="p">(</span><span class="n">test</span><span class="o">$</span><span class="n">Pclass</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">str</span><span class="p">(</span><span class="n">test</span><span class="p">)</span><span class="w">
+</span><span class="s1">'data.frame'</span><span class="o">:</span><span class="w">	</span><span class="m">418</span><span class="w"> </span><span class="n">obs.</span><span class="w"> </span><span class="n">of</span><span class="w">  </span><span class="m">11</span><span class="w"> </span><span class="n">variables</span><span class="o">:</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">PassengerId</span><span class="o">:</span><span class="w"> </span><span class="n">int</span><span class="w">  </span><span class="m">892</span><span class="w"> </span><span class="m">893</span><span class="w"> </span><span class="m">894</span><span class="w"> </span><span class="m">895</span><span class="w"> </span><span class="m">896</span><span class="w"> </span><span class="m">897</span><span class="w"> </span><span class="m">898</span><span class="w"> </span><span class="m">899</span><span class="w"> </span><span class="m">900</span><span class="w"> </span><span class="m">901</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Pclass</span><span class="w">     </span><span class="o">:</span><span class="w"> </span><span class="n">Factor</span><span class="w"> </span><span class="n">w</span><span class="o">/</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="n">levels</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="s2">"2"</span><span class="p">,</span><span class="s2">"3"</span><span class="o">:</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Name</span><span class="w">       </span><span class="o">:</span><span class="w"> </span><span class="n">chr</span><span class="w">  </span><span class="s2">"Kelly, Mr. James"</span><span class="w"> </span><span class="s2">"Wilkes, Mrs. James (Ellen Needs)"</span><span class="w"> </span><span class="s2">"Myles, Mr. Thomas Francis"</span><span class="w"> </span><span class="s2">"Wirz, Mr. Albert"</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Sex</span><span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">Factor</span><span class="w"> </span><span class="n">w</span><span class="o">/</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="n">levels</span><span class="w"> </span><span class="s2">"female"</span><span class="p">,</span><span class="s2">"male"</span><span class="o">:</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Age</span><span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">num</span><span class="w">  </span><span class="m">34.5</span><span class="w"> </span><span class="m">47</span><span class="w"> </span><span class="m">62</span><span class="w"> </span><span class="m">27</span><span class="w"> </span><span class="m">22</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">18</span><span class="w"> </span><span class="m">21</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">SibSp</span><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="n">int</span><span class="w">  </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Parch</span><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="n">int</span><span class="w">  </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Ticket</span><span class="w">     </span><span class="o">:</span><span class="w"> </span><span class="n">chr</span><span class="w">  </span><span class="s2">"330911"</span><span class="w"> </span><span class="s2">"363272"</span><span class="w"> </span><span class="s2">"240276"</span><span class="w"> </span><span class="s2">"315154"</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Fare</span><span class="w">       </span><span class="o">:</span><span class="w"> </span><span class="n">num</span><span class="w">  </span><span class="m">7.83</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">9.69</span><span class="w"> </span><span class="m">8.66</span><span class="w"> </span><span class="m">12.29</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Cabin</span><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="n">chr</span><span class="w">  </span><span class="s2">""</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Embarked</span><span class="w">   </span><span class="o">:</span><span class="w"> </span><span class="n">Factor</span><span class="w"> </span><span class="n">w</span><span class="o">/</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="n">levels</span><span class="w"> </span><span class="s2">"C"</span><span class="p">,</span><span class="s2">"Q"</span><span class="p">,</span><span class="s2">"S"</span><span class="o">:</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="n">...</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">str</span><span class="p">(</span><span class="n">train</span><span class="p">)</span><span class="w">
+</span><span class="s1">'data.frame'</span><span class="o">:</span><span class="w">	</span><span class="m">891</span><span class="w"> </span><span class="n">obs.</span><span class="w"> </span><span class="n">of</span><span class="w">  </span><span class="m">12</span><span class="w"> </span><span class="n">variables</span><span class="o">:</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">PassengerId</span><span class="o">:</span><span class="w"> </span><span class="n">int</span><span class="w">  </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Survived</span><span class="w">   </span><span class="o">:</span><span class="w"> </span><span class="n">Factor</span><span class="w"> </span><span class="n">w</span><span class="o">/</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="n">levels</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="s2">"1"</span><span class="o">:</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Pclass</span><span class="w">     </span><span class="o">:</span><span class="w"> </span><span class="n">Factor</span><span class="w"> </span><span class="n">w</span><span class="o">/</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="n">levels</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="s2">"2"</span><span class="p">,</span><span class="s2">"3"</span><span class="o">:</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Name</span><span class="w">       </span><span class="o">:</span><span class="w"> </span><span class="n">chr</span><span class="w">  </span><span class="s2">"Braund, Mr. Owen Harris"</span><span class="w"> </span><span class="s2">"Cumings, Mrs. John Bradley (Florence Briggs Thayer)"</span><span class="w"> </span><span class="s2">"Heikkinen, Miss. Laina"</span><span class="w"> </span><span class="s2">"Futrelle, Mrs. Jacques Heath (Lily May Peel)"</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Sex</span><span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">Factor</span><span class="w"> </span><span class="n">w</span><span class="o">/</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="n">levels</span><span class="w"> </span><span class="s2">"female"</span><span class="p">,</span><span class="s2">"male"</span><span class="o">:</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Age</span><span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">num</span><span class="w">  </span><span class="m">22</span><span class="w"> </span><span class="m">38</span><span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">35</span><span class="w"> </span><span class="m">35</span><span class="w"> </span><span class="kc">NA</span><span class="w"> </span><span class="m">54</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">27</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">SibSp</span><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="n">int</span><span class="w">  </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Parch</span><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="n">int</span><span class="w">  </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Ticket</span><span class="w">     </span><span class="o">:</span><span class="w"> </span><span class="n">chr</span><span class="w">  </span><span class="s2">"A/5 21171"</span><span class="w"> </span><span class="s2">"PC 17599"</span><span class="w"> </span><span class="s2">"STON/O2. 3101282"</span><span class="w"> </span><span class="s2">"113803"</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Fare</span><span class="w">       </span><span class="o">:</span><span class="w"> </span><span class="n">num</span><span class="w">  </span><span class="m">7.25</span><span class="w"> </span><span class="m">71.28</span><span class="w"> </span><span class="m">7.92</span><span class="w"> </span><span class="m">53.1</span><span class="w"> </span><span class="m">8.05</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Cabin</span><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="n">chr</span><span class="w">  </span><span class="s2">""</span><span class="w"> </span><span class="s2">"C85"</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="s2">"C123"</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Embarked</span><span class="w">   </span><span class="o">:</span><span class="w"> </span><span class="n">Factor</span><span class="w"> </span><span class="n">w</span><span class="o">/</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="n">levels</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="s2">"C"</span><span class="p">,</span><span class="s2">"Q"</span><span class="p">,</span><span class="s2">"S"</span><span class="o">:</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">2</span><span class="w"> 
+</span></code></pre></div></div>
+
+<h5 id="done">Done</h5>
+
+<p>Now is time to drop NA values, bind our data and create the file.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">test</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data.frame</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="m">1</span><span class="p">],</span><span class="w"> </span><span class="n">Survived</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rep</span><span class="p">(</span><span class="s2">"NA"</span><span class="p">,</span><span class="w"> </span><span class="n">nrow</span><span class="p">(</span><span class="n">test</span><span class="p">)),</span><span class="w"> </span><span class="n">test</span><span class="p">[</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="o">:</span><span class="n">ncol</span><span class="p">(</span><span class="n">test</span><span class="p">)])</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rbind</span><span class="p">(</span><span class="n">train</span><span class="p">,</span><span class="w"> </span><span class="n">test</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">write.csv</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="s2">"./data/interim/data.cvs"</span><span class="p">,</span><span class="w"> </span><span class="n">row.names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="w"> </span><span class="p">)</span><span class="w">
+</span></code></pre></div></div>
+
+<h5 id="structure-looks-great">Structure looks great!</h5>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">str</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w">
+</span><span class="s1">'data.frame'</span><span class="o">:</span><span class="w">	</span><span class="m">1309</span><span class="w"> </span><span class="n">obs.</span><span class="w"> </span><span class="n">of</span><span class="w">  </span><span class="m">12</span><span class="w"> </span><span class="n">variables</span><span class="o">:</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">PassengerId</span><span class="o">:</span><span class="w"> </span><span class="n">int</span><span class="w">  </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">6</span><span class="w"> </span><span class="m">7</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Survived</span><span class="w">   </span><span class="o">:</span><span class="w"> </span><span class="n">Factor</span><span class="w"> </span><span class="n">w</span><span class="o">/</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="n">levels</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="s2">"1"</span><span class="p">,</span><span class="s2">"NA"</span><span class="o">:</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Pclass</span><span class="w">     </span><span class="o">:</span><span class="w"> </span><span class="n">Factor</span><span class="w"> </span><span class="n">w</span><span class="o">/</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="n">levels</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="s2">"2"</span><span class="p">,</span><span class="s2">"3"</span><span class="o">:</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Name</span><span class="w">       </span><span class="o">:</span><span class="w"> </span><span class="n">chr</span><span class="w">  </span><span class="s2">"Braund, Mr. Owen Harris"</span><span class="w"> </span><span class="s2">"Cumings, Mrs. John Bradley (Florence Briggs Thayer)"</span><span class="w"> </span><span class="s2">"Heikkinen, Miss. Laina"</span><span class="w"> </span><span class="s2">"Futrelle, Mrs. Jacques Heath (Lily May Peel)"</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Sex</span><span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">Factor</span><span class="w"> </span><span class="n">w</span><span class="o">/</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="n">levels</span><span class="w"> </span><span class="s2">"female"</span><span class="p">,</span><span class="s2">"male"</span><span class="o">:</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Age</span><span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="n">num</span><span class="w">  </span><span class="m">22</span><span class="w"> </span><span class="m">38</span><span class="w"> </span><span class="m">26</span><span class="w"> </span><span class="m">35</span><span class="w"> </span><span class="m">35</span><span class="w"> </span><span class="kc">NA</span><span class="w"> </span><span class="m">54</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">27</span><span class="w"> </span><span class="m">14</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">SibSp</span><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="n">int</span><span class="w">  </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Parch</span><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="n">int</span><span class="w">  </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Ticket</span><span class="w">     </span><span class="o">:</span><span class="w"> </span><span class="n">chr</span><span class="w">  </span><span class="s2">"A/5 21171"</span><span class="w"> </span><span class="s2">"PC 17599"</span><span class="w"> </span><span class="s2">"STON/O2. 3101282"</span><span class="w"> </span><span class="s2">"113803"</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Fare</span><span class="w">       </span><span class="o">:</span><span class="w"> </span><span class="n">num</span><span class="w">  </span><span class="m">7.25</span><span class="w"> </span><span class="m">71.28</span><span class="w"> </span><span class="m">7.92</span><span class="w"> </span><span class="m">53.1</span><span class="w"> </span><span class="m">8.05</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Cabin</span><span class="w">      </span><span class="o">:</span><span class="w"> </span><span class="n">chr</span><span class="w">  </span><span class="s2">""</span><span class="w"> </span><span class="s2">"C85"</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="s2">"C123"</span><span class="w"> </span><span class="n">...</span><span class="w">
+ </span><span class="o">$</span><span class="w"> </span><span class="n">Embarked</span><span class="w">   </span><span class="o">:</span><span class="w"> </span><span class="n">Factor</span><span class="w"> </span><span class="n">w</span><span class="o">/</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="n">levels</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="s2">"C"</span><span class="p">,</span><span class="s2">"Q"</span><span class="p">,</span><span class="s2">"S"</span><span class="o">:</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">2</span><span class="w">
+</span></code></pre></div></div>
+
+<h4 id="4️⃣-analyze-data">4️⃣ Analyze Data</h4>
+
+<p>A tip for analyze data it’s so see the path between dependices of variables.</p>
+
+<p><img src="/img/data%20analysis/dependencies.png" alt="Dependencies" /></p>
+
+<p>For example, we can count our Sex variable for the porpuse of see the proportion of gender.</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> 
+       </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sex</span><span class="p">,</span><span class="w">
+           </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">..count..</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">..count..</span><span class="p">)))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_bar</span><span class="p">(</span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"cornflowerblue"</span><span class="p">,</span><span class="w"> 
+           </span><span class="n">color</span><span class="o">=</span><span class="s2">"black"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Gender"</span><span class="p">,</span><span class="w"> 
+       </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Percent"</span><span class="p">,</span><span class="w"> 
+       </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Proportion of gender"</span><span class="p">,</span><span class="w">
+       </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">scale_y_continuous</span><span class="p">(</span><span class="n">labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scales</span><span class="o">::</span><span class="n">percent</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">theme_base</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/img/data%20analysis/count.png" alt="Countsex" /></p>
+
+<p>We can see the proportion of socio-economic class among sex</p>
+
+<div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sex</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Pclass</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_bar</span><span class="p">(</span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"black"</span><span class="p">,</span><span class="w"> 
+           </span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">position_dodge</span><span class="w">
+           </span><span class="p">(</span><span class="n">preserve</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"single"</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Gender"</span><span class="p">,</span><span class="w">
+       </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Count"</span><span class="p">,</span><span class="w">
+       </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Passenger socio-economic class"</span><span class="p">,</span><span class="w">
+       </span><span class="n">subtitle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Distribution per gender"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">theme_base</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div>
+
+<p><img src="/img/data%20analysis/countpclass.png" alt="Countsex" /></p>
+
+
+
+        <hr>
+
+        <div class="clearfix">
+
+          
+          <a class="btn btn-primary float-left" href="/r/2021/06/28/semiconductors-part1.html" data-toggle="tooltip" data-placement="top" title="Semiconductor Industry Analysis">&larr; Previous<span class="d-none d-md-inline">
+              Post</span></a>
+          
+          
+          <a class="btn btn-primary float-right" href="/r/2021/08/09/datavisualization-medals-tokyo2021.html" data-toggle="tooltip" data-placement="top" title="Data Visualization Olympic Medals 2021">Next<span class="d-none d-md-inline">
+              Post</span> &rarr;</a>
+          
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+
+<hr>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <ul class="list-inline text-center">
+          
+          <li class="list-inline-item">
+            <a href="mailto:joluistello@gmail.com">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+          
+          
+          
+          
+          
+        </ul>
+        <p class="copyright text-muted">Copyright &copy; Jose Luis Tello 2021</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/startbootstrap-clean-blog/js/scripts.js"></script>
+
+<script src="/assets/scripts.js"></script>
+
+
+
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX-X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-XXXXXXXXX-X');
+</script>
+
+
+
+</body>
+
+</html>
