@@ -239,11 +239,8 @@ plt.show()
 ```
 
 
-    
 ![png](/img/financial_api/output1.png)
     
-
-
 
 ```python
 ### Localizando los datos
@@ -273,34 +270,28 @@ ax.legend()
 
 plt.show()
 ```
-
-
     
 ![png](/img/financial_api/output2.png)
     
 
-
 #### Creando un csv
 
-Si lo anterior te parecio dificil, no te preocupes. Siempre existen soluciones y de hecho me parece que utilizar Python para este tipo de cosas (visualizar frames tan pequeños) es innecesario. Para eso tenemos Excel.
+Si lo anterior te parecio dificil, no te preocupes. Siempre hay diferentes approachs, y de hecho, me parece que utilizar Python para este tipo de cosas (visualizar frames tan pequeños) es innecesario. Para eso tenemos Excel.
 
-Con el siguiente pedazo de codigo vas a poder crear un csv con los datos que sacaste del API. 
-
+Con el siguiente pedazo de codigo vas a poder crear un csv con los datos que sacaste del API y con ello poder manipularlos en tu herramienta preferida.
 
 ```python
 ### Al indicar index = False eliminas las enumeraciones de cada fila. 
 df.to_csv('NVDA.csv', index = False)
 ```
 
- 
 
-Bueno, esto es todo! Espero que este proyecto te ayude con tus objetivos profesionales y no profesionales. Si necesitas ayuda siempre puedes mandarme un mensaje a joluistello@gmail.com. 
+Bueno, esto es todo por hoy!
+
+Espero que este proyecto te ayude con tus objetivos profesionales y no profesionales. Si necesitas ayuda siempre puedes mandarme un mensaje a joluistello@gmail.com. 
 
 Un abrazo!
 
 
-```python
-
-```
 
 
